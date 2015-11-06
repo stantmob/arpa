@@ -1,6 +1,7 @@
 require "ar/version"
 require "ar/entities/resource"
 require "ar/entities/action"
+require "ar/entities/role"
 
 module Ar
   I18n.config.enforce_available_locales = true

@@ -7,10 +7,10 @@ module Ar
       def initialize(attrs = {})
         attrs = attrs.with_indifferent_access
 
-        @full_name   = attrs[:full_name]
-        @name        = attrs[:name]
-        @created_at  = attrs[:created_at]
-        @updated_at  = attrs[:updated_at]
+        @full_name  = attrs[:full_name]
+        @name       = attrs[:name]
+        @created_at = attrs[:created_at]
+        @updated_at = attrs[:updated_at]
       end
 
       def build_correct_name
