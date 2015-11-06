@@ -6,6 +6,8 @@ require "ar/entities/profile"
 
 require "ar/validators/resource_validator"
 require "ar/validators/action_validator"
+require "ar/validators/role_validator"
+require "ar/validators/profile_validator"
 
 module Ar
   I18n.config.enforce_available_locales = true
