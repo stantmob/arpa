@@ -2,11 +2,15 @@ module Ar
   module Entities
     class Resource
 
-      attr_reader :full_name, :name
+      attr_reader :full_name, :name, :created_at, :updated_at
 
       def initialize(attrs = {})
-        @full_name = attrs[:full_name]
-        @name      = attrs[:name]
+        attrs = attrs.with_indifferent_access
+
+        @full_name   = attrs[:full_name]
+        @name        = attrs[:name]
+        @created_at  = attrs[:created_at]
+        @updated_at  = attrs[:updated_at]
       end
 
       def build_correct_name
