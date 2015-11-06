@@ -1,0 +1,42 @@
+/.bundle/
+/.yardoc
+/Gemfile.lock
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+*.sqlite3
+/tmp/
+*.bundle
+*.so
+*.o
+*.a
+mkmf.log
+
+# scm revert files
+**.orig
+
+# Mac finder artifacts
+.DS_Store
+
+# RubyMine project files
+.idea
+
+# vim artifacts
+**.swp
+
+# Environment files that may contain sensitive data
+.env
+.powenv
+
+# Ignoring .keep files
+.keep
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+Procfile
+.vagrant
