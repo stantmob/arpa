@@ -9,8 +9,8 @@ describe Ar::Entities::Action do
 
     context 'when resource.name is "users" and action.name is "index"' do
 
-      it 'description should be "List of users"' do
-        expect(subject.description).to eql "List of users"
+      it 'description should be "List of Users"' do
+        expect(subject.description).to eql "List of Users"
       end
     end
 

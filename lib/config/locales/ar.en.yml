@@ -1,11 +1,13 @@
 en:
   entities:
-    action:
-      description:
-        index:   "List of %{resource_name}"
-        show:    "Show of %{resource_name} "
-        new:     "Access to registration form of %{resource_name} "
-        edit:    "Access to change form of %{resource_name} "
-        create:  "Perform action registering of %{resource_name} "
-        update:  "Perform action update of %{resource_name} "
-        destroy: "Perform action destroy of %{resource_name} "
+    resources:
+      users:
+        actions:
+          description:
+            index:   "List of Users"
+            show:    "Show of User"
+            new:     "Access to registration form of User"
+            edit:    "Access to change form of User"
+            create:  "Perform action registering of User"
+            update:  "Perform action update of User"
+            destroy: "Perform action destroy of User"

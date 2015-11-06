@@ -15,7 +15,7 @@ module Ar
       end
 
       def description
-        I18n.t(name.to_sym, scope: 'entities.action.description', resource_name: resource.name)
+        I18n.t(name.to_sym, scope: "entities.resources.#{resource.name}.actions.description")
       end
 
     end
