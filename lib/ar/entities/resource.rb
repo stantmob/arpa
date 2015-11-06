@@ -6,16 +6,15 @@ module Ar
 
       def initialize(attrs = {})
         @full_name = attrs[:full_name]
-
-        build_name
+        @name      = attrs[:name]
       end
 
-      private
-
-      def build_name
+      def build_correct_name
         name  = remove_word(full_name)
         @name = adjust_name(name)
       end
+
+      private
 
       def adjust_name(name)
         parts_of_name   = name.split '::'

@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe Ar::Entities::Resource do
 
-  describe 'initializing' do
+  describe '#build_correct_name' do
+
+    before { subject.build_correct_name }
 
     context 'when pass :full_name as "UsersController"' do
       subject { Ar::Entities::Resource.new full_name: 'UsersController' }
