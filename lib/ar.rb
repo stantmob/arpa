@@ -3,5 +3,7 @@ require "ar/entities/resource"
 require "ar/entities/action"
 
 module Ar
-  # Your code goes here...
+  I18n.config.enforce_available_locales = true
+  I18n.load_path << File.expand_path('../config/locales/ar.en.yml', __FILE__)
+  I18n.reload!
 end
