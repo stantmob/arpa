@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Ar::Validators::ActionValidator do
-  let(:action) { double name: '' }
+  let(:action) { double name: '', resource_id: nil }
 
   subject { Ar::Validators::ActionValidator.new action }
 
@@ -9,6 +9,7 @@ describe Ar::Validators::ActionValidator do
 
   context 'when require' do
     it { expect(subject.errors).to be_added(:name, :blank) }
+    it { expect(subject.errors).to be_added(:resource_id, :blank) }
   end
 
 end
