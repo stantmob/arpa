@@ -16,8 +16,10 @@ require "ar/validators/role_validator"
 require "ar/validators/profile_validator"
 
 require "ar/repositories/registrator"
-require "ar/repositories/resources/resource_repository"
+require "ar/repositories/resources/repository_resource"
 require "ar/repositories/resources/creator"
+require "ar/repositories/actions/repository_action"
+require "ar/repositories/actions/creator"
 
 module Ar
   I18n.config.enforce_available_locales = true
