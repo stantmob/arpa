@@ -2,6 +2,7 @@ require 'active_record'
 require 'ar'
 require 'database_cleaner'
 require 'factory_girl'
+require 'support/repositories/test_repository'
 
 ActiveRecord::Base.establish_connection(adapter:  'sqlite3',
                                         database: "#{File.dirname(__FILE__)}/ar.sqlite3")
