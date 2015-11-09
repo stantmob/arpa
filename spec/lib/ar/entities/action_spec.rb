@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ar::Entities::Action do
+describe Ar::Entities::Action, type: :entity, fast: true do
   let(:resource) { double(name: 'users') }
 
   subject { Ar::Entities::Action.new resource: resource, name: 'index'}

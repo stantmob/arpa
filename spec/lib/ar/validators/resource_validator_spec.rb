@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ar::Validators::ResourceValidator do
+describe Ar::Validators::ResourceValidator, type: :validator, fast: true do
   let(:resource) { double full_name: '', name: '' }
 
   subject { Ar::Validators::ResourceValidator.new resource }

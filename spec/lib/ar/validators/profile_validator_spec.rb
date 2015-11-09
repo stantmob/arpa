@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ar::Validators::ProfileValidator do
+describe Ar::Validators::ProfileValidator, type: :validator, fast: true do
   let(:profile) { double name: '', description: '' }
 
   subject { Ar::Validators::ProfileValidator.new profile }

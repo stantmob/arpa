@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ar::Entities::Resource do
+describe Ar::Entities::Resource, type: :entity, fast: true do
 
   describe '#build_correct_name' do
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ar::Validators::ActionValidator do
+describe Ar::Validators::ActionValidator, type: :validator, fast: true do
   let(:action) { double name: '', resource_id: nil }
 
   subject { Ar::Validators::ActionValidator.new action }

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ar::Validators::RoleValidator do
+describe Ar::Validators::RoleValidator, type: :validator, fast: true do
   let(:role) { double name: '', description: '' }
 
   subject { Ar::Validators::RoleValidator.new role }
