@@ -1,4 +1,7 @@
 require "ar/version"
+
+require "ar/exceptions/record_invalid"
+
 require "ar/entities/resource"
 require "ar/entities/action"
 require "ar/entities/role"
