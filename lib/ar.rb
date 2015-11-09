@@ -21,6 +21,8 @@ require "ar/repositories/resources/creator"
 require "ar/repositories/actions/repository_action"
 require "ar/repositories/actions/creator"
 
+require "ar/services/resources/resource_manager_creator"
+
 module Ar
   I18n.config.enforce_available_locales = true
   I18n.load_path << File.expand_path('../config/locales/ar.en.yml', __FILE__)
