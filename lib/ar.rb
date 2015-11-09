@@ -9,6 +9,8 @@ require "ar/validators/action_validator"
 require "ar/validators/role_validator"
 require "ar/validators/profile_validator"
 
+require "ar/repositories/resources/creator"
+
 module Ar
   I18n.config.enforce_available_locales = true
   I18n.load_path << File.expand_path('../config/locales/ar.en.yml', __FILE__)
