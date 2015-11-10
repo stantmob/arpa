@@ -22,6 +22,8 @@ require "ar/repositories/actions/repository_action"
 require "ar/repositories/actions/creator"
 
 require "ar/services/base"
+require "ar/services/actions/create/action_creator"
+require "ar/services/resources/create/resource_creator"
 require "ar/services/resources/resource_manager_creator"
 
 module Ar
