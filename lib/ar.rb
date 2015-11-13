@@ -17,6 +17,8 @@ require "ar/validators/profile_validator"
 
 require "ar/repositories/registrator"
 require "ar/repositories/resources/repository_resource"
+require "ar/repositories/resources/finder"
+require "ar/repositories/resources/remover"
 require "ar/repositories/resources/creator"
 require "ar/repositories/actions/repository_action"
 require "ar/repositories/actions/creator"
