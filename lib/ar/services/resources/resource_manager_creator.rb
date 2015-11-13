@@ -6,7 +6,11 @@ module Ar
 
         def create(params, callback)
           manager_action callback do
-            params[:resourceables].collect do |resourceable|
+            resourceables = params[:resourceables]
+
+            resource_remover.remove_nonexistent_resources(resourceables)
+
+            resourceables.collect do |resourceable|
               resource = resource_creator.create(resourceable)
               action_params = action_params(resource, resourceable)
               action_creator.create_many(action_params)
@@ -17,6 +21,10 @@ module Ar
         end
 
         private
+
+        def resource_remover
+          @resource_remover ||= Ar::Services::Resources::Remove::ResourceRemover.new
+        end
 
         def resource_creator
           @resource_creator ||= Ar::Services::Resources::Create::ResourceCreator.new
