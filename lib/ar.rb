@@ -15,6 +15,7 @@ require "ar/validators/action_validator"
 require "ar/validators/role_validator"
 require "ar/validators/profile_validator"
 
+require "ar/repositories/base"
 require "ar/repositories/registrator"
 require "ar/repositories/resources/repository_resource"
 require "ar/repositories/resources/finder"

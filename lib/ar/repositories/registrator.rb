@@ -1,6 +1,7 @@
 module Ar
   module Repositories
     module Registrator
+      include Base
 
       def create entity
         record = mapper_instance.map_to_record(repository_class, entity)
@@ -11,14 +12,6 @@ module Ar
         end
 
         mapper_instance.map_to_entity(record, entity)
-      end
-
-      def mapper_instance
-        raise NotImplementedError, "This #{self.class} cannot respond :mapper_instance"
-      end
-
-      def repository_class
-        raise NotImplementedError, "This #{self.class} cannot respond :repository_class"
       end
 
     end

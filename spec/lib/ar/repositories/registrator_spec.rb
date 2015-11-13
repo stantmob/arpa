@@ -2,13 +2,6 @@ require 'spec_helper'
 
 class RegistratorImplementationTest
   include Ar::Repositories::Registrator
-
-  def mapper_instance
-  end
-
-  def repository_class
-  end
-
 end
 
 describe Ar::Repositories::Registrator, type: :repository, fast: true do
