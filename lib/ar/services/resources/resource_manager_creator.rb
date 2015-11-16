@@ -13,6 +13,8 @@ module Ar
             resourceables.collect do |resourceable|
               resource = resource_creator.create(resourceable)
               action_params = action_params(resource, resourceable)
+
+              action_remover.remove_nonexistent_actions(action_params)
               action_creator.create_many(action_params)
 
               resource
@@ -24,6 +26,10 @@ module Ar
 
         def resource_remover
           @resource_remover ||= Ar::Services::Resources::Remove::ResourceRemover.new
+        end
+
+        def action_remover
+          @action_remover ||= Ar::Services::Actions::Remove::ActionRemover.new
         end
 
         def resource_creator

@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Ar::Services::Resources::ResourceManagerCreator, type: :service, fast: true do
 
+  let(:action_remover)   { double }
   let(:resource_remover) { double }
   let(:resource_creator) { double }
   let(:action_creator)   { double }
@@ -22,6 +23,7 @@ describe Ar::Services::Resources::ResourceManagerCreator, type: :service, fast: 
 
   let(:setup_removers) do
     allow(Ar::Services::Resources::Remove::ResourceRemover).to receive(:new).and_return(resource_remover)
+    allow(Ar::Services::Actions::Remove::ActionRemover).to receive(:new).and_return(action_remover)
   end
 
   let(:setup_creators_methods) do
@@ -31,6 +33,7 @@ describe Ar::Services::Resources::ResourceManagerCreator, type: :service, fast: 
 
   let(:setup_removers_methods) do
     allow(resource_remover).to receive(:remove_nonexistent_resources)
+    allow(action_remover).to receive(:remove_nonexistent_actions)
   end
 
   let(:result) { subject.create params, callback }
@@ -46,6 +49,10 @@ describe Ar::Services::Resources::ResourceManagerCreator, type: :service, fast: 
 
   it 'resource_remover should call :remove_nonexistent_resources with :resourceables as parameter' do
     expect(resource_remover).to have_received(:remove_nonexistent_resources).with(resourceables).once
+  end
+
+  it 'action_remover should call :remove_nonexistent_actions with :action_params as parameter' do
+    expect(action_remover).to have_received(:remove_nonexistent_actions).with({resource: resource_created, actions_names: []}).twice
   end
 
   it 'resource_creator should call :create with :resourceable as parameter' do
