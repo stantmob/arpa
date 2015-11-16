@@ -27,5 +27,10 @@ ActiveRecord::Schema.define do
     t.timestamps null: false
   end
 
+  create_join_table :repository_actions, :repository_roles, :force => true do |t|
+    t.index :repository_action_id, name: 'action_role_id'
+    t.index :repository_role_id, name: 'role_action_id'
+  end
+
 
 end

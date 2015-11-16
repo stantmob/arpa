@@ -7,6 +7,8 @@ module Ar
         alias_attribute :resource_id, :repository_resource_id
         belongs_to :resource, foreign_key: 'repository_resource_id', class_name: 'Ar::Repositories::Resources::RepositoryResource'
 
+        has_and_belongs_to_many :roles, class_name: 'Ar::Repositories::Roles::RepositoryRole'
+
       end
     end
   end
