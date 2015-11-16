@@ -49,6 +49,9 @@ require "ar/services/resources/create/resource_creator"
 require "ar/services/resources/remove/resource_remover"
 require "ar/services/resources/resource_manager_creator"
 
+require "ar/services/roles/role_manager_creator"
+require "ar/services/roles/create/role_creator"
+
 module Ar
   I18n.config.enforce_available_locales = true
   I18n.load_path << File.expand_path('../config/locales/ar.en.yml', __FILE__)
