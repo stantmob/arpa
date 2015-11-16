@@ -6,6 +6,10 @@ module Ar
 
           def create(resourceable)
             resource = resource_instance(resourceable)
+
+            resource_found = finder_repo.by_full_name(resource.full_name)
+            return resource_found if resource_found
+
             validate_resource(resource)
             creator_repo.create(resource)
           end
@@ -21,6 +25,10 @@ module Ar
           def validate_resource(resource)
             validator = Ar::Validators::ResourceValidator.new(resource)
             raise Ar::Exceptions::RecordInvalid.new(message: validator.errors.messages, errors: validator.errors) unless validator.valid?
+          end
+
+          def finder_repo
+            @finder_repo ||= Ar::Repositories::Resources::Finder.new
           end
 
           def creator_repo

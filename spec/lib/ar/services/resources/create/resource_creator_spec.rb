@@ -3,14 +3,21 @@ require 'spec_helper'
 describe Ar::Services::Resources::Create::ResourceCreator, type: :service, fast: true do
 
   let(:resource_entity_class) { Ar::Entities::Resource }
-  let(:resource)              { double }
+  let(:resource)              { double full_name: 'UsersController' }
   let(:resourceable)          { double }
+  let(:resource_found)        { nil }
 
   let(:resource_created) { subject.create(resourceable) }
   let(:validator_class)  { Ar::Validators::ResourceValidator }
   let(:validator)        { instance_double validator_class }
 
+  let(:finder_repo_class) { Ar::Repositories::Resources::Finder}
+  let(:finder_repo)       { instance_double finder_repo_class }
+
   before do
+    allow(finder_repo_class).to receive(:new).and_return(finder_repo)
+    allow(finder_repo).to receive(:by_full_name).with(kind_of(String)).and_return(resource_found)
+
     allow(validator_class).to receive(:new).with(resource).and_return(validator)
     allow(resource_entity_class).to receive(:new).and_return(resource)
     allow(resource).to receive(:build_correct_name)
@@ -34,6 +41,14 @@ describe Ar::Services::Resources::Create::ResourceCreator, type: :service, fast:
         }
       end
 
+    end
+
+    context 'when resouce already exists' do
+      let(:resource_found) { double }
+
+      it 'should return the resource found' do
+        expect(resource_created).to eq resource_found
+      end
     end
 
     context 'when resource is valid' do
