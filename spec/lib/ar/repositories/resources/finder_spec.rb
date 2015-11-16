@@ -22,7 +22,7 @@ describe Ar::Repositories::Resources::Finder, type: :repository, slow: true do
     end
 
     it 'the result should be an Array of Ar::Entities::Resource' do
-      expect(result.firs).to be_an Ar::Entities::Resource
+      expect(result.first).to be_an Ar::Entities::Resource
     end
 
   end
