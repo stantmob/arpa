@@ -1,9 +1,10 @@
 module Ar
   module Repositories
-    module Resources
-      class ActionRepository < ActiveRecord::Base
+    module Actions
+      class RepositoryAction < ActiveRecord::Base
 
-        belongs_to :resource, class_name: 'Ar::Repositories::Resources::RepositoryResource'
+        alias_attribute :resource_id, :repository_resource_id
+        belongs_to :resource, foreign_key: 'repository_resource_id', class_name: 'Ar::Repositories::Resources::RepositoryResource'
 
       end
     end
