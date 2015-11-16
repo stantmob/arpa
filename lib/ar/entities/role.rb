@@ -9,7 +9,7 @@ module Ar
 
         @id          = attrs[:id]
         @name        = attrs[:name]
-        @description = attrs[:name]
+        @description = attrs[:description]
         @created_at  = attrs[:created_at]
         @updated_at  = attrs[:updated_at]
         @removed     = attrs[:removed]
