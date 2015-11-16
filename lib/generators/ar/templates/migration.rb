@@ -15,6 +15,12 @@ class CreateArTables < ActiveRecord::Migration
 
     add_foreign_key :repository_actions, :repository_resources
 
+    create_table :repository_roles, :force => true do |t|
+      t.string :name
+      t.string :description
+      t.boolean :removed, default: false
+      t.timestamps null: false
+    end
 
 
 

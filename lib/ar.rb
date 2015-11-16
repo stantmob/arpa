@@ -7,6 +7,7 @@ require "ar/exceptions/record_invalid"
 require "ar/data_mappers/base"
 require "ar/data_mappers/resource_mapper"
 require "ar/data_mappers/action_mapper"
+require "ar/data_mappers/role_mapper"
 
 # Entities
 require "ar/entities/resource"
@@ -33,6 +34,10 @@ require "ar/repositories/actions/repository_action"
 require "ar/repositories/actions/finder"
 require "ar/repositories/actions/remover"
 require "ar/repositories/actions/creator"
+
+require "ar/repositories/roles/repository_role"
+require "ar/repositories/roles/finder"
+require "ar/repositories/roles/creator"
 
 # Services
 require "ar/services/base"
