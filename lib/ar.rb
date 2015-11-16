@@ -4,6 +4,7 @@ require "ar/exceptions/record_invalid"
 
 require "ar/data_mappers/base"
 require "ar/data_mappers/resource_mapper"
+require "ar/data_mappers/action_mapper"
 
 require "ar/entities/resource"
 require "ar/entities/action"

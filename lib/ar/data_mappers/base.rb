@@ -24,21 +24,21 @@ module Ar
       private
 
       def attributes_from_entity(entity)
-        attrs = Hash.new
-
-        begin
-          self.class._attributes_to_map.each do |attribute|
-            attrs[attribute] = entity.send(attribute)
-          end
-        rescue => e
-          raise StandardError, "#{self.class} -> #{e.message}"
-        end
-
-        attrs
+        attributes_from(entity)
       end
 
       def attributes_from_record(record)
-        record.attributes.select { |attr| self.class._attributes_to_map.include?(attr.to_sym) }
+        attributes_from(record)
+      end
+
+      def attributes_from(object)
+        begin
+          self.class._attributes_to_map.collect { |attr_key|
+            {:"#{attr_key}" => object.send(attr_key)}
+          }.reduce({}, :merge)
+        rescue => e
+          raise StandardError, "#{self.class} -> #{e.message}"
+        end
       end
 
     end
