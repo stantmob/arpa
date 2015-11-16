@@ -4,10 +4,16 @@ en:
       users:
         actions:
           description:
-            index:   "List of Users"
-            show:    "Show of User"
-            new:     "Access to registration form of User"
-            edit:    "Access to change form of User"
-            create:  "Perform action registering of User"
-            update:  "Perform action update of User"
-            destroy: "Perform action destroy of User"
+            index:   'List of Users'
+            show:    'Show of User'
+            new:     'Access to registration form of User'
+            edit:    'Access to change form of User'
+            create:  'Perform action registering of User'
+            update:  'Perform action update of User'
+            destroy: 'Perform action destroy of User'
+
+  errors:
+    format: ! '%{attribute} %{message}'
+    messages:
+      many_blank: 'you must select at least one'
+
