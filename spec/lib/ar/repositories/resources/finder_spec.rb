@@ -17,8 +17,8 @@ describe Ar::Repositories::Resources::Finder, type: :repository, slow: true do
       expect(result.size).to be == 2
     end
 
-    it 'the first Resource entity should has full_name "UsersController"' do
-      expect(result.first.full_name).to eql 'UsersController'
+    it 'the first Resource entity should has full_name "ContactsController"' do
+      expect(result.first.full_name).to eql 'ContactsController'
     end
 
     it 'the result should be an Array of Ar::Entities::Resource' do
