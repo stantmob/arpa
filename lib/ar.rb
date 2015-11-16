@@ -30,6 +30,7 @@ require "ar/repositories/resources/remover"
 require "ar/repositories/resources/creator"
 
 require "ar/repositories/actions/repository_action"
+require "ar/repositories/actions/finder"
 require "ar/repositories/actions/remover"
 require "ar/repositories/actions/creator"
 

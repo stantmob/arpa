@@ -7,12 +7,19 @@ describe Ar::Services::Actions::Create::ActionCreator, type: :service, fast: tru
   let(:resource)            { double id: 1 }
   let(:actions_names)       { ['index', 'new'] }
   let(:params)              { {resource: resource, actions_names: actions_names} }
+  let(:action_found)        { nil }
 
   let(:actions_created) { subject.create_many(params) }
   let(:validator_class) { Ar::Validators::ActionValidator }
   let(:validator)       { instance_double validator_class }
 
+  let(:finder_repo_class) { Ar::Repositories::Actions::Finder}
+  let(:finder_repo)       { instance_double finder_repo_class }
+
   before do
+    allow(finder_repo_class).to receive(:new).and_return(finder_repo)
+    allow(finder_repo).to receive(:by_name_and_resource).and_return(action_found)
+
     allow(validator_class).to receive(:new).with(action).and_return(validator)
     allow(action_entity_class).to receive(:new).and_return(action)
   end
@@ -33,6 +40,15 @@ describe Ar::Services::Actions::Create::ActionCreator, type: :service, fast: tru
           expect(error).to be_a Ar::Exceptions::RecordInvalid
           expect(error.errors).not_to be_nil
         }
+      end
+
+    end
+
+    context 'when actino already exists' do
+      let(:action_found) { double }
+
+      it 'should return the action found' do
+        expect(actions_created).to eq [action_found, action_found]
       end
 
     end
