@@ -5,7 +5,7 @@ module Ar
         include Ar::Repositories::Base
 
         def destroy(entity)
-          # repository_class.destroy(entity.id)
+          repository_class.destroy(entity.id)
         end
 
         def mapper_instance
