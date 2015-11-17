@@ -38,6 +38,7 @@ require "ar/repositories/actions/creator"
 require "ar/repositories/roles/repository_role"
 require "ar/repositories/roles/finder"
 require "ar/repositories/roles/creator"
+require "ar/repositories/roles/updater"
 
 # Services
 require "ar/services/base"
@@ -50,7 +51,9 @@ require "ar/services/resources/remove/resource_remover"
 require "ar/services/resources/resource_manager_creator"
 
 require "ar/services/roles/role_manager_creator"
+require "ar/services/roles/role_manager_updater"
 require "ar/services/roles/create/role_creator"
+require "ar/services/roles/update/role_updater"
 
 module Ar
   I18n.config.enforce_available_locales = true

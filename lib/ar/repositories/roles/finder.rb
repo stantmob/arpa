@@ -4,6 +4,11 @@ module Ar
       class Finder
         include Ar::Repositories::Base
 
+        def find(id)
+          record = repository_class.find(id)
+          mapper_instance.map_to_entity(record, Ar::Entities::Role.new)
+        end
+
         def all
           repository_class.all.collect do |record|
             mapper_instance.map_to_entity(record, Ar::Entities::Role.new)
