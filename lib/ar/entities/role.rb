@@ -14,7 +14,7 @@ module Ar
         @actions     = attrs[:actions] || []
         @created_at  = attrs[:created_at]
         @updated_at  = attrs[:updated_at]
-        @removed     = attrs[:removed]
+        @removed     = attrs[:removed] || false
       end
 
     end
