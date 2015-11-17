@@ -13,7 +13,7 @@ module Ar
           def create(params)
             action = action_instance(params)
 
-            action_found = finder_repo.by_name_and_resource(params[:name], params[:resource])
+            action_found = finder_repo.by_name_and_resource(params[:name], params[:resource_id])
             return action_found if action_found
 
             validate_action(action)
@@ -23,9 +23,7 @@ module Ar
           private
 
           def action_params(params, action_name)
-            parameters = Hash.new
-            parameters[:name] = action_name
-            parameters.merge(params.slice(:resource))
+            {name: action_name, resource_id: params[:resource].id}
           end
 
           def action_instance(params)

@@ -75,8 +75,8 @@ describe Ar::Services::Actions::Create::ActionCreator, type: :service, fast: tru
       context 'when build an instance of action' do
 
         it 'entity action should call new method' do
-          expect(action_entity_class).to have_received(:new).with({resource: resource, name: 'index'}).once
-          expect(action_entity_class).to have_received(:new).with({resource: resource, name: 'new'}).once
+          expect(action_entity_class).to have_received(:new).with({resource_id: resource.id, name: 'index'}).once
+          expect(action_entity_class).to have_received(:new).with({resource_id: resource.id, name: 'new'}).once
         end
 
       end
