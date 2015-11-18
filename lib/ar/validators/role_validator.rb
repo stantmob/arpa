@@ -6,7 +6,6 @@ module Ar
       attr_reader :name, :description, :action_ids
 
       validates :name, :description, presence: true
-
       validates :action_ids, presence: { message: :many_blank }
 
 
