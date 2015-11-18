@@ -46,6 +46,7 @@ require "ar/repositories/profiles/repository_profile"
 require "ar/repositories/profiles/finder"
 require "ar/repositories/profiles/creator"
 require "ar/repositories/profiles/updater"
+require "ar/repositories/profiles/remover"
 
 # Services
 require "ar/services/base"
