@@ -21,7 +21,10 @@ describe Ar::DataMappers::RoleMapper, type: :mapper, fast: true do
     let(:entity)          { Ar::Entities::Role.new }
     let(:action_record)   { create :repository_action, :index }
     let(:record)          { create :repository_role, action_ids: [action_record.id] }
+    let(:profile_record)  { create :repository_profile, role_ids: [record.id] }
     let(:entity_instance) { mapper.map_to_entity(record, entity) }
+
+    before { profile_record }
 
     it 'entity_instance should fill the property :name from record property' do
       expect(entity_instance.name).to eql 'some_role'
@@ -37,6 +40,10 @@ describe Ar::DataMappers::RoleMapper, type: :mapper, fast: true do
 
     it 'entity_instance should fill the property :action_ids from record property' do
       expect(entity_instance.action_ids).to eq [action_record.id]
+    end
+
+    it 'entity_instance should fill the property :profiles from record property' do
+      expect(entity_instance.profiles).to eq [profile_record]
     end
 
   end
