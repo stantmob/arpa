@@ -1,4 +1,8 @@
 require "ar/version"
+require "rails/railtie"
+
+# Additions
+require "ar/additions/resource"
 
 # Exceptions
 require "ar/exceptions/record_invalid"
@@ -77,4 +81,13 @@ module Ar
   I18n.config.enforce_available_locales = true
   I18n.load_path << File.expand_path('../config/locales/ar.en.yml', __FILE__)
   I18n.reload!
+
+   class Railtie < ::Rails::Railtie
+    initializer "aca.configure_view_controller" do |app|
+      ActiveSupport.on_load :action_controller do
+        include Ar::Additions::Resource
+      end
+    end
+  end
+
 end
