@@ -27,6 +27,17 @@ class CreateArTables < ActiveRecord::Migration
       t.index :repository_role_id, name: 'role_action_id'
     end
 
+    create_table :repository_profiles, :force => true do |t|
+      t.string :name
+      t.string :description
+      t.boolean :removed, default: false
+      t.timestamps null: false
+    end
+
+    create_join_table :repository_roles, :repository_profiles, :force => true do |t|
+      t.index :repository_role_id, name: 'role_profile_id'
+      t.index :repository_profile_id, name: 'profile_role_ids'
+    end
 
   end
 end
