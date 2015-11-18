@@ -50,6 +50,7 @@ require "ar/repositories/profiles/remover"
 
 # Services
 require "ar/services/base"
+require "ar/services/verifier"
 
 require "ar/services/actions/create/action_creator"
 require "ar/services/actions/remove/action_remover"
