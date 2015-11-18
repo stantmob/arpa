@@ -1,4 +1,4 @@
-class createProfilesAssociation < ActiveRecord::Migration
+class CreateProfilesAssociation < ActiveRecord::Migration
   def change
     create_join_table :repository_profiles, :users, :force => true do |t|
       t.index :repository_profile_id, name: 'profile_user_id'
