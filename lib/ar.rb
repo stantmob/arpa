@@ -42,6 +42,8 @@ require "ar/repositories/roles/creator"
 require "ar/repositories/roles/updater"
 
 require "ar/repositories/profiles/repository_profile"
+require "ar/repositories/profiles/finder"
+require "ar/repositories/profiles/creator"
 
 # Services
 require "ar/services/base"
