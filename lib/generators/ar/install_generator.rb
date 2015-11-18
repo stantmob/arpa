@@ -12,6 +12,7 @@ module Ar
 
       def create_migration_file
         migration_template 'migration.rb', 'db/migrate/create_ar_tables.rb'
+        migration_template 'profiles_association.rb', 'db/migrate/create_profiles_association.rb'
       end
 
     end
