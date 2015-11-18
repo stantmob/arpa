@@ -60,6 +60,9 @@ require "ar/services/roles/role_manager_updater"
 require "ar/services/roles/create/role_creator"
 require "ar/services/roles/update/role_updater"
 
+require "ar/services/profiles/profile_manager_creator"
+require "ar/services/profiles/create/profile_creator"
+
 module Ar
   I18n.config.enforce_available_locales = true
   I18n.load_path << File.expand_path('../config/locales/ar.en.yml', __FILE__)
