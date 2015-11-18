@@ -44,6 +44,7 @@ require "ar/repositories/roles/updater"
 require "ar/repositories/profiles/repository_profile"
 require "ar/repositories/profiles/finder"
 require "ar/repositories/profiles/creator"
+require "ar/repositories/profiles/updater"
 
 # Services
 require "ar/services/base"
@@ -61,7 +62,9 @@ require "ar/services/roles/create/role_creator"
 require "ar/services/roles/update/role_updater"
 
 require "ar/services/profiles/profile_manager_creator"
+require "ar/services/profiles/profile_manager_updater"
 require "ar/services/profiles/create/profile_creator"
+require "ar/services/profiles/update/profile_updater"
 
 module Ar
   I18n.config.enforce_available_locales = true
