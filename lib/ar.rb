@@ -59,8 +59,10 @@ require "ar/services/resources/resource_manager_creator"
 
 require "ar/services/roles/role_manager_creator"
 require "ar/services/roles/role_manager_updater"
+require "ar/services/roles/role_manager_remover"
 require "ar/services/roles/create/role_creator"
 require "ar/services/roles/update/role_updater"
+require "ar/services/roles/remove/role_remover"
 
 require "ar/services/profiles/profile_manager_creator"
 require "ar/services/profiles/profile_manager_updater"
