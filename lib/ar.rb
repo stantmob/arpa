@@ -40,6 +40,7 @@ require "ar/repositories/roles/repository_role"
 require "ar/repositories/roles/finder"
 require "ar/repositories/roles/creator"
 require "ar/repositories/roles/updater"
+require "ar/repositories/roles/remover"
 
 require "ar/repositories/profiles/repository_profile"
 require "ar/repositories/profiles/finder"
