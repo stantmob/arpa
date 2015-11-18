@@ -67,8 +67,10 @@ require "ar/services/roles/remove/role_remover"
 
 require "ar/services/profiles/profile_manager_creator"
 require "ar/services/profiles/profile_manager_updater"
+require "ar/services/profiles/profile_manager_remover"
 require "ar/services/profiles/create/profile_creator"
 require "ar/services/profiles/update/profile_updater"
+require "ar/services/profiles/remove/profile_remover"
 
 module Ar
   I18n.config.enforce_available_locales = true
