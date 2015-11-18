@@ -8,6 +8,7 @@ require "ar/data_mappers/base"
 require "ar/data_mappers/resource_mapper"
 require "ar/data_mappers/action_mapper"
 require "ar/data_mappers/role_mapper"
+require "ar/data_mappers/profile_mapper"
 
 # Entities
 require "ar/entities/resource"
@@ -39,6 +40,8 @@ require "ar/repositories/roles/repository_role"
 require "ar/repositories/roles/finder"
 require "ar/repositories/roles/creator"
 require "ar/repositories/roles/updater"
+
+require "ar/repositories/profiles/repository_profile"
 
 # Services
 require "ar/services/base"
