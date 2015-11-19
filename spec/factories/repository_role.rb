@@ -4,5 +4,8 @@ FactoryGirl.define do
     name        'some_role'
     description 'description_role'
 
+    trait :with_complete_association do
+      actions {[FactoryGirl.create(:repository_action, :with_complete_association)] }
+    end
   end
 end

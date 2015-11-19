@@ -11,5 +11,9 @@ FactoryGirl.define do
       resource { FactoryGirl.create(:repository_resource, :user) }
     end
 
+    trait :with_complete_association do
+      name 'index_new'
+      resource { FactoryGirl.create(:repository_resource, :user) }
+    end
   end
 end
