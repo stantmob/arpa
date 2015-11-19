@@ -1,60 +1,68 @@
 require 'spec_helper'
 
-describe Ar::Additions::Resource, type: :additions, fast: true do
+class ResourceImplementation
+  def self.helper_method(args);end
+  include Ar::Additions::Resource
+end
 
-  context 'when it is include in some ModelClass' do
-    let(:session) { {} }
-    let(:current_user) {
-      double(
-        :user,
-        user_permissions:
-        [
-          {"controller" => "users", "action" => "index"},
-          {"controller" => "users", "action" => "show"},
-          {"controller" => "users", "action" => "new"},
-          {"controller" => "users", "action" => "edit"},
-          {"controller" => "users", "action" => "create"}
-        ]
-      )
-    }
+class CompleteResourceImplementation
+  def self.helper_method(args);end
+  include Ar::Additions::Resource
+  def session
+  end
+  def current_user
+  end
+end
 
-    let(:application_controller) { Class.new }
+describe Ar::Additions::Resource, type: :addition, fast: true do
+
+  let(:resource_implementation) { ResourceImplementation.new }
+
+  context 'when Implementation class do not override methods from Ar::Additions::Resource' do
+
+    context 'when call :session' do
+
+      it 'should raise NotImplementedError' do
+        expect { resource_implementation.session}.to raise_error do |error|
+          expect(error).to be_a NotImplementedError
+          expect(error.message).to eql 'This ResourceImplementation cannot respond :session'
+        end
+      end
+
+    end
+
+    context 'when call :current_user' do
+
+      it 'should raise NotImplementedError' do
+        expect { resource_implementation.current_user}.to raise_error do |error|
+          expect(error).to be_a NotImplementedError
+          expect(error.message).to eql 'This ResourceImplementation cannot respond :current_user'
+        end
+      end
+
+    end
+
+  end
+
+  describe '#has_access?' do
+    let(:resource_implementation) { CompleteResourceImplementation.new }
+    let(:verifier) { double }
+    let(:resource) { double }
+    let(:action)   { double }
 
     before do
-      allow(Ar::Additions::Resource).to receive(:included)
-      application_controller.class.send(:include, Ar::Additions::Resource)
-      allow(application_controller).to receive(:session).and_return(session)
-      allow(application_controller).to receive(:current_user).and_return(current_user)
+      allow(Ar::Services::Verifier).to receive(:new).and_return(verifier)
+      allow(verifier).to receive(:has_access?)
+      resource_implementation.has_access?(resource, action)
     end
 
-    describe '#has_access?' do
-
-      context 'when pass a free action which begin with "_"' do
-
-        it 'should has access' do
-          expect(application_controller.has_access?('home', '_some_action')).to be_truthy
-        end
-
-      end
-
-      context 'when pass an existent controller and action' do
-
-        it 'should has access' do
-          expect(application_controller.has_access?('users', 'index')).to be_truthy
-        end
-
-      end
-
-     context 'when not pass an existent controller and action' do
-
-        it 'should has not access' do
-          expect(application_controller.has_access?('home', 'index')).to be_falsey
-        end
-
-      end
-
+    it 'should call :new from Ar::Services::Verifier' do
+      expect(Ar::Services::Verifier).to have_received(:new).once
     end
 
+    it 'verifier should call :has_access? with resource and action as parameter' do
+      expect(verifier).to have_received(:has_access?).with(resource, action).once
+    end
   end
 
 end

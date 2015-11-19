@@ -6,9 +6,9 @@ module Ar
         base.helper_method :has_access?
       end
 
-      def has_access?(controller, action)
+      def has_access?(resource, action)
         @verifier ||= Ar::Services::Verifier.new(session, current_user)
-        @verifier.has_access?(controller, action)
+        @verifier.has_access?(resource, action)
       end
 
       def session
