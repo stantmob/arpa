@@ -7,16 +7,21 @@ module Ar
       end
 
       def has_access?(resource, action)
+        return unless has_session_or_current_user?
         @verifier ||= Ar::Services::Verifier.new(session, current_user)
         @verifier.has_access?(resource, action)
       end
 
-      def session
-        raise NotImplementedError, "This #{self.class} cannot respond :session"
-      end
+      private
 
-      def current_user
-        raise NotImplementedError, "This #{self.class} cannot respond :current_user"
+      def has_session_or_current_user?
+        sess   = try(:session)
+        c_user = try(:current_user)
+        return true if sess && c_user
+        log = Logger.new(STDOUT)
+        log.warn("The ApplicationController must has a attribute or method 'session'") unless sess
+        log.warn("The ApplicationController must has a attribute or method 'current_user'") unless c_user
+        false
       end
 
     end

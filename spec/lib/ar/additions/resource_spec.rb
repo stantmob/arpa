@@ -3,49 +3,15 @@ require 'spec_helper'
 class ResourceImplementation
   def self.helper_method(args);end
   include Ar::Additions::Resource
-end
-
-class CompleteResourceImplementation
-  def self.helper_method(args);end
-  include Ar::Additions::Resource
-  def session
-  end
-  def current_user
-  end
+  def session;'';end
+  def current_user;'';end
 end
 
 describe Ar::Additions::Resource, type: :addition, fast: true do
 
   let(:resource_implementation) { ResourceImplementation.new }
 
-  context 'when Implementation class do not override methods from Ar::Additions::Resource' do
-
-    context 'when call :session' do
-
-      it 'should raise NotImplementedError' do
-        expect { resource_implementation.session}.to raise_error do |error|
-          expect(error).to be_a NotImplementedError
-          expect(error.message).to eql 'This ResourceImplementation cannot respond :session'
-        end
-      end
-
-    end
-
-    context 'when call :current_user' do
-
-      it 'should raise NotImplementedError' do
-        expect { resource_implementation.current_user}.to raise_error do |error|
-          expect(error).to be_a NotImplementedError
-          expect(error.message).to eql 'This ResourceImplementation cannot respond :current_user'
-        end
-      end
-
-    end
-
-  end
-
   describe '#has_access?' do
-    let(:resource_implementation) { CompleteResourceImplementation.new }
     let(:verifier) { double }
     let(:resource) { double }
     let(:action)   { double }
