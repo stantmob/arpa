@@ -12,8 +12,8 @@ describe Ar::Services::Resources::ResourceManagerCreator, type: :service, fast: 
   let(:success_proc)     { ->(r) {} }
   let(:callback)         { {success: success_proc, fail: ->(e) {raise e} } }
 
-  let(:resourceable_001) { double actions_methods: [] }
-  let(:resourceable_002) { double actions_methods: []}
+  let(:resourceable_001) { double action_methods: [] }
+  let(:resourceable_002) { double action_methods: []}
   let(:resource_created) { double }
 
   let(:setup_creators) do

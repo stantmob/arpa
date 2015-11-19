@@ -10,8 +10,8 @@ RSpec.describe "Update Role", type: [:request, :role] do
   let(:callback)                 { {success: success_proc, fail: ->(e) {raise e} } }
 
   context 'updating a Role' do
-    let(:resourceable_001)  { double to_s: 'UsersController', actions_methods: [:index, :show, 'edit'] }
-    let(:resourceable_002)  { double to_s: 'ContactsController', actions_methods: [:index, 'edit'] }
+    let(:resourceable_001)  { double to_s: 'UsersController', action_methods: [:index, :show, 'edit'] }
+    let(:resourceable_002)  { double to_s: 'ContactsController', action_methods: [:index, 'edit'] }
     let(:resourceables)     { [resourceable_001, resourceable_002] }
     let(:created_resources) { creator_resource_service.create({resourceables: resourceables}, callback) }
     let(:action_ids) { finder_resource_repo.all.first.actions.ids }

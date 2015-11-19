@@ -41,7 +41,7 @@ module Ar
         end
 
         def action_params(resource, resourceable)
-          {resource: resource, actions_names: resourceable.actions_methods}
+          {resource: resource, actions_names: resourceable.action_methods}
         end
 
       end
