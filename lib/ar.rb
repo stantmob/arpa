@@ -19,6 +19,7 @@ require "ar/entities/resource"
 require "ar/entities/action"
 require "ar/entities/role"
 require "ar/entities/profile"
+require "ar/entities/permissions"
 
 # Validators
 require "ar/validators/resource_validator"
