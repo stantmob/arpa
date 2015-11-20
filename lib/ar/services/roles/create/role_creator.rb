@@ -5,18 +5,18 @@ module Ar
         class RoleCreator
 
           def create(params)
-            role = resource_instance(params)
-            validate_resource(role)
+            role = role_instance(params)
+            validate_role(role)
             creator_repo.create(role)
           end
 
           private
 
-          def resource_instance(params)
+          def role_instance(params)
             Ar::Entities::Role.new(params)
           end
 
-          def validate_resource(role)
+          def validate_role(role)
             validator = Ar::Validators::RoleValidator.new(role)
             raise Ar::Exceptions::RecordInvalid.new(message: validator.errors.messages, errors: validator.errors) unless validator.valid?
           end

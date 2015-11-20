@@ -5,18 +5,18 @@ module Ar
         class ProfileCreator
 
           def create(params)
-            profile = resource_instance(params)
-            validate_resource(profile)
+            profile = profile_instance(params)
+            validate_profile(profile)
             creator_repo.create(profile)
           end
 
           private
 
-          def resource_instance(params)
+          def profile_instance(params)
             Ar::Entities::Profile.new(params)
           end
 
-          def validate_resource(profile)
+          def validate_profile(profile)
             validator = Ar::Validators::ProfileValidator.new(profile)
             raise Ar::Exceptions::RecordInvalid.new(message: validator.errors.messages, errors: validator.errors) unless validator.valid?
           end
