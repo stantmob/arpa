@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @resource.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<table>
+  <div class="table-header">
+    <div class="text-sm">
+      <strong>List of Actions</strong>
+    </div>
+  </div>
+
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resource.actions.each do |action| %>
+      <tr>
+        <td><%= action.name %></td>
+        <td><%= action.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to 'Back', resources_path %>
