@@ -28,5 +28,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "activerecord", ">= 4.2.0"
   spec.add_dependency "railties", ">= 4.2.0", "< 5"
+  spec.add_dependency "responders", "~> 2.0"
 
 end
