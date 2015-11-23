@@ -17,3 +17,8 @@ en:
     messages:
       many_blank: 'you must select at least one'
 
+  flash:
+    actions:
+      generate_resources_and_actions:
+        notice: 'Resources have been successfully created'
+        alert:  'Resources were not successfully created'
