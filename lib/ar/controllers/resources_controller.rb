@@ -4,8 +4,8 @@ module Ar
 
     # GET /resources
     def index
-      @resouces = resource_finder.all
-      respond_with(@resouces)
+      @resources = resource_finder.all
+      respond_with(@resources)
     end
 
     # GET /resources/1
