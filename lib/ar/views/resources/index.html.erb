@@ -16,7 +16,7 @@
     <% @resources.each do |resource| %>
       <tr>
         <td><%= resource.name %></td>
-        <td><%= link_to 'Show', resource_path(resource) %></td>
+        <td><%= link_to 'Show', resource_path(resource.id) %></td>
       </tr>
     <% end %>
   </tbody>
