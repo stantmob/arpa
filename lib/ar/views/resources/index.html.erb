@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
+
+
+<h1>Listing Resources</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resources.each do |resource| %>
+      <tr>
+        <td><%= resource.name %></td>
+        <td><%= link_to 'Show', resource_path(resource) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Generate All Resources', generate_resources_and_actions_resources_path %>
