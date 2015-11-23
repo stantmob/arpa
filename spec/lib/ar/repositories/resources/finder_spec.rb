@@ -5,6 +5,19 @@ describe Ar::Repositories::Resources::Finder, type: :repository, slow: true do
   let(:record_001) { create :repository_resource, :user }
   let(:record_002) { create :repository_resource, :contact }
 
+  describe '#find' do
+    let(:result) { subject.find(record_001.id) }
+
+    it 'the Resource entity should has name "users"' do
+      expect(result.name).to eql 'users'
+    end
+
+    it 'the result should be an Ar::Entities::Resource' do
+      expect(result).to be_an Ar::Entities::Resource
+    end
+
+  end
+
   describe '#all' do
     let(:result) { subject.all }
 
