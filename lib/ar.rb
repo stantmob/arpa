@@ -79,12 +79,9 @@ require "ar/services/profiles/update/profile_updater"
 require "ar/services/profiles/remove/profile_remover"
 
 module Ar
-  I18n.config.enforce_available_locales = true
-  I18n.load_path << File.expand_path('../config/locales/ar.en.yml', __FILE__)
-  I18n.reload!
 
-   class Railtie < ::Rails::Railtie
-    initializer "aca.configure_view_controller" do |app|
+  class Railtie < ::Rails::Railtie
+    initializer "ar.configure_view_controller" do |app|
       ActiveSupport.on_load :action_controller do
         include Ar::Additions::Resource
       end

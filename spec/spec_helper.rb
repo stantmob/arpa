@@ -3,13 +3,19 @@ require 'ar'
 require 'database_cleaner'
 require 'factory_girl'
 require 'support/repositories/test_repository'
+require 'i18n'
 
 ActiveRecord::Base.establish_connection(adapter:  'sqlite3',
                                         database: "#{File.dirname(__FILE__)}/ar.sqlite3")
 
 load File.dirname(__FILE__) + '/support/schema.rb'
 
+I18n.config.enforce_available_locales = true
+I18n.load_path << File.expand_path('../../lib/config/locales/ar.en.yml', __FILE__)
+I18n.reload!
+
 RSpec.configure do |config|
+
   config.include FactoryGirl::Syntax::Methods
   FactoryGirl.find_definitions
 
