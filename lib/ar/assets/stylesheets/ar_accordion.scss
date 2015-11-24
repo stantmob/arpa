@@ -1,0 +1,85 @@
+// ArAccordion
+.ar-accordion {
+	margin: 10px auto 30px auto;
+	text-align: left;
+
+	.ar-accordion-title {
+		position: relative;
+		z-index: 20;
+		display: block;
+		padding: 10px 12px;
+		cursor: pointer;
+		color: #555;
+		font-size: 18px;
+		font-weight: bold;
+		background: #fff;
+		border: 1px solid #cfcfcf;
+
+		&:hover{
+			background: #fff;
+		}
+	}
+
+	.ar-accordion-input {
+		display: none;
+
+		&:checked + .ar-accordion-item {
+			box-shadow: 3px 3px 3px red;
+		}
+
+		&:checked + .ar-accordion-title,
+		&:checked + .ar-accordion-title:hover {
+			margin-bottom: 0;
+			border-bottom: none;
+			color: $orange;
+		}
+
+		&:checked + .ar-accordion-title {
+			border-color: #bbb;
+
+			&:after {
+				background: none;
+			}
+		}
+
+		&:checked ~ .ar-accordion-content {
+			padding: 10px 20px 0;
+			margin-bottom: 10px;
+			max-height: 9999999px;
+			border: 1px solid #bbb;
+			opacity: 1;
+		}
+	}
+
+	.ar-accordion-title {
+		&:after {
+			content: '';
+			position: absolute;
+			width: 24px;
+			height: 24px;
+			right: 13px;
+			top: 7px;
+			// background: url(image-path("ar-accordion-arrow.png")) -6px -6px;
+		}
+
+		&:hover {
+			color: $orange;
+
+			&:after {
+				background-position: -6px -42px;
+			}	
+		}
+	}
+
+	.ar-accordion-content {
+		z-index: 10;
+		position: relative;
+		padding: 0 20px;
+		max-height: 0px;
+		background: #fafafa;
+		overflow: hidden;
+		opacity: 0;
+		transition: opacity ease-in .3s;
+	}
+}
+

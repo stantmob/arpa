@@ -1,0 +1,50 @@
+<%= form_for(@role) do |f| %>
+  <% if @error.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@error.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% @error.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :id, value: @role.id  %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+
+  <% @resources.each do |resource| %>
+    <div class="ar-accordion-item">
+      <input class="ar-accordion-input" id="<%= resource.id %>" name="ar-accordion-<%= resource.id %>" type="radio">
+      <label class="ar-accordion-title" for="<%= resource.id %>">
+        <%= resource.name  %>
+      </label>
+    </div>
+
+    <div class="ar-accordion-content">
+      <%= resource.actions.each do |action|  %>
+        <div>
+          <input type="checkbox" name="role[action_ids][]" value="<%= action.id %>" <%= checked="checked" if @role.actions.include?(action) %> >
+          <%= action.description  %>
+        </div>
+
+      <% end %>
+    </div>
+
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
