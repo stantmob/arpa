@@ -28,7 +28,7 @@ module Ar
     def create
       role_creator.create({role: role_params}, {
         success: -> (role) {
-          redirect_to role_path(role.id), notice: 'Role was successfully created.'
+          redirect_to role_path(role.id), notice: I18n.t('flash.actions.create_role.notice')
         },
         fail: -> (error) {
           @role = Ar::Entities::Role.new(role_params)
@@ -43,7 +43,7 @@ module Ar
     def update
       role_updater.update({role: role_params}, {
         success: -> (role) {
-          redirect_to role, notice: 'Role was successfully updated.'
+          redirect_to role_path(role.id), notice: I18n.t('flash.actions.update_role.notice')
         },
         fail: -> (error) {
           @role = Ar::Entities::Role.new(role_params)
@@ -58,10 +58,10 @@ module Ar
     def remove
       role_remover.remove({role: @role}, {
         success: -> (role) {
-          redirect_to roles_path, notice: 'Role was successfully removed'
+          redirect_to roles_path, notice: I18n.t('flash.actions.remove_role.notice')
         },
         fail: -> (error) {
-          redirect_to roles_path, notice: 'Fail when tried remove a Role'
+          redirect_to roles_path, notice: I18n.t('flash.actions.remove_role.alert')
         }
       })
 
@@ -99,11 +99,8 @@ module Ar
 
     def role_params
       params.require(:role).
-        permit(:name, :description, action_ids: [])
+        permit(:id, :name, :description, action_ids: [])
     end
 
-    def interpolation_options
-      { resource_name: t("a_module.human_s") }
-    end
   end
 end

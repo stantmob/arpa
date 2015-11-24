@@ -22,3 +22,10 @@ en:
       generate_resources_and_actions:
         notice: 'Resources have been successfully created'
         alert:  'Resources were not successfully created'
+      create_role:
+        notice: 'Role was successfully created'
+      update_role:
+        notice: 'Role was successfully updated'
+      remove_role:
+        notice: 'Role was successfully removed'
+        alert:  'Fail when tried remove a Role'

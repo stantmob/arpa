@@ -1,4 +1,4 @@
-<%= form_for(:role, url: {action: action}) do |f| %>
+<%= form_for(:role, url: {action: action}, method: method) do |f| %>
   <% if @error.present? && @error.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@error.errors.count, "error") %> prohibited this user from being saved:</h2>

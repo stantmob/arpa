@@ -48,7 +48,7 @@ scope module: :ar do
         delete ':id', to: 'roles#remove'
       end
     end
-end
+  end
         RUBY
       end
 

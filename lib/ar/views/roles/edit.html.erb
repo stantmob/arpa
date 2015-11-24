@@ -1,6 +1,6 @@
 <h1>Editing Role</h1>
 
-<%= render 'form', action: 'update' %>
+<%= render 'form', action: 'update', method: :patch %>
 
 <%= link_to 'Show', role_path(@role.id) %> |
 <%= link_to 'Back', roles_path %>
