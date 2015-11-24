@@ -31,7 +31,6 @@
 		&:checked + .ar-accordion-title:hover {
 			margin-bottom: 0;
 			border-bottom: none;
-			color: $orange;
 		}
 
 		&:checked + .ar-accordion-title {
@@ -63,8 +62,6 @@
 		}
 
 		&:hover {
-			color: $orange;
-
 			&:after {
 				background-position: -6px -42px;
 			}	
