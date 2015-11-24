@@ -21,13 +21,14 @@ module Ar
 
     # GET /roles/1/edit
     def edit
+      all_resources
     end
 
     # POST /roles
     def create
       role_creator.create({role: role_params}, {
         success: -> (role) {
-          redirect_to role, notice: 'Role was successfully created.'
+          redirect_to role_path(role.id), notice: 'Role was successfully created.'
         },
         fail: -> (error) {
           @role = Ar::Entities::Role.new(role_params)
