@@ -37,17 +37,17 @@ module Ar
       def add_routes
         route <<-RUBY
 scope module: :ar do
-  resources :resources do
-    collection do
-      get 'generate_resources_and_actions'
+    resources :resources do
+      collection do
+        get 'generate_resources_and_actions'
+      end
     end
-  end
 
-  resources :roles do
-    collection do
-      delete ':id', to: 'roles#remove'
+    resources :roles do
+      collection do
+        delete ':id', to: 'roles#remove'
+      end
     end
-  end
 end
         RUBY
       end
