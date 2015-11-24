@@ -41,7 +41,7 @@ describe Ar::DataMappers::ActionMapper, type: :mapper, fast: true do
     end
 
     it 'entity_instance should fill the property :resource from record property' do
-      expect(entity_instance.resource).to eq record.resource
+      expect(entity_instance.resource).to be_an Ar::Entities::Resource
     end
   end
 

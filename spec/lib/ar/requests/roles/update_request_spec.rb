@@ -14,7 +14,7 @@ RSpec.describe "Update Role", type: [:request, :role] do
     let(:resourceable_002)  { double to_s: 'ContactsController', action_methods: [:index, 'edit'] }
     let(:resourceables)     { [resourceable_001, resourceable_002] }
     let(:created_resources) { creator_resource_service.create({resourceables: resourceables}, callback) }
-    let(:action_ids) { finder_resource_repo.all.first.actions.ids }
+    let(:action_ids) { finder_resource_repo.all.first.actions.collect {|action| action.id} }
 
     let(:create_resources_and_role) do
       created_resources

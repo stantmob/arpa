@@ -16,7 +16,7 @@ RSpec.describe "Create Profile", type: [:request, :profile] do
     let(:resourceables)     { [resourceable_001, resourceable_002] }
     let(:created_resources) { creator_resource_service.create({resourceables: resourceables}, callback) }
 
-    let(:action_ids) { finder_resource_repo.all.first.actions.ids }
+    let(:action_ids) { finder_resource_repo.all.first.actions.collect{ |action| action.id} }
     let(:role_001_params)   { {role: {name: 'role_name_001', description: 'role_description_001', action_ids: action_ids}} }
     let(:role_002_params)   { {role: {name: 'role_name_002', description: 'role_description_002', action_ids: action_ids}} }
     let(:created_roles) do

@@ -14,7 +14,7 @@ RSpec.describe "Create Role", type: [:request, :role] do
     let(:resourceables)     { [resourceable_001, resourceable_002] }
     let(:created_resources) { creator_resource_service.create({resourceables: resourceables}, callback) }
 
-    let(:action_ids) { finder_resource_repo.all.first.actions.ids }
+    let(:action_ids) { finder_resource_repo.all.first.actions.collect {|action| action.id} }
 
     before do
       created_resources

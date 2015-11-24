@@ -19,9 +19,9 @@ describe Ar::DataMappers::ResourceMapper, type: :mapper, fast: true do
 
   describe 'mapping to entity instance' do
     let(:entity)          { Ar::Entities::Resource.new }
-    let(:record)          { create :repository_resource, :user }
-    let(:action_record)   { create :repository_action, :index, resource: record }
-    let(:entity_instance) { mapper.map_to_entity(record, entity) }
+    let(:action_record)   { create :repository_action, :index }
+    let(:record)          { create :repository_resource, :user, actions: [action_record] }
+    let(:entity_instance) { mapper.map_to_entity(record.reload, entity) }
 
     it 'entity_instance should fill the property :name from record property' do
       expect(entity_instance.full_name).to eql 'UsersController'
@@ -32,7 +32,7 @@ describe Ar::DataMappers::ResourceMapper, type: :mapper, fast: true do
     end
 
     it 'entity_instance should fill the property :actions from record property' do
-      expect(entity_instance.actions).to eq [action_record]
+      expect(entity_instance.actions.first).to be_an Ar::Entities::Action
     end
 
   end
