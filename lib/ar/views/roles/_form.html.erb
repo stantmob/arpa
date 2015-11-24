@@ -1,5 +1,5 @@
-<%= form_for(@role) do |f| %>
-  <% if @error.errors.any? %>
+<%= form_for(:role, url: {action: action}) do |f| %>
+  <% if @error.present? && @error.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@error.errors.count, "error") %> prohibited this user from being saved:</h2>
 
@@ -23,25 +23,30 @@
     <%= f.text_field :description %>
   </div>
 
+  <div class="ar-accordion">
+
   <% @resources.each do |resource| %>
     <div class="ar-accordion-item">
-      <input class="ar-accordion-input" id="<%= resource.id %>" name="ar-accordion-<%= resource.id %>" type="radio">
+      <input class="ar-accordion-input" id="<%= resource.id %>" type="checkbox">
       <label class="ar-accordion-title" for="<%= resource.id %>">
         <%= resource.name  %>
       </label>
-    </div>
 
     <div class="ar-accordion-content">
-      <%= resource.actions.each do |action|  %>
+      <% resource.actions.each do |action|  %>
         <div>
-          <input type="checkbox" name="role[action_ids][]" value="<%= action.id %>" <%= checked="checked" if @role.actions.include?(action) %> >
-          <%= action.description  %>
+          <input type="checkbox" name="role[action_ids][]" value="<%= action.id %>" <%= checked="checked" if @role.action_ids.include?(action.id) %> >
+          <%= action.name%>
         </div>
 
       <% end %>
     </div>
 
+  </div>
+
   <% end %>
+
+  </div>
 
   <div class="actions">
     <%= f.submit %>
