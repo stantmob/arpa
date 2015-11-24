@@ -7,19 +7,19 @@ require "ar/additions/resource"
 # Exceptions
 require "ar/exceptions/record_invalid"
 
-# Mappers
-require "ar/data_mappers/base"
-require "ar/data_mappers/resource_mapper"
-require "ar/data_mappers/action_mapper"
-require "ar/data_mappers/role_mapper"
-require "ar/data_mappers/profile_mapper"
-
 # Entities
 require "ar/entities/resource"
 require "ar/entities/action"
 require "ar/entities/role"
 require "ar/entities/profile"
 require "ar/entities/permissions"
+
+# Mappers
+require "ar/data_mappers/base"
+require "ar/data_mappers/resource_mapper"
+require "ar/data_mappers/action_mapper"
+require "ar/data_mappers/role_mapper"
+require "ar/data_mappers/profile_mapper"
 
 # Validators
 require "ar/validators/resource_validator"
