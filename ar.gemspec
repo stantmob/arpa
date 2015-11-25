@@ -7,11 +7,11 @@ Gem::Specification.new do |spec|
   spec.name          = "ar"
   spec.version       = Ar::VERSION
   spec.authors       = ["Rachid Calazans"]
+  spec.summary       = "Authorization Gem for Ruby and Ruby on Rails projects"
   spec.email         = ["rachidcalazans@gmail.com"]
-  spec.summary       = %q{Write a short summary. Required.}
-  spec.description   = %q{Write a longer description. Optional.}
-  spec.homepage      = ""
   spec.license       = "MIT"
+  spec.homepage      = "https://github.com/rachidcalazans/ar"
+  spec.description   = "Authorization Gem for Ruby and Ruby on Rails projects"
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
