@@ -4,7 +4,7 @@ module Ar
 
     # GET /profiles
     def index
-      @profiles = role_finder.all
+      @profiles = profile_finder.all
       respond_with(@profiles)
     end
 
