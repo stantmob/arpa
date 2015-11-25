@@ -12,7 +12,7 @@ module Ar
           record = mapper_instance.map_to_record(repository_class, entity)
           repository_class.update(record.id, removed: true)
           record.reload
-          mapper_instance.map_to_entity(record, Ar::Entities::Profile.new)
+          mapper_instance.map_to_entity(record)
         end
 
         def mapper_instance

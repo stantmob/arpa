@@ -18,11 +18,10 @@ describe Ar::DataMappers::RoleMapper, type: :mapper, fast: true do
   end
 
   describe 'mapping to entity instance' do
-    let(:entity)          { Ar::Entities::Role.new }
     let(:action_record)   { create :repository_action, :index }
     let(:profile_record)  { create :repository_profile }
     let(:record)          { create :repository_role, profile_ids: [profile_record.id], action_ids: [action_record.id] }
-    let(:entity_instance) { mapper.map_to_entity(record, entity) }
+    let(:entity_instance) { mapper.map_to_entity(record) }
 
     it 'entity_instance should fill the property :name from record property' do
       expect(entity_instance.name).to eql 'some_role'

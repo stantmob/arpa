@@ -8,9 +8,17 @@ module Ar
         repository_class.new(attributes)
       end
 
-      def map_to_entity(record, entity, options={})
+      def map_to_entity(record, options={})
         attributes = attributes_from_record(record, options)
-        entity.class.new(attributes)
+        self.class._entity_class.new(attributes)
+      end
+
+      def self.entity_class(entity_class)
+        @entity_class = entity_class
+      end
+
+      def self._entity_class
+        @entity_class.constantize
       end
 
       def self.attributes_to_map(*attrs)
@@ -75,17 +83,16 @@ module Ar
       def association_value(object, attr_key, map_association)
         key          = attr_key.keys.first
         mapper       = attr_key[key][:mapper].constantize.instance
-        entity       = attr_key[key][:entity].constantize.new
         object_value = object.send(key)
 
         return object_value unless map_association
 
         if object_value.try(:size)
           return object_value.collect do |obj|
-            mapper.map_to_entity(obj, entity, {map_association: false})
+            mapper.map_to_entity(obj, {map_association: false})
           end
         else
-          return mapper.map_to_entity(object_value, entity, {map_association: false})
+          return mapper.map_to_entity(object_value, {map_association: false})
         end
       end
 

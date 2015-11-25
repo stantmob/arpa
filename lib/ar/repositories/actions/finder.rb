@@ -6,7 +6,7 @@ module Ar
 
         def by_name_and_resource(name, resource_id)
           record = repository_class.where(name: name, repository_resource_id: resource_id).first
-          mapper_instance.map_to_entity(record, Ar::Entities::Action.new) if record
+          mapper_instance.map_to_entity(record) if record
         end
 
         def mapper_instance

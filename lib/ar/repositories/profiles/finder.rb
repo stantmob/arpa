@@ -6,12 +6,12 @@ module Ar
 
         def find(id)
           record = repository_class.find(id)
-          mapper_instance.map_to_entity(record, Ar::Entities::Profile.new)
+          mapper_instance.map_to_entity(record)
         end
 
         def all
           repository_class.all.collect do |record|
-            mapper_instance.map_to_entity(record, Ar::Entities::Profile.new)
+            mapper_instance.map_to_entity(record)
           end
         end
 

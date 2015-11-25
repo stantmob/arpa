@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 class TestMapper < Ar::DataMappers::Base
+  entity_class 'TestRepository'
   attributes_to_map :id, :name
 end
 
@@ -31,9 +32,8 @@ describe Ar::DataMappers::Base, type: :mapper, fast: true do
   end
 
   describe 'mapping to entity instance' do
-    let(:entity)          { double id: nil, name: nil }
     let(:record)          { TestRepository.create(name: 'Name One') }
-    let(:entity_instance) { mapper.map_to_entity(record, entity) }
+    let(:entity_instance) { mapper.map_to_entity(record) }
 
     it 'entity_instance should fill the property :name from record property' do
       expect(entity_instance.name).to eql 'Name One'

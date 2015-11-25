@@ -32,7 +32,7 @@ module Ar
           raise Ar::Exceptions::RecordInvalid.new(message: invalid.message, errors: invalid.record.errors)
         end
 
-        mapper_instance.map_to_entity(record, entity)
+        mapper_instance.map_to_entity(record)
       end
 
       def post_update(entity, record)
