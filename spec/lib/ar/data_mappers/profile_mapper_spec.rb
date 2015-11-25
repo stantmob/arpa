@@ -33,7 +33,7 @@ describe Ar::DataMappers::ProfileMapper, type: :mapper, fast: true do
     end
 
     it 'entity_instance should fill the property :roles from record property' do
-      expect(entity_instance.roles).to eq [role_record]
+      expect(entity_instance.roles.first).to be_an Ar::Entities::Role
     end
 
     it 'entity_instance should fill the property :role_ids from record property' do
