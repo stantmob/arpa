@@ -29,3 +29,10 @@ en:
       remove_role:
         notice: 'Role was successfully removed'
         alert:  'Fail when tried remove a Role'
+      create_profile:
+        notice: 'Profile was successfully created'
+      update_profile:
+        notice: 'Profile was successfully updated'
+      remove_profile:
+        notice: 'Profile was successfully removed'
+        alert:  'Fail when tried remove a Profile'
