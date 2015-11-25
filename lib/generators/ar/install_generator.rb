@@ -23,6 +23,12 @@ module Ar
         copy_file '../../ar/views/roles/new.html.erb', 'app/views/ar/roles/new.html.erb'
         copy_file '../../ar/views/roles/edit.html.erb', 'app/views/ar/roles/edit.html.erb'
         copy_file '../../ar/views/roles/_form.html.erb', 'app/views/ar/roles/_form.html.erb'
+
+        copy_file '../../ar/views/profiles/index.html.erb', 'app/views/ar/profiles/index.html.erb'
+        copy_file '../../ar/views/profiles/show.html.erb', 'app/views/ar/profiles/show.html.erb'
+        copy_file '../../ar/views/profiles/new.html.erb', 'app/views/ar/profiles/new.html.erb'
+        copy_file '../../ar/views/profiles/edit.html.erb', 'app/views/ar/profiles/edit.html.erb'
+        copy_file '../../ar/views/profiles/_form.html.erb', 'app/views/ar/profiles/_form.html.erb'
       end
 
       def copy_stylesheet_files
@@ -32,6 +38,7 @@ module Ar
       def add_controllers
         copy_file '../../ar/controllers/resources_controller.rb', 'app/controllers/ar/resources_controller.rb'
         copy_file '../../ar/controllers/roles_controller.rb', 'app/controllers/ar/roles_controller.rb'
+        copy_file '../../ar/controllers/profiles_controller.rb', 'app/controllers/ar/profiles_controller.rb'
       end
 
       def add_routes
@@ -46,6 +53,12 @@ scope module: :ar do
     resources :roles do
       collection do
         delete ':id', to: 'roles#remove'
+      end
+    end
+
+    resources :profiles do
+      collection do
+        delete ':id', to: 'profiles#remove'
       end
     end
   end
