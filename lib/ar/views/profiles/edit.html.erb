@@ -1,0 +1,6 @@
+<h1>Editing Profile</h1>
+
+<%= render 'form', action: 'update', method: :patch %>
+
+<%= link_to 'Show', profile_path(@profile.id) %> |
+<%= link_to 'Back', profiles_path %>

@@ -1,0 +1,41 @@
+<%= form_for(:profile, url: {action: action}, method: method) do |f| %>
+  <% if @error.present? && @error.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@error.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% @error.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :id, value: @profile.id  %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="field">
+
+    <% @roles.each do |role|  %>
+    <div>
+      <input type="checkbox" name="profile[role_ids][]" value="<%= role.id %>" <%= checked="checked" if @profile.role_ids.include?(role.id) %> >
+      <%= "#{role.name} - #{role.description}"%>
+    </div>
+    <% end %>
+
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

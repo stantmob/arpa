@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @profile.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @profile.description %>
+</p>
+
+<table>
+  <div class="table-header">
+    <div class="text-sm">
+      <strong>List of Actions</strong>
+    </div>
+  </div>
+
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @profile.roles.each do |role| %>
+      <tr>
+        <td><%= role.name %></td>
+        <td><%= role.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', profiles_path %>
