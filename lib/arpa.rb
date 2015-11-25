@@ -83,7 +83,7 @@ module Arpa
   class Railtie < ::Rails::Railtie
     initializer "arpa.configure_view_controller" do |app|
       ActiveSupport.on_load :action_controller do
-        include Ar::Additions::Resource
+        include Arpa::Additions::Resource
       end
     end
   end
