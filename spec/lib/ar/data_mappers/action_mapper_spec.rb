@@ -4,9 +4,8 @@ describe Ar::DataMappers::ActionMapper, type: :mapper, fast: true do
   let(:mapper) { Ar::DataMappers::ActionMapper.instance }
 
   describe 'mapping to record instance' do
-    let(:entity)           { Ar::Entities::Action.new(name: 'index', resource_id: 1)}
-    let(:repository_class) { Ar::Repositories::Actions::RepositoryAction }
-    let(:record_instance)  { mapper.map_to_record(repository_class, entity) }
+    let(:entity)          { Ar::Entities::Action.new(name: 'index', resource_id: 1)}
+    let(:record_instance) { mapper.map_to_record(entity) }
 
     it 'record_instance should be an instance of ActiveRecord::Base' do
       expect(record_instance).to be_a ActiveRecord::Base

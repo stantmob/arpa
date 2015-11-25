@@ -4,9 +4,8 @@ describe Ar::DataMappers::RoleMapper, type: :mapper, fast: true do
   let(:mapper) { Ar::DataMappers::RoleMapper.instance }
 
   describe 'mapping to record instance' do
-    let(:entity)           { Ar::Entities::Role.new(name: 'some_role')}
-    let(:repository_class) { Ar::Repositories::Roles::RepositoryRole }
-    let(:record_instance)  { mapper.map_to_record(repository_class, entity) }
+    let(:entity)          { Ar::Entities::Role.new(name: 'some_role')}
+    let(:record_instance) { mapper.map_to_record(entity) }
 
     it 'record_instance should be an instance of Ar::Repositories::Roles::RepositoryRole' do
       expect(record_instance).to be_a Ar::Repositories::Roles::RepositoryRole

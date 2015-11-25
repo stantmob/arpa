@@ -3,13 +3,15 @@ module Ar
     class Base
       include Singleton
 
-      def map_to_record(repository_class, entity, options={})
-        attributes = attributes_from_entity(entity, options)
-        repository_class.new(attributes)
+      def map_to_record(entity, options={})
+        attrs_to_record = self.class._attrs_to_record
+        attributes      = attributes_from(entity, attrs_to_record, options)
+        self.class._repository_class.new(attributes)
       end
 
       def map_to_entity(record, options={})
-        attributes = attributes_from_record(record, options)
+        attrs_to_entity = self.class._attrs_to_entity
+        attributes      = attributes_from(record, attrs_to_entity, options)
         self.class._entity_class.new(attributes)
       end
 
@@ -19,6 +21,14 @@ module Ar
 
       def self._entity_class
         @entity_class.constantize
+      end
+
+      def self.repository_class(repository_class)
+        @repository_class = repository_class
+      end
+
+      def self._repository_class
+        @repository_class.constantize
       end
 
       def self.attributes_to_map(*attrs)
@@ -46,16 +56,6 @@ module Ar
       end
 
       private
-
-      def attributes_from_entity(entity, options={})
-        attrs_to_record = self.class._attrs_to_record
-        attributes_from(entity, attrs_to_record, options)
-      end
-
-      def attributes_from_record(record, options={})
-        attrs_to_entity = self.class._attrs_to_entity
-        attributes_from(record, attrs_to_entity, options)
-      end
 
       # TODO: Improve way to mapper entity to record with associations
 

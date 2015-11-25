@@ -4,9 +4,8 @@ describe Ar::DataMappers::ProfileMapper, type: :mapper, fast: true do
   let(:mapper) { Ar::DataMappers::ProfileMapper.instance }
 
   describe 'mapping to record instance' do
-    let(:entity)           { Ar::Entities::Profile.new(name: 'some_profile')}
-    let(:repository_class) { Ar::Repositories::Profiles::RepositoryProfile }
-    let(:record_instance)  { mapper.map_to_record(repository_class, entity) }
+    let(:entity)          { Ar::Entities::Profile.new(name: 'some_profile')}
+    let(:record_instance) { mapper.map_to_record(entity) }
 
     it 'record_instance should be an instance of Ar::Repositories::Profiles::RepositoryProfile' do
       expect(record_instance).to be_a Ar::Repositories::Profiles::RepositoryProfile

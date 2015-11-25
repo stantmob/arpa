@@ -2,6 +2,7 @@ require 'spec_helper'
 
 class TestMapper < Ar::DataMappers::Base
   entity_class 'TestRepository'
+  repository_class 'TestRepository'
   attributes_to_map :id, :name
 end
 
@@ -19,8 +20,7 @@ describe Ar::DataMappers::Base, type: :mapper, fast: true do
 
   describe 'mapping to record instance' do
     let(:entity)           { double id: nil, name: 'Some Name' }
-    let(:repository_class) { TestRepository }
-    let(:record_instance)  { mapper.map_to_record(repository_class, entity) }
+    let(:record_instance)  { mapper.map_to_record(entity) }
 
     it 'record_instance should be an instance of ActiveRecord::Base' do
       expect(record_instance).to be_a ActiveRecord::Base

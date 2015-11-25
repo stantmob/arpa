@@ -4,9 +4,8 @@ describe Ar::DataMappers::ResourceMapper, type: :mapper, fast: true do
   let(:mapper) { Ar::DataMappers::ResourceMapper.instance }
 
   describe 'mapping to record instance' do
-    let(:entity)           { Ar::Entities::Resource.new(full_name: 'UsersController')}
-    let(:repository_class) { Ar::Repositories::Resources::RepositoryResource }
-    let(:record_instance)  { mapper.map_to_record(repository_class, entity) }
+    let(:entity)          { Ar::Entities::Resource.new(full_name: 'UsersController')}
+    let(:record_instance) { mapper.map_to_record(entity) }
 
     it 'record_instance should be an instance of ActiveRecord::Base' do
       expect(record_instance).to be_a ActiveRecord::Base

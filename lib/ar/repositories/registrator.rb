@@ -25,7 +25,7 @@ module Ar
       private
 
       def save(entity, &block)
-        record = mapper_instance.map_to_record(repository_class, entity)
+        record = mapper_instance.map_to_record( entity)
         begin
           block.call(record)
         rescue ActiveRecord::RecordInvalid => invalid
