@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-class TestMapper < Ar::DataMappers::Base
+class TestMapper < Arpa::DataMappers::Base
   entity_class 'TestRepository'
   repository_class 'TestRepository'
   attributes_to_map :id, :name
 end
 
-describe Ar::DataMappers::Base, type: :mapper, fast: true do
+describe Arpa::DataMappers::Base, type: :mapper, fast: true do
   let(:mapper) { TestMapper.instance }
 
   context 'when initialize more than one Mapper' do

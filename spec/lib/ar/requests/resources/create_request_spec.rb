@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 RSpec.describe "Create Resource", type: [:request, :resource] do
-  let(:finder_repo)     { Ar::Repositories::Resources::Finder.new }
-  let(:creator_service) { Ar::Services::Resources::ResourceManagerCreator.new }
+  let(:finder_repo)     { Arpa::Repositories::Resources::Finder.new }
+  let(:creator_service) { Arpa::Services::Resources::ResourceManagerCreator.new }
   let(:success_proc)    { ->(r) {} }
   let(:callback)        { {success: success_proc, fail: ->(e) {raise e} } }
 
@@ -58,7 +58,7 @@ RSpec.describe "Create Resource", type: [:request, :resource] do
     let(:resourceable_002)      { double to_s: 'ContactsController', action_methods: [:index, 'edit'] }
     let(:created_resourceables) { [resourceable_001, resourceable_002] }
 
-    let(:resourceable_003)  { double to_s: 'Ar::NewUsersController', action_methods: [:show, 'edit'] }
+    let(:resourceable_003)  { double to_s: 'Arpa::NewUsersController', action_methods: [:show, 'edit'] }
     let(:resourceable_004)  { double to_s: 'ContactsController', action_methods: [:index, 'new_edit'] }
     let(:new_resourceables) { [resourceable_003, resourceable_004] }
 
@@ -72,7 +72,7 @@ RSpec.describe "Create Resource", type: [:request, :resource] do
     end
 
     context 'names of resources' do
-      it {expect(finder_repo.all.first.name).to eql('ar/new_users') }
+      it {expect(finder_repo.all.first.name).to eql('arpa/new_users') }
       it {expect(finder_repo.all.second.name).to eql('contacts') }
     end
 
@@ -89,7 +89,7 @@ RSpec.describe "Create Resource", type: [:request, :resource] do
       end
     end
 
-    context 'Ar::NewUsers resource' do
+    context 'Arpa::NewUsers resource' do
       let(:users_resource) { finder_repo.all.first }
 
       it 'should has two actions' do

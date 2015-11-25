@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe Ar::Entities::Resource, type: :entity, fast: true do
+describe Arpa::Entities::Resource, type: :entity, fast: true do
 
   describe '#build_correct_name' do
 
     before { subject.build_correct_name }
 
     context 'when pass :full_name as "UsersController"' do
-      subject { Ar::Entities::Resource.new full_name: 'UsersController' }
+      subject { Arpa::Entities::Resource.new full_name: 'UsersController' }
 
       it 'full_name should be "UsersController"' do
         expect(subject.full_name).to eql 'UsersController'
@@ -19,7 +19,7 @@ describe Ar::Entities::Resource, type: :entity, fast: true do
     end
 
     context 'when pass :full_name as "Authentication::Someone::UsersController"' do
-      subject { Ar::Entities::Resource.new full_name: 'Authentication::Someone::UsersController' }
+      subject { Arpa::Entities::Resource.new full_name: 'Authentication::Someone::UsersController' }
 
       it 'full_name should be "Authentication::Someone::UsersController"' do
         expect(subject.full_name).to eql 'Authentication::Someone::UsersController'

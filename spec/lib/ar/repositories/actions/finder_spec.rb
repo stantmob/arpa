@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ar::Repositories::Actions::Finder, type: :repository, slow: true do
+describe Arpa::Repositories::Actions::Finder, type: :repository, slow: true do
 
   let(:resource_record)   { create :repository_resource, :user }
   let(:action_record_001) { create :repository_action, :index, resource: resource_record }
@@ -21,8 +21,8 @@ describe Ar::Repositories::Actions::Finder, type: :repository, slow: true do
         expect(result.name).to eql 'index'
       end
 
-      it 'the result should be an instance of Ar::Entities::Action' do
-        expect(result).to be_an Ar::Entities::Action
+      it 'the result should be an instance of Arpa::Entities::Action' do
+        expect(result).to be_an Arpa::Entities::Action
       end
     end
 

@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Ar::DataMappers::ResourceMapper, type: :mapper, fast: true do
-  let(:mapper) { Ar::DataMappers::ResourceMapper.instance }
+describe Arpa::DataMappers::ResourceMapper, type: :mapper, fast: true do
+  let(:mapper) { Arpa::DataMappers::ResourceMapper.instance }
 
   describe 'mapping to record instance' do
-    let(:entity)          { Ar::Entities::Resource.new(full_name: 'UsersController')}
+    let(:entity)          { Arpa::Entities::Resource.new(full_name: 'UsersController')}
     let(:record_instance) { mapper.map_to_record(entity) }
 
     it 'record_instance should be an instance of ActiveRecord::Base' do
@@ -30,7 +30,7 @@ describe Ar::DataMappers::ResourceMapper, type: :mapper, fast: true do
     end
 
     it 'entity_instance should fill the property :actions from record property' do
-      expect(entity_instance.actions.first).to be_an Ar::Entities::Action
+      expect(entity_instance.actions.first).to be_an Arpa::Entities::Action
     end
 
   end

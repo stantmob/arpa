@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Ar::Validators::ProfileValidator, type: :validator, fast: true do
+describe Arpa::Validators::ProfileValidator, type: :validator, fast: true do
   let(:profile) { double name: '', description: '', role_ids: [] }
 
-  subject { Ar::Validators::ProfileValidator.new profile }
+  subject { Arpa::Validators::ProfileValidator.new profile }
 
   before { subject.valid? }
 

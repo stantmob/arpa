@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ar::Repositories::Resources::Remover, type: :repository, slow: true do
+describe Arpa::Repositories::Resources::Remover, type: :repository, slow: true do
 
   let(:resource_001)     { create :repository_resource, :user }
   let(:destroy_resource) { subject.destroy(resource_001) }
@@ -11,7 +11,7 @@ describe Ar::Repositories::Resources::Remover, type: :repository, slow: true do
       let(:actions) { [] }
 
       it 'should destroy the resource' do
-        expect { destroy_resource }.to change(Ar::Repositories::Resources::RepositoryResource, :count).by(0)
+        expect { destroy_resource }.to change(Arpa::Repositories::Resources::RepositoryResource, :count).by(0)
       end
     end
 
@@ -25,11 +25,11 @@ describe Ar::Repositories::Resources::Remover, type: :repository, slow: true do
       end
 
       it 'should destroy the resource' do
-        expect { destroy_resource }.to change(Ar::Repositories::Resources::RepositoryResource, :count).by(-1)
+        expect { destroy_resource }.to change(Arpa::Repositories::Resources::RepositoryResource, :count).by(-1)
       end
 
       it 'should destroy all actions associate with resource' do
-        expect { destroy_resource }.to change(Ar::Repositories::Actions::RepositoryAction, :count).by(-2)
+        expect { destroy_resource }.to change(Arpa::Repositories::Actions::RepositoryAction, :count).by(-2)
       end
 
     end

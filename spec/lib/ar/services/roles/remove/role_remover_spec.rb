@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe Ar::Services::Roles::Remove::RoleRemover, type: :service, fast: true do
+describe Arpa::Services::Roles::Remove::RoleRemover, type: :service, fast: true do
 
   let(:role) { double }
 
   describe 'removing role' do
-    let(:remover_repo_class) { Ar::Repositories::Roles::Remover }
+    let(:remover_repo_class) { Arpa::Repositories::Roles::Remover }
     let(:remover_repo)       { instance_double remover_repo_class }
     let(:setup)              {  }
 

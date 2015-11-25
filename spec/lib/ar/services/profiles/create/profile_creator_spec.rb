@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe Ar::Services::Profiles::Create::ProfileCreator, type: :service, fast: true do
+describe Arpa::Services::Profiles::Create::ProfileCreator, type: :service, fast: true do
 
-  let(:profile_entity_class) { Ar::Entities::Profile }
+  let(:profile_entity_class) { Arpa::Entities::Profile }
   let(:profile)              { double }
   let(:params)               { double }
 
   let(:profile_created)  { subject.create(params) }
-  let(:validator_class)  { Ar::Validators::ProfileValidator }
+  let(:validator_class)  { Arpa::Validators::ProfileValidator }
   let(:validator)        { instance_double validator_class }
 
   before do
@@ -26,9 +26,9 @@ describe Ar::Services::Profiles::Create::ProfileCreator, type: :service, fast: t
         allow(errors).to receive(:messages)
       end
 
-      it 'should raise a Ar::Exceptions::RecordInvalid with :errors of ActiveModel::Errors' do
+      it 'should raise a Arpa::Exceptions::RecordInvalid with :errors of ActiveModel::Errors' do
         expect { profile_created }.to raise_error { |error|
-          expect(error).to be_a Ar::Exceptions::RecordInvalid
+          expect(error).to be_a Arpa::Exceptions::RecordInvalid
           expect(error.errors).not_to be_nil
         }
       end
@@ -36,7 +36,7 @@ describe Ar::Services::Profiles::Create::ProfileCreator, type: :service, fast: t
     end
 
     context 'when profile is valid' do
-      let(:creator_repo_class) { Ar::Repositories::Profiles::Creator }
+      let(:creator_repo_class) { Arpa::Repositories::Profiles::Creator }
       let(:creator_repo)       { instance_double creator_repo_class }
 
       before do

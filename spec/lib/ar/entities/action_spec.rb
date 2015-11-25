@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Ar::Entities::Action, type: :entity, fast: true do
+describe Arpa::Entities::Action, type: :entity, fast: true do
   let(:resource) { double(name: 'users') }
 
-  subject { Ar::Entities::Action.new resource: resource, name: 'index'}
+  subject { Arpa::Entities::Action.new resource: resource, name: 'index'}
 
   describe 'getting description by action name and resource name' do
 

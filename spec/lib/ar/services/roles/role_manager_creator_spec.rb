@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ar::Services::Roles::RoleManagerCreator, type: :service, fast: true do
+describe Arpa::Services::Roles::RoleManagerCreator, type: :service, fast: true do
 
   let(:role_creator) { double }
   let(:params)           { {role: {name: 'role_name', description: 'role_description', action_ids: [1, 2]}} }
@@ -8,7 +8,7 @@ describe Ar::Services::Roles::RoleManagerCreator, type: :service, fast: true do
   let(:callback)         { {success: success_proc, fail: ->(e) {raise e} } }
 
   let(:setup_creators) do
-    allow(Ar::Services::Roles::Create::RoleCreator).to receive(:new).and_return(role_creator)
+    allow(Arpa::Services::Roles::Create::RoleCreator).to receive(:new).and_return(role_creator)
   end
 
   let(:setup_creators_methods) do

@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe Ar::Services::Roles::Update::RoleUpdater, type: :service, fast: true do
+describe Arpa::Services::Roles::Update::RoleUpdater, type: :service, fast: true do
 
-  let(:role_entity_class) { Ar::Entities::Role }
+  let(:role_entity_class) { Arpa::Entities::Role }
   let(:role)              { double }
   let(:params)            { double }
 
   let(:role_updated)    { subject.update(params) }
-  let(:validator_class) { Ar::Validators::RoleValidator }
+  let(:validator_class) { Arpa::Validators::RoleValidator }
   let(:validator)       { instance_double validator_class }
 
   before do
@@ -26,9 +26,9 @@ describe Ar::Services::Roles::Update::RoleUpdater, type: :service, fast: true do
         allow(errors).to receive(:messages)
       end
 
-      it 'should raise a Ar::Exceptions::RecordInvalid with :errors of ActiveModel::Errors' do
+      it 'should raise a Arpa::Exceptions::RecordInvalid with :errors of ActiveModel::Errors' do
         expect { role_updated }.to raise_error { |error|
-          expect(error).to be_a Ar::Exceptions::RecordInvalid
+          expect(error).to be_a Arpa::Exceptions::RecordInvalid
           expect(error.errors).not_to be_nil
         }
       end
@@ -36,7 +36,7 @@ describe Ar::Services::Roles::Update::RoleUpdater, type: :service, fast: true do
     end
 
     context 'when role is valid' do
-      let(:updater_repo_class) { Ar::Repositories::Roles::Updater }
+      let(:updater_repo_class) { Arpa::Repositories::Roles::Updater }
       let(:updater_repo)       { instance_double updater_repo_class }
 
       before do

@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Ar::Services::Verifier do
+describe Arpa::Services::Verifier do
   let(:session) { {} }
   let(:current_user) { double profile_ids: [1,2,3] }
 
-  subject(:verifier) { Ar::Services::Verifier.new(session, current_user) }
+  subject(:verifier) { Arpa::Services::Verifier.new(session, current_user) }
 
   describe '#has_access?' do
     context 'when pass a free action which begin with "_"' do
@@ -14,7 +14,7 @@ describe Ar::Services::Verifier do
     end
 
     context 'when pass a non free action' do
-      let(:resource_finder_class) { Ar::Repositories::Resources::Finder }
+      let(:resource_finder_class) { Arpa::Repositories::Resources::Finder }
       let(:resource_finder)       { instance_double resource_finder_class }
       let(:entity_permissions)    { double }
 
@@ -26,11 +26,11 @@ describe Ar::Services::Verifier do
         subject.has_access?('users', 'index')
       end
 
-      it 'should be called :new from Ar::Repositories::Resources::Finder' do
+      it 'should be called :new from Arpa::Repositories::Resources::Finder' do
         expect(resource_finder_class).to have_received(:new).once
       end
 
-      it 'should be called :permissions from Ar::Repositories::Resources::Finder' do
+      it 'should be called :permissions from Arpa::Repositories::Resources::Finder' do
         expect(resource_finder).to have_received(:permissions).with([1,2,3]).once
       end
 

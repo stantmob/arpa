@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe Ar::DataMappers::RoleMapper, type: :mapper, fast: true do
-  let(:mapper) { Ar::DataMappers::RoleMapper.instance }
+describe Arpa::DataMappers::RoleMapper, type: :mapper, fast: true do
+  let(:mapper) { Arpa::DataMappers::RoleMapper.instance }
 
   describe 'mapping to record instance' do
-    let(:entity)          { Ar::Entities::Role.new(name: 'some_role')}
+    let(:entity)          { Arpa::Entities::Role.new(name: 'some_role')}
     let(:record_instance) { mapper.map_to_record(entity) }
 
-    it 'record_instance should be an instance of Ar::Repositories::Roles::RepositoryRole' do
-      expect(record_instance).to be_a Ar::Repositories::Roles::RepositoryRole
+    it 'record_instance should be an instance of Arpa::Repositories::Roles::RepositoryRole' do
+      expect(record_instance).to be_a Arpa::Repositories::Roles::RepositoryRole
     end
 
     it 'record_instance should fill the property :name from entity property' do
@@ -31,7 +31,7 @@ describe Ar::DataMappers::RoleMapper, type: :mapper, fast: true do
     end
 
     it 'entity_instance should fill the property :actions from record property' do
-      expect(entity_instance.actions.first).to be_an Ar::Entities::Action
+      expect(entity_instance.actions.first).to be_an Arpa::Entities::Action
     end
 
     it 'entity_instance should fill the property :action_ids from record property' do
@@ -39,7 +39,7 @@ describe Ar::DataMappers::RoleMapper, type: :mapper, fast: true do
     end
 
     it 'entity_instance should fill the property :profiles from record property' do
-      expect(entity_instance.profiles.first).to be_an Ar::Entities::Profile
+      expect(entity_instance.profiles.first).to be_an Arpa::Entities::Profile
     end
 
   end

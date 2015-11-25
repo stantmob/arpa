@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ar::Repositories::Resources::Finder, type: :repository, slow: true do
+describe Arpa::Repositories::Resources::Finder, type: :repository, slow: true do
 
   let(:record_001) { create :repository_resource, :user }
   let(:record_002) { create :repository_resource, :contact }
@@ -12,8 +12,8 @@ describe Ar::Repositories::Resources::Finder, type: :repository, slow: true do
       expect(result.name).to eql 'users'
     end
 
-    it 'the result should be an Ar::Entities::Resource' do
-      expect(result).to be_an Ar::Entities::Resource
+    it 'the result should be an Arpa::Entities::Resource' do
+      expect(result).to be_an Arpa::Entities::Resource
     end
 
   end
@@ -35,8 +35,8 @@ describe Ar::Repositories::Resources::Finder, type: :repository, slow: true do
       expect(result.first.full_name).to eql 'ContactsController'
     end
 
-    it 'the result should be an Array of Ar::Entities::Resource' do
-      expect(result.first).to be_an Ar::Entities::Resource
+    it 'the result should be an Array of Arpa::Entities::Resource' do
+      expect(result.first).to be_an Arpa::Entities::Resource
     end
 
   end
@@ -56,8 +56,8 @@ describe Ar::Repositories::Resources::Finder, type: :repository, slow: true do
         expect(result.name).to eql 'users'
       end
 
-      it 'the result should be an instance of Ar::Entities::Resource' do
-        expect(result).to be_an Ar::Entities::Resource
+      it 'the result should be an instance of Arpa::Entities::Resource' do
+        expect(result).to be_an Arpa::Entities::Resource
       end
     end
 
@@ -80,8 +80,8 @@ describe Ar::Repositories::Resources::Finder, type: :repository, slow: true do
     let(:result) { subject.permissions(profile_ids) }
     let(:first)  { result.first }
 
-    it 'should return an Ar::Entities::Permissions' do
-      expect(result).to be_an Ar::Entities::Permissions
+    it 'should return an Arpa::Entities::Permissions' do
+      expect(result).to be_an Arpa::Entities::Permissions
     end
 
     it 'should has just one permission' do

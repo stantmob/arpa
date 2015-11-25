@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :repository_action, class: Ar::Repositories::Actions::RepositoryAction do
+  factory :repository_action, class: Arpa::Repositories::Actions::RepositoryAction do
 
     trait :index do
       name 'index'

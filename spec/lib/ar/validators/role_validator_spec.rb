@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Ar::Validators::RoleValidator, type: :validator, fast: true do
+describe Arpa::Validators::RoleValidator, type: :validator, fast: true do
   let(:role) { double name: '', description: '', action_ids: '' }
 
-  subject { Ar::Validators::RoleValidator.new role }
+  subject { Arpa::Validators::RoleValidator.new role }
 
   before { subject.valid? }
 

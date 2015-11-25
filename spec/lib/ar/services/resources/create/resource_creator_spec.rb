@@ -1,17 +1,17 @@
 require 'spec_helper'
 
-describe Ar::Services::Resources::Create::ResourceCreator, type: :service, fast: true do
+describe Arpa::Services::Resources::Create::ResourceCreator, type: :service, fast: true do
 
-  let(:resource_entity_class) { Ar::Entities::Resource }
+  let(:resource_entity_class) { Arpa::Entities::Resource }
   let(:resource)              { double full_name: 'UsersController' }
   let(:resourceable)          { double }
   let(:resource_found)        { nil }
 
   let(:resource_created) { subject.create(resourceable) }
-  let(:validator_class)  { Ar::Validators::ResourceValidator }
+  let(:validator_class)  { Arpa::Validators::ResourceValidator }
   let(:validator)        { instance_double validator_class }
 
-  let(:finder_repo_class) { Ar::Repositories::Resources::Finder}
+  let(:finder_repo_class) { Arpa::Repositories::Resources::Finder}
   let(:finder_repo)       { instance_double finder_repo_class }
 
   before do
@@ -34,9 +34,9 @@ describe Ar::Services::Resources::Create::ResourceCreator, type: :service, fast:
         allow(errors).to receive(:messages)
       end
 
-      it 'should raise a Ar::Exceptions::RecordInvalid with :errors of ActiveModel::Errors' do
+      it 'should raise a Arpa::Exceptions::RecordInvalid with :errors of ActiveModel::Errors' do
         expect { resource_created }.to raise_error { |error|
-          expect(error).to be_a Ar::Exceptions::RecordInvalid
+          expect(error).to be_a Arpa::Exceptions::RecordInvalid
           expect(error.errors).not_to be_nil
         }
       end
@@ -52,7 +52,7 @@ describe Ar::Services::Resources::Create::ResourceCreator, type: :service, fast:
     end
 
     context 'when resource is valid' do
-      let(:creator_repo_class) { Ar::Repositories::Resources::Creator }
+      let(:creator_repo_class) { Arpa::Repositories::Resources::Creator }
       let(:creator_repo)       { instance_double creator_repo_class }
 
       before do

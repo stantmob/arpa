@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ar::Services::Resources::Remove::ResourceRemover, type: :service, fast: true do
+describe Arpa::Services::Resources::Remove::ResourceRemover, type: :service, fast: true do
 
   let(:resource_001) { double full_name: 'UsersController' }
   let(:resource_002) { double full_name: 'OldContactsController' }
@@ -12,10 +12,10 @@ describe Ar::Services::Resources::Remove::ResourceRemover, type: :service, fast:
 
   describe 'removing nonexistent resources' do
 
-    let(:finder_repo_class) { Ar::Repositories::Resources::Finder }
+    let(:finder_repo_class) { Arpa::Repositories::Resources::Finder }
     let(:finder_repo)       { instance_double finder_repo_class }
 
-    let(:remover_repo_class) { Ar::Repositories::Resources::Remover }
+    let(:remover_repo_class) { Arpa::Repositories::Resources::Remover }
     let(:remover_repo)       { instance_double remover_repo_class }
 
     before do

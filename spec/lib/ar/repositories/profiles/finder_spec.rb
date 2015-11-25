@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ar::Repositories::Profiles::Finder, type: :repository, slow: true do
+describe Arpa::Repositories::Profiles::Finder, type: :repository, slow: true do
 
   let(:record_001) { create :repository_profile, name: 'profile_01' }
   let(:record_002) { create :repository_profile, name: 'profile_02' }
@@ -17,8 +17,8 @@ describe Ar::Repositories::Profiles::Finder, type: :repository, slow: true do
       expect(result.name).to eql 'profile_01'
     end
 
-    it 'the result should be an Ar::Entities::Profile' do
-      expect(result).to be_an Ar::Entities::Profile
+    it 'the result should be an Arpa::Entities::Profile' do
+      expect(result).to be_an Arpa::Entities::Profile
     end
 
   end
@@ -34,8 +34,8 @@ describe Ar::Repositories::Profiles::Finder, type: :repository, slow: true do
       expect(result.first.name).to eql 'profile_01'
     end
 
-    it 'the result should be an Array of Ar::Entities::Profile' do
-      expect(result.first).to be_an Ar::Entities::Profile
+    it 'the result should be an Array of Arpa::Entities::Profile' do
+      expect(result.first).to be_an Arpa::Entities::Profile
     end
 
   end

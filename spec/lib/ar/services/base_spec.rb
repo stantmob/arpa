@@ -7,7 +7,7 @@ class CustomTransactionClass
 end
 
 class ManagerImplementationTest
-  include Ar::Services::Base
+  include Arpa::Services::Base
 
   def create_raise callback
     manager_action callback do
@@ -23,7 +23,7 @@ class ManagerImplementationTest
 
 end
 
-describe Ar::Services::Base, type: :service, fast: true do
+describe Arpa::Services::Base, type: :service, fast: true do
 
   let(:manager_implementation) { ManagerImplementationTest.new }
   let(:callback) {

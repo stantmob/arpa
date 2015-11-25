@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 RSpec.describe "Remove Role", type: [:request, :role] do
-  let(:finder_role_repo)     { Ar::Repositories::Roles::Finder.new }
-  let(:remover_role_service) { Ar::Services::Roles::RoleManagerRemover.new }
+  let(:finder_role_repo)     { Arpa::Repositories::Roles::Finder.new }
+  let(:remover_role_service) { Arpa::Services::Roles::RoleManagerRemover.new }
   let(:success_proc)         { ->(r) {} }
   let(:callback)             { {success: success_proc, fail: ->(e) {raise e} } }
 

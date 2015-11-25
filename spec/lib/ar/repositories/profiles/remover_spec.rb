@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ar::Repositories::Profiles::Remover, type: :repository, slow: true do
+describe Arpa::Repositories::Profiles::Remover, type: :repository, slow: true do
 
   let(:created_profile) { create :repository_profile }
 
@@ -10,7 +10,7 @@ describe Ar::Repositories::Profiles::Remover, type: :repository, slow: true do
     let(:destroy_profile) { subject.destroy(created_profile) }
 
     it 'should destroy the role' do
-      expect { destroy_profile }.to change(Ar::Repositories::Profiles::RepositoryProfile, :count).by(-1)
+      expect { destroy_profile }.to change(Arpa::Repositories::Profiles::RepositoryProfile, :count).by(-1)
     end
 
   end
@@ -19,7 +19,7 @@ describe Ar::Repositories::Profiles::Remover, type: :repository, slow: true do
     let(:disable_profile) { subject.disable(created_profile) }
 
     it 'should disable the role' do
-      expect { disable_profile }.to change(Ar::Repositories::Profiles::RepositoryProfile, :count).by(-1)
+      expect { disable_profile }.to change(Arpa::Repositories::Profiles::RepositoryProfile, :count).by(-1)
     end
 
     it 'role should be setted to removed: true' do

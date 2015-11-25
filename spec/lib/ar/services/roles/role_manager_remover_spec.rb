@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ar::Services::Roles::RoleManagerRemover, type: :service, fast: true do
+describe Arpa::Services::Roles::RoleManagerRemover, type: :service, fast: true do
 
   let(:role_remover) { double }
   let(:role)         { double }
@@ -9,7 +9,7 @@ describe Ar::Services::Roles::RoleManagerRemover, type: :service, fast: true do
   let(:callback)     { {success: success_proc, fail: ->(e) {raise e} } }
 
   let(:setup_updaters) do
-    allow(Ar::Services::Roles::Remove::RoleRemover).to receive(:new).and_return(role_remover)
+    allow(Arpa::Services::Roles::Remove::RoleRemover).to receive(:new).and_return(role_remover)
   end
 
   let(:setup_updaters_methods) do

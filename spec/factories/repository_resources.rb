@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :repository_resource, class: Ar::Repositories::Resources::RepositoryResource do
+  factory :repository_resource, class: Arpa::Repositories::Resources::RepositoryResource do
 
     trait :user do
       full_name 'UsersController'

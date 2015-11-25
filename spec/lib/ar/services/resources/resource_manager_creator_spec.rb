@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ar::Services::Resources::ResourceManagerCreator, type: :service, fast: true do
+describe Arpa::Services::Resources::ResourceManagerCreator, type: :service, fast: true do
 
   let(:action_remover)   { double }
   let(:resource_remover) { double }
@@ -17,13 +17,13 @@ describe Ar::Services::Resources::ResourceManagerCreator, type: :service, fast: 
   let(:resource_created) { double }
 
   let(:setup_creators) do
-    allow(Ar::Services::Resources::Create::ResourceCreator).to receive(:new).and_return(resource_creator)
-    allow(Ar::Services::Actions::Create::ActionCreator).to receive(:new).and_return(action_creator)
+    allow(Arpa::Services::Resources::Create::ResourceCreator).to receive(:new).and_return(resource_creator)
+    allow(Arpa::Services::Actions::Create::ActionCreator).to receive(:new).and_return(action_creator)
   end
 
   let(:setup_removers) do
-    allow(Ar::Services::Resources::Remove::ResourceRemover).to receive(:new).and_return(resource_remover)
-    allow(Ar::Services::Actions::Remove::ActionRemover).to receive(:new).and_return(action_remover)
+    allow(Arpa::Services::Resources::Remove::ResourceRemover).to receive(:new).and_return(resource_remover)
+    allow(Arpa::Services::Actions::Remove::ActionRemover).to receive(:new).and_return(action_remover)
   end
 
   let(:setup_creators_methods) do

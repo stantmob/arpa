@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 RSpec.describe "Remove Profile", type: [:request, :profile] do
-  let(:finder_profile_repo)     { Ar::Repositories::Profiles::Finder.new }
-  let(:remover_profile_service) { Ar::Services::Profiles::ProfileManagerRemover.new }
+  let(:finder_profile_repo)     { Arpa::Repositories::Profiles::Finder.new }
+  let(:remover_profile_service) { Arpa::Services::Profiles::ProfileManagerRemover.new }
   let(:success_proc)            { ->(r) {} }
   let(:callback)                { {success: success_proc, fail: ->(e) {raise e} } }
 

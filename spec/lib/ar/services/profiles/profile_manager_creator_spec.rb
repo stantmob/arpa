@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ar::Services::Profiles::ProfileManagerCreator, type: :service, fast: true do
+describe Arpa::Services::Profiles::ProfileManagerCreator, type: :service, fast: true do
 
   let(:profile_creator) { double }
   let(:params)          { {profile: {name: 'profile_name', description: 'profile_description', role_ids: [1, 2]}} }
@@ -8,7 +8,7 @@ describe Ar::Services::Profiles::ProfileManagerCreator, type: :service, fast: tr
   let(:callback)        { {success: success_proc, fail: ->(e) {raise e} } }
 
   let(:setup_creators) do
-    allow(Ar::Services::Profiles::Create::ProfileCreator).to receive(:new).and_return(profile_creator)
+    allow(Arpa::Services::Profiles::Create::ProfileCreator).to receive(:new).and_return(profile_creator)
   end
 
   let(:setup_creators_methods) do

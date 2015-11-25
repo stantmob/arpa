@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 RSpec.describe "Update Role", type: [:request, :role] do
-  let(:finder_role_repo)         { Ar::Repositories::Roles::Finder.new }
-  let(:finder_resource_repo)     { Ar::Repositories::Resources::Finder.new }
-  let(:creator_resource_service) { Ar::Services::Resources::ResourceManagerCreator.new }
-  let(:creator_role_service)     { Ar::Services::Roles::RoleManagerCreator.new }
-  let(:updater_role_service)     { Ar::Services::Roles::RoleManagerUpdater.new }
+  let(:finder_role_repo)         { Arpa::Repositories::Roles::Finder.new }
+  let(:finder_resource_repo)     { Arpa::Repositories::Resources::Finder.new }
+  let(:creator_resource_service) { Arpa::Services::Resources::ResourceManagerCreator.new }
+  let(:creator_role_service)     { Arpa::Services::Roles::RoleManagerCreator.new }
+  let(:updater_role_service)     { Arpa::Services::Roles::RoleManagerUpdater.new }
   let(:success_proc)             { ->(r) {} }
   let(:callback)                 { {success: success_proc, fail: ->(e) {raise e} } }
 

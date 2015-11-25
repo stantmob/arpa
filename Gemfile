@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in ar.gemspec
+# Specify your gem's dependencies in arpa.gemspec
 gemspec

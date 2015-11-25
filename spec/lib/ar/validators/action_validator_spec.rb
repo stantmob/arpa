@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Ar::Validators::ActionValidator, type: :validator, fast: true do
+describe Arpa::Validators::ActionValidator, type: :validator, fast: true do
   let(:action) { double name: '', resource_id: nil }
 
-  subject { Ar::Validators::ActionValidator.new action }
+  subject { Arpa::Validators::ActionValidator.new action }
 
   before { subject.valid? }
 

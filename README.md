@@ -1,4 +1,4 @@
-#Ar
+#Arpa
 
 Authorization Gem for Ruby and Ruby on Rails projects.
 
@@ -7,7 +7,7 @@ Authorization Gem for Ruby and Ruby on Rails projects.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'ar'
+gem 'arpa'
 ```
 
 And then execute:
@@ -16,21 +16,21 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install ar
+    $ gem install arpa
 
 After you install Ar and add it to your Gemfile, you need to run the generator:
 
-    $ rails generate ar:install
+    $ rails generate arpa:install
     
 This command will create some files that are needed to run the Gem.
 
 |    File  |     Purpose   |
 |----------|:-------------:|
-| db/migrate/20140120201010_create_ar_tables.rb |  Migration to create the all **Ar** tables in your database (your name will include a different timestamp) | 
-| config/locales/ar.en.yml |  Locales to use in Ar classes | 
-| app/assets/stylesheets/ar/ar_accordion.scss |  Basic stylesheet to use with Ar views | 
-| app/controllers/ar/resources_controller.rb  app/controllers/ar/roles_controller.rb  app/controllers/ar/profiles_controller.rb | Controllers to use the CRUD actions for each one |
-| app/views/ar/resources/  app/controllers/ar/roles/  app/controllers/ar/profiles/ | All views to use the CRUD actions for each controller above |
+| db/migrate/20140120201010_create_arpa_tables.rb |  Migration to create the all **Ar** tables in your database (your name will include a different timestamp) |
+| config/locales/arpa.en.yml |  Locales to use in Ar classes |
+| app/assets/stylesheets/arpa/arpa_accordion.scss |  Basic stylesheet to use with Ar views |
+| app/controllers/arpa/resources_controller.rb  app/controllers/arpa/roles_controller.rb  app/controllers/arpa/profiles_controller.rb | Controllers to use the CRUD actions for each one |
+| app/views/arpa/resources/  app/controllers/arpa/roles/  app/controllers/arpa/profiles/ | All views to use the CRUD actions for each controller above |
 | config/routes.rb |  Will add all routes into this file with all resources of Ar | 
 
 After generate, you need to run the migration to create all Ar tables:
@@ -104,33 +104,33 @@ end
 After generate, you will be able to access some paths for each Controller created:
 
 ```ruby
-generate_resources_and_actions_resources GET    /resources/generate_resources_and_actions(.:format) ar/resources#generate_resources_and_actions
-                               resources GET    /resources(.:format)                                ar/resources#index
-                                         POST   /resources(.:format)                                ar/resources#create
-                            new_resource GET    /resources/new(.:format)                            ar/resources#new
-                           edit_resource GET    /resources/:id/edit(.:format)                       ar/resources#edit
-                                resource GET    /resources/:id(.:format)                            ar/resources#show
-                                         PATCH  /resources/:id(.:format)                            ar/resources#update
-                                         PUT    /resources/:id(.:format)                            ar/resources#update
-                                         DELETE /resources/:id(.:format)                            ar/resources#destroy
-                                         DELETE /roles/:id(.:format)                                ar/roles#remove
-                                   roles GET    /roles(.:format)                                    ar/roles#index
-                                         POST   /roles(.:format)                                    ar/roles#create
-                                new_role GET    /roles/new(.:format)                                ar/roles#new
-                               edit_role GET    /roles/:id/edit(.:format)                           ar/roles#edit
-                                    role GET    /roles/:id(.:format)                                ar/roles#show
-                                         PATCH  /roles/:id(.:format)                                ar/roles#update
-                                         PUT    /roles/:id(.:format)                                ar/roles#update
-                                         DELETE /roles/:id(.:format)                                ar/roles#destroy
-                                         DELETE /profiles/:id(.:format)                             ar/profiles#remove
-                                profiles GET    /profiles(.:format)                                 ar/profiles#index
-                                         POST   /profiles(.:format)                                 ar/profiles#create
-                             new_profile GET    /profiles/new(.:format)                             ar/profiles#new
-                            edit_profile GET    /profiles/:id/edit(.:format)                        ar/profiles#edit
-                                 profile GET    /profiles/:id(.:format)                             ar/profiles#show
-                                         PATCH  /profiles/:id(.:format)                             ar/profiles#update
-                                         PUT    /profiles/:id(.:format)                             ar/profiles#update
-                                         DELETE /profiles/:id(.:format)                             ar/profiles#destroy
+generate_resources_and_actions_resources GET    /resources/generate_resources_and_actions(.:format) arpa/resources#generate_resources_and_actions
+                               resources GET    /resources(.:format)                                arpa/resources#index
+                                         POST   /resources(.:format)                                arpa/resources#create
+                            new_resource GET    /resources/new(.:format)                            arpa/resources#new
+                           edit_resource GET    /resources/:id/edit(.:format)                       arpa/resources#edit
+                                resource GET    /resources/:id(.:format)                            arpa/resources#show
+                                         PATCH  /resources/:id(.:format)                            arpa/resources#update
+                                         PUT    /resources/:id(.:format)                            arpa/resources#update
+                                         DELETE /resources/:id(.:format)                            arpa/resources#destroy
+                                         DELETE /roles/:id(.:format)                                arpa/roles#remove
+                                   roles GET    /roles(.:format)                                    arpa/roles#index
+                                         POST   /roles(.:format)                                    arpa/roles#create
+                                new_role GET    /roles/new(.:format)                                arpa/roles#new
+                               edit_role GET    /roles/:id/edit(.:format)                           arpa/roles#edit
+                                    role GET    /roles/:id(.:format)                                arpa/roles#show
+                                         PATCH  /roles/:id(.:format)                                arpa/roles#update
+                                         PUT    /roles/:id(.:format)                                arpa/roles#update
+                                         DELETE /roles/:id(.:format)                                arpa/roles#destroy
+                                         DELETE /profiles/:id(.:format)                             arpa/profiles#remove
+                                profiles GET    /profiles(.:format)                                 arpa/profiles#index
+                                         POST   /profiles(.:format)                                 arpa/profiles#create
+                             new_profile GET    /profiles/new(.:format)                             arpa/profiles#new
+                            edit_profile GET    /profiles/:id/edit(.:format)                        arpa/profiles#edit
+                                 profile GET    /profiles/:id(.:format)                             arpa/profiles#show
+                                         PATCH  /profiles/:id(.:format)                             arpa/profiles#update
+                                         PUT    /profiles/:id(.:format)                             arpa/profiles#update
+                                         DELETE /profiles/:id(.:format)                             arpa/profiles#destroy
 ```
 
 ## License

@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe Ar::Entities::Permissions, type: :presenter, fast: true do
+describe Arpa::Entities::Permissions, type: :presenter, fast: true do
   let(:index_action) { double name: 'index_new' }
   let(:resource_001) { double name: 'users', actions: [index_action] }
   let(:resource_002) { double name: 'users', actions: [index_action] }
   let(:resources)    { [resource_001, resource_002] }
 
-  subject { Ar::Entities::Permissions.new(resources)}
+  subject { Arpa::Entities::Permissions.new(resources)}
 
   describe 'intializing' do
     let(:result) { subject.permissions }

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ar::Services::Actions::Remove::ActionRemover, type: :service, fast: true do
+describe Arpa::Services::Actions::Remove::ActionRemover, type: :service, fast: true do
 
   let(:action_001) { double name: 'index' }
   let(:action_002) { double name: 'old_index' }
@@ -12,7 +12,7 @@ describe Ar::Services::Actions::Remove::ActionRemover, type: :service, fast: tru
   let(:params) { {resource: resource, actions_names: actions_names} }
 
   describe 'removing nonexistent actions' do
-    let(:remover_repo_class) { Ar::Repositories::Actions::Remover }
+    let(:remover_repo_class) { Arpa::Repositories::Actions::Remover }
     let(:remover_repo)       { instance_double remover_repo_class }
 
     before do

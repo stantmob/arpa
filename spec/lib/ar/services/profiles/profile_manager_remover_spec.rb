@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ar::Services::Profiles::ProfileManagerRemover, type: :service, fast: true do
+describe Arpa::Services::Profiles::ProfileManagerRemover, type: :service, fast: true do
 
   let(:profile_remover) { double }
   let(:profile)         { double }
@@ -8,7 +8,7 @@ describe Ar::Services::Profiles::ProfileManagerRemover, type: :service, fast: tr
   let(:callback)        { {success: success_proc, fail: ->(e) {raise e} } }
 
   let(:setup_updaters) do
-    allow(Ar::Services::Profiles::Remove::ProfileRemover).to receive(:new).and_return(profile_remover)
+    allow(Arpa::Services::Profiles::Remove::ProfileRemover).to receive(:new).and_return(profile_remover)
   end
 
   let(:setup_updaters_methods) do

@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 class BaseImplementationTest
-  include Ar::Repositories::Base
+  include Arpa::Repositories::Base
 end
 
-describe Ar::Repositories::Base, type: :repository, fast: true do
+describe Arpa::Repositories::Base, type: :repository, fast: true do
 
   let(:base_implementation) { BaseImplementationTest.new }
 

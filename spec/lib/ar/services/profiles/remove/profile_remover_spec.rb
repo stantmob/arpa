@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe Ar::Services::Profiles::Remove::ProfileRemover, type: :service, fast: true do
+describe Arpa::Services::Profiles::Remove::ProfileRemover, type: :service, fast: true do
 
   let(:profile) { double }
 
   describe 'removing profile' do
-    let(:remover_repo_class) { Ar::Repositories::Profiles::Remover }
+    let(:remover_repo_class) { Arpa::Repositories::Profiles::Remover }
     let(:remover_repo)       { instance_double remover_repo_class }
 
     before do

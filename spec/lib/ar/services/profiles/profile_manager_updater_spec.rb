@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ar::Services::Profiles::ProfileManagerUpdater, type: :service, fast: true do
+describe Arpa::Services::Profiles::ProfileManagerUpdater, type: :service, fast: true do
 
   let(:profile_updater) { double }
   let(:params)          { {profile: {name: 'profile_name', description: 'profile_description', role_ids: [1, 2]}} }
@@ -8,7 +8,7 @@ describe Ar::Services::Profiles::ProfileManagerUpdater, type: :service, fast: tr
   let(:callback)        { {success: success_proc, fail: ->(e) {raise e} } }
 
   let(:setup_updaters) do
-    allow(Ar::Services::Profiles::Update::ProfileUpdater).to receive(:new).and_return(profile_updater)
+    allow(Arpa::Services::Profiles::Update::ProfileUpdater).to receive(:new).and_return(profile_updater)
   end
 
   let(:setup_updaters_methods) do

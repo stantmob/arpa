@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Ar::Services::Actions::Create::ActionCreator, type: :service, fast: true do
+describe Arpa::Services::Actions::Create::ActionCreator, type: :service, fast: true do
 
-  let(:action_entity_class) { Ar::Entities::Action }
+  let(:action_entity_class) { Arpa::Entities::Action }
   let(:action)              { double }
   let(:resource)            { double id: 1 }
   let(:actions_names)       { ['index', 'new'] }
@@ -10,10 +10,10 @@ describe Ar::Services::Actions::Create::ActionCreator, type: :service, fast: tru
   let(:action_found)        { nil }
 
   let(:actions_created) { subject.create_many(params) }
-  let(:validator_class) { Ar::Validators::ActionValidator }
+  let(:validator_class) { Arpa::Validators::ActionValidator }
   let(:validator)       { instance_double validator_class }
 
-  let(:finder_repo_class) { Ar::Repositories::Actions::Finder}
+  let(:finder_repo_class) { Arpa::Repositories::Actions::Finder}
   let(:finder_repo)       { instance_double finder_repo_class }
 
   before do
@@ -35,9 +35,9 @@ describe Ar::Services::Actions::Create::ActionCreator, type: :service, fast: tru
         allow(errors).to receive(:messages)
       end
 
-      it 'should raise a Ar::Exceptions::RecordInvalid with :errors of ActiveModel::Errors' do
+      it 'should raise a Arpa::Exceptions::RecordInvalid with :errors of ActiveModel::Errors' do
         expect { actions_created }.to raise_error { |error|
-          expect(error).to be_a Ar::Exceptions::RecordInvalid
+          expect(error).to be_a Arpa::Exceptions::RecordInvalid
           expect(error.errors).not_to be_nil
         }
       end
@@ -54,7 +54,7 @@ describe Ar::Services::Actions::Create::ActionCreator, type: :service, fast: tru
     end
 
     context 'when resource is valid' do
-      let(:creator_repo_class) { Ar::Repositories::Actions::Creator }
+      let(:creator_repo_class) { Arpa::Repositories::Actions::Creator }
       let(:creator_repo)       { instance_double creator_repo_class }
 
       before do
