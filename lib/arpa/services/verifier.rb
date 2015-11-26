@@ -10,14 +10,14 @@ module Arpa
       def has_access?(resource, action)
         free_access_action = action.to_s.split('_')[0]
         return true if free_access_action.empty?
-        @session[:entity_permissions] ||= resource_finder.permissions(@current_user.profile_ids)
+        @session[:entity_permissions] ||= action_finder.permissions(@current_user.profile_ids)
         @session[:entity_permissions].has_permission?(resource.to_s, action.to_s)
       end
 
       private
 
-      def resource_finder
-        @resource_finder ||= Arpa::Repositories::Resources::Finder.new
+      def action_finder
+        @action_finder ||= Arpa::Repositories::Actions::Finder.new
       end
     end
   end
