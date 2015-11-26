@@ -15,8 +15,12 @@ module Arpa
         @updated_at  = attrs[:updated_at]
       end
 
+      def resource_name
+        resource.name
+      end
+
       def description
-        I18n.t(name.to_sym, scope: "entities.resources.#{resource.name}.actions.description")
+        I18n.t(name.to_sym, scope: "entities.resources.#{resource_name}.actions.description")
       end
 
     end
