@@ -14,6 +14,10 @@ module Arpa
         @session[:entity_permissions].has_permission?(resource.to_s, action.to_s)
       end
 
+      def reset_permissions
+        @session[:entity_permissions] = nil
+      end
+
       private
 
       def action_finder

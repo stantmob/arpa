@@ -6,6 +6,16 @@ describe Arpa::Services::Verifier do
 
   subject(:verifier) { Arpa::Services::Verifier.new(session, current_user) }
 
+  describe 'cleaning session of permissions' do
+    let(:session) { {entity_permissions: [ {'resource': 'users', 'action': 'index'} ] } }
+
+    before { verifier.reset_permissions }
+
+    it 'session[:entity_permissions] should be set to nil' do
+      expect(session[:entity_permissions]).to be_nil
+    end
+  end
+
   describe '#has_access?' do
     context 'when pass a free action which begin with "_"' do
       it 'should has access' do
