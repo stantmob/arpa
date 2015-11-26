@@ -4,8 +4,8 @@ module Arpa
 
       attr_reader :permissions
 
-      def initialize(resources)
-        @resources   = resources
+      def initialize(actions)
+        @actions   = actions
         @permissions = Array.new
         build_permissions
       end
@@ -17,11 +17,9 @@ module Arpa
 
       private
       def build_permissions
-        @resources.each do |resource|
-          resource.actions.collect do |action|
-            hash_permission = build_hash_permission(resource.name, action.name)
-            @permissions << hash_permission unless permissions.include?(hash_permission)
-          end
+        @actions.collect do |action|
+          hash_permission = build_hash_permission(action.resource_name, action.name)
+          @permissions << hash_permission unless permissions.include?(hash_permission)
         end
       end
 

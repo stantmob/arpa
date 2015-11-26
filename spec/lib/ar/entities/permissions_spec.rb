@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe Arpa::Entities::Permissions, type: :presenter, fast: true do
-  let(:index_action) { double name: 'index_new' }
-  let(:resource_001) { double name: 'users', actions: [index_action] }
-  let(:resource_002) { double name: 'users', actions: [index_action] }
-  let(:resources)    { [resource_001, resource_002] }
+  let(:action_001) { double name: 'index', resource_name: 'users' }
+  let(:action_002) { double name: 'show', resource_name: 'users' }
+  let(:action_003) { double name: 'show', resource_name: 'users' }
+  let(:actions)    { [action_001, action_002, action_003] }
 
-  subject { Arpa::Entities::Permissions.new(resources)}
+  subject { Arpa::Entities::Permissions.new(actions)}
 
   describe 'intializing' do
     let(:result) { subject.permissions }
@@ -24,7 +24,6 @@ describe Arpa::Entities::Permissions, type: :presenter, fast: true do
     end
 
     context 'when try fill permissions with duplicate resource and action' do
-      let(:hash_permission) { {'resource' => 'users', 'action' => 'index_new' } }
 
       it 'should has only one Hash with that duplicated resource and action' do
         duplicated_hash_permission = result.detect{ |e| result.count(e) > 1 }
@@ -39,7 +38,7 @@ describe Arpa::Entities::Permissions, type: :presenter, fast: true do
     let(:result) { subject.has_permission?(resource_name, action_name) }
 
     context 'when has' do
-      let(:action_name) { 'index_new' }
+      let(:action_name) { 'index' }
 
       it 'should return true' do
         expect(result).to be_truthy
@@ -48,7 +47,7 @@ describe Arpa::Entities::Permissions, type: :presenter, fast: true do
     end
 
     context 'when has not' do
-      let(:action_name) { 'index' }
+      let(:action_name) { 'index_old' }
 
       it 'should return false' do
         expect(result).to be_falsey
