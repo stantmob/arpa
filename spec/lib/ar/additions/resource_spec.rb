@@ -11,13 +11,18 @@ describe Arpa::Additions::Resource, type: :addition, fast: true do
 
   let(:resource_implementation) { ResourceImplementation.new }
 
-  describe '#has_access?' do
-    let(:verifier) { double }
-    let(:resource) { double }
-    let(:action)   { double }
+  let(:verifier) { double }
+  let(:resource) { double }
+  let(:action)   { double }
 
-    before do
-      allow(Arpa::Services::Verifier).to receive(:new).and_return(verifier)
+  before do
+    allow(Arpa::Services::Verifier).to receive(:new).and_return(verifier)
+    setup
+  end
+
+  describe '#has_access?' do
+
+    let(:setup) do
       allow(verifier).to receive(:has_access?)
       resource_implementation.has_access?(resource, action)
     end
@@ -28,6 +33,22 @@ describe Arpa::Additions::Resource, type: :addition, fast: true do
 
     it 'verifier should call :has_access? with resource and action as parameter' do
       expect(verifier).to have_received(:has_access?).with(resource, action).once
+    end
+  end
+
+   describe '#reset_permissions' do
+
+     let(:setup) do
+      allow(verifier).to receive(:reset_permissions)
+      resource_implementation.reset_permissions
+    end
+
+    it 'should call :new from Arpa::Services::Verifier' do
+      expect(Arpa::Services::Verifier).to have_received(:new).once
+    end
+
+    it 'verifier should call :reset_permissions once' do
+      expect(verifier).to have_received(:reset_permissions).once
     end
   end
 

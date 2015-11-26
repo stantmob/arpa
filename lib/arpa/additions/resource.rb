@@ -8,8 +8,15 @@ module Arpa
 
       def has_access?(resource, action)
         return unless has_session_or_current_user?
+        verifier.has_access?(resource, action)
+      end
+
+      def reset_permissions
+        verifier.reset_permissions
+      end
+
+      def verifier
         @verifier ||= Arpa::Services::Verifier.new(session, current_user)
-        @verifier.has_access?(resource, action)
       end
 
       private
