@@ -71,22 +71,4 @@ describe Arpa::Repositories::Resources::Finder, type: :repository, slow: true do
     end
 
   end
-
-  describe 'getting permissions from profile_ids' do
-    let(:profile_001) { create :repository_profile, :with_complete_association, name: 'prof_001' }
-    let(:profile_002) { create :repository_profile, :with_complete_association, name: 'prof_002' }
-    let(:profile_ids) { [profile_001.id, profile_002.id] }
-
-    let(:result) { subject.permissions(profile_ids) }
-    let(:first)  { result.first }
-
-    it 'should return an Arpa::Entities::Permissions' do
-      expect(result).to be_an Arpa::Entities::Permissions
-    end
-
-    it 'should has just one permission' do
-      expect(result.permissions.size).to be == 1
-    end
-
-  end
 end
