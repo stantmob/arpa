@@ -17,7 +17,7 @@ module Arpa
     def generate_resources_and_actions
       Rails.application.eager_load!
 
-      resource_creator.create({resourceables: ApplicationController.descendants}, {
+      resource_creator.create({resourceables: ApplicationController.descendants, except_action_methods: ApplicationController.action_methods}, {
         success: -> (resource) {
           flash[:notice] = I18n.t('flash.actions.generate_resources_and_actions.notice')
         },
