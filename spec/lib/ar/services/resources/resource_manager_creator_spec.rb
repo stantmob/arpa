@@ -8,7 +8,7 @@ describe Arpa::Services::Resources::ResourceManagerCreator, type: :service, fast
   let(:action_creator)   { double }
   let(:element)          { double }
   let(:resourceables)    { [resourceable_001, resourceable_002] }
-  let(:params)           { {resourceables: resourceables} }
+  let(:params)           { {resourceables: resourceables, except_action_methods: ['some_method']} }
   let(:success_proc)     { ->(r) {} }
   let(:callback)         { {success: success_proc, fail: ->(e) {raise e} } }
 

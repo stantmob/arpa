@@ -6,13 +6,14 @@ module Arpa
 
         def create(params, callback)
           manager_action callback do
-            resourceables = params[:resourceables]
+            resourceables         = params[:resourceables]
+            except_action_methods = params[:except_action_methods] || []
 
             resource_remover.remove_nonexistent_resources(resourceables)
 
             resourceables.collect do |resourceable|
               resource = resource_creator.create(resourceable)
-              action_params = action_params(resource, resourceable)
+              action_params = action_params(resource, resourceable, except_action_methods)
 
               action_remover.remove_nonexistent_actions(action_params)
               action_creator.create_many(action_params)
@@ -40,8 +41,9 @@ module Arpa
           @action_creator ||= Arpa::Services::Actions::Create::ActionCreator.new
         end
 
-        def action_params(resource, resourceable)
-          {resource: resource, actions_names: resourceable.action_methods}
+        def action_params(resource, resourceable, except_action_methods)
+          actions_names = resourceable.action_methods.select{ |action| !except_action_methods.include?(action) }
+          { resource: resource, actions_names: actions_names }
         end
 
       end
