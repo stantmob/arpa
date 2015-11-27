@@ -9,7 +9,7 @@ module Arpa
 
         @id          = attrs[:id]
         @name        = attrs[:name]
-        @description = attrs[:name]
+        @description = attrs[:description]
         @role_ids    = attrs[:role_ids] || []
         @roles       = attrs[:roles] || []
         @created_at  = attrs[:created_at]
