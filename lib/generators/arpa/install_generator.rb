@@ -3,7 +3,7 @@ module Arpa
     class InstallGenerator < Rails::Generators::Base
       include Rails::Generators::Migration
 
-      source_root File.expand_path("../templates", __FILE__)
+      source_root File.expand_path("..", __FILE__)
 
       desc <<-DESC.strip_heredoc
        The Name of table to create the associate table.
@@ -34,7 +34,7 @@ module Arpa
       def create_migrate_files
         @associate_table       ||= 'users'
         @associate_primary_key ||= "#{@associate_table.singularize}_id"
-        migration_template 'migration.rb', 'db/migrate/create_arpa_tables.rb'
+        migration_template 'templates/migration.rb', 'db/migrate/create_arpa_tables.rb'
       end
 
       def copy_locales
