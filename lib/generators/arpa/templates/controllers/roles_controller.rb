@@ -5,12 +5,10 @@ module Arpa
     # GET /roles
     def index
       @roles = role_finder.all
-      respond_with(@roles)
     end
 
     # GET /roles/1
     def show
-      respond_with(@role)
     end
 
     # GET /roles/new

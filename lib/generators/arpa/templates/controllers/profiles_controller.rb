@@ -5,12 +5,10 @@ module Arpa
     # GET /profiles
     def index
       @profiles = profile_finder.all
-      respond_with(@profiles)
     end
 
     # GET /profiles/1
     def show
-      respond_with(@profile)
     end
 
     # GET /profiles/new

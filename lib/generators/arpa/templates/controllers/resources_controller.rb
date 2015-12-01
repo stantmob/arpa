@@ -5,12 +5,10 @@ module Arpa
     # GET /resources
     def index
       @resources = resource_finder.all
-      respond_with(@resources)
     end
 
     # GET /resources/1
     def show
-      respond_with(@resource)
     end
 
     # GET /generate_resources_and_actions
