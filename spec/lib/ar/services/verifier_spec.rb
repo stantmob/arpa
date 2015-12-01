@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Arpa::Services::Verifier do
   let(:session) { {} }
-  let(:current_user) { double profile_ids: [1,2,3] }
+  let(:current_user) { double is_arpa_admin?: false, profile_ids: [1,2,3] }
 
   subject(:verifier) { Arpa::Services::Verifier.new(session, current_user) }
 
@@ -17,6 +17,15 @@ describe Arpa::Services::Verifier do
   end
 
   describe '#has_access?' do
+
+    context 'when current_user is a arpa admin' do
+      let(:current_user) { double is_arpa_admin?: true, profile_ids: [1,2,3] }
+
+      it 'should has access' do
+        expect(subject.has_access?('home', 'some_action')).to be_truthy
+      end
+    end
+
     context 'when pass a free action which begin with "_"' do
       it 'should has access' do
         expect(subject.has_access?('home', '_some_action')).to be_truthy
