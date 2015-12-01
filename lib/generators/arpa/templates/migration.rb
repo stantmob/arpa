@@ -39,10 +39,12 @@ class CreateArpaTables < ActiveRecord::Migration
       t.index :repository_profile_id, name: 'profile_role_ids'
     end
 
-    create_join_table :repository_profiles, :users, :force => true do |t|
+    create_join_table :repository_profiles, <%= ":#{@associate_table}" %>, :force => true do |t|
       t.index :repository_profile_id, name: 'profile_user_id'
-      t.index :user_id, name: 'user_profile_id'
+      t.index <%= ":#{@associate_primary_key}"  %>, name: 'user_profile_id'
     end
+
+    add_column <%= ":#{@associate_table}" %>, :is_arpa_admin, :boolean, default: false
 
   end
 end
