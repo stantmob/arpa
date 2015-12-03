@@ -145,7 +145,7 @@ end
 
 **Obs. 1:** The **has_access?** method come from Controller Helper method which Arpa gem has been created.
 
-**Obs. 2:** When you create the **before_filter** you probably wanna skip that callback in somes **controllers* (like login or devise controlelrs). To do this you need set the **skip_before_action** passing as parameter the name of before_filter method as you can see bellow:
+**Obs. 2:** When you create the **before_filter** you probably wanna skip that callback in somes **controllers** (like login or devise controlelrs). To do this you need set the **skip_before_action** passing as parameter the name of before_filter method as you can see bellow:
 
 ```ruby
   skip_before_action :authorize_user
@@ -155,6 +155,13 @@ end
 ## Descriptions Locales for Arpa::Entities::Action
 
 Arpa will use on **description** method from Arpa::Entities::Action a specific Locale.
+
+If you want a **action** of some **Controller** pass without permission on *before_filter* callback. You just need start the name of action with underscode ('_'). For example:
+
+```ruby
+  def _some_free_action_which_not_need_permission
+  end
+```
 
 You should create a locale file to print correctly the descriptions of the actions.
 
@@ -181,6 +188,8 @@ en:
 ## Information
 
 Arpa will add a new column called **is_arpa_admin** as boolean in the associate table with value **false** as default. You must set some user (creating a migration for example), with *is_arpa_admin* as **true** to navigate between the views without be catched on filter verification.
+
+
 
 The routes created by **arpa:controllers** generator will be able to access some paths for each Controller created:
 
