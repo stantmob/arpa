@@ -12,6 +12,7 @@
 *.so
 *.o
 *.a
+*.gem
 mkmf.log
 
 # scm revert files
