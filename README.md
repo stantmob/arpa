@@ -135,16 +135,48 @@ class ApplicationController < ActionController::Base
 	before_filter :authorize_user  
 	
 	 def authorize_user
-    	controller = params[:controller]
-    	action     = params[:action]		
+      controller = params[:controller]
+      action     = params[:action]		
       redirect_to some_url unless has_access?(controller, action)
 	 end
 
 end  
 ```
 
-**Obs.:** The **has_access?** method come from Controller Helper method which Arpa gem has been created.
+**Obs. 1:** The **has_access?** method come from Controller Helper method which Arpa gem has been created.
 
+**Obs. 2:** When you create the **before_filter** you probably wanna skip that callback in somes **controllers* (like login or devise controlelrs). To do this you need set the **skip_before_action** passing as parameter the name of before_filter method as you can see bellow:
+
+```ruby
+  skip_before_action :authorize_user
+```
+
+
+## Descriptions Locales for Arpa::Entities::Action
+
+Arpa will use on **description** method from Arpa::Entities::Action a specific Locale.
+
+You should create a locale file to print correctly the descriptions of the actions.
+
+####Eg.:
+
+```ruby
+en:
+  entities:
+    resources:
+      users: #Here is the name of controller
+        actions:
+          description:
+            #Here is each action of the controller
+            index:   'List of Users'
+            show:    'Show of User'
+            new:     'Access to registration form of User'
+            edit:    'Access to change form of User'
+            create:  'Perform action registering of User'
+            update:  'Perform action update of User'
+            destroy: 'Perform action destroy of User'
+
+```
 
 ## Information
 
