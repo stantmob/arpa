@@ -156,13 +156,6 @@ end
 
 Arpa will use on **description** method from Arpa::Entities::Action a specific Locale.
 
-If you want a **action** of some **Controller** pass without permission on *before_filter* callback. You just need start the name of action with underscode ('_'). For example:
-
-```ruby
-  def _some_free_action_which_not_need_permission
-  end
-```
-
 You should create a locale file to print correctly the descriptions of the actions.
 
 ####Eg.:
@@ -189,6 +182,12 @@ en:
 
 Arpa will add a new column called **is_arpa_admin** as boolean in the associate table with value **false** as default. You must set some user (creating a migration for example), with *is_arpa_admin* as **true** to navigate between the views without be catched on filter verification.
 
+If you want a **action** of some **Controller** pass without permission on *before_filter* callback. You just need start the name of action with underscode ('_'). For example:
+
+```ruby
+  def _some_free_action_which_not_need_permission
+  end
+```
 
 
 The routes created by **arpa:controllers** generator will be able to access some paths for each Controller created:
