@@ -1,6 +1,6 @@
 #Arpa
 
-Authorization Gem for Ruby and Ruby on Rails projects.
+Arpa is an authorization library for Ruby or Ruby on Rails which restricts the accesses in controller and actions. Arpa  will help you to customize all permissions you need dynamically.
 
 ## Installation
 
@@ -39,13 +39,13 @@ If you want a different Model to associate with Arpa::Profile you can pass some 
 
     $ rails generate arpa:install admins
     
-Taht command will create the association with **admins** table with **admin_id** as foreign key.
+That command will create the association with **admins** table with **admin_id** as foreign key.
 
 ####Eg. 2:
 
     $ rails generate arpa:install admins admin_custom_id
     
-Taht command will create the association with **admins** table with **admin_custom_id** as foreign key.
+That command will create the association with **admins** table with **admin_custom_id** as foreign key.
 
 
 After run the generate command, you need to run the migration to create all Arpa tables:
@@ -145,7 +145,7 @@ end
 
 **Obs. 1:** The **has_access?** method come from Controller Helper method which Arpa gem has been created.
 
-**Obs. 2:** When you create the **before_filter** you probably wanna skip that callback in somes **controllers** (like login or devise controlelrs). To do this you need set the **skip_before_action** passing as parameter the name of before_filter method as you can see bellow:
+**Obs. 2:** When you create the **before_filter** you probably wanna skip that callback in somes **controllers** (like login or devise controllers). To do this you need set the **skip_before_action** passing as parameter the name of before_filter method as you can see bellow:
 
 ```ruby
   skip_before_action :authorize_user
@@ -180,7 +180,7 @@ en:
 
 ## Information
 
-Arpa will add a new column called **is_arpa_admin** as boolean in the associate table with value **false** as default. You must set some user (creating a migration for example), with *is_arpa_admin* as **true** to navigate between the views without be catched on filter verification.
+Arpa will add a new column called **is_arpa_admin** as boolean in the associate table with value **false** as default. You must set some user (creating a migration for example), with *is_arpa_admin* as **true** to navigate between the views without be catched by the filter verification.
 
 If you want a **action** of some **Controller** pass without permission on *before_filter* callback. You just need start the name of action with underscode ('_'). For example:
 
