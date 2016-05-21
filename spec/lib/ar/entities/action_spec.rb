@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Arpa::Entities::Action, type: :entity, fast: true do
+  before :all do
+    I18n.backend.store_translations(:en, entities: { resources: { users: { actions: { description: { index: 'List of Users' } } } } } )
+  end
+
   let(:resource) { double(name: 'users') }
 
   subject { Arpa::Entities::Action.new resource: resource, name: 'index'}
