@@ -16,7 +16,8 @@ module Arpa
       end
 
       def resource_name
-        resource.name
+        return resource.name if resource
+        ''
       end
 
       def description
