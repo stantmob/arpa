@@ -22,12 +22,12 @@ module Arpa
       private
 
       def has_session_or_current_user?
-        sess   = try(:session)
-        c_user = try(:current_user)
-        return true if sess && c_user
+        verified_session      = try(:session)
+        verified_current_user = try(:current_user)
+        return true if verified_session && verified_current_user
         log = Logger.new(STDOUT)
-        log.warn("The ApplicationController must has a attribute or method 'session'") unless sess
-        log.warn("The ApplicationController must has a attribute or method 'current_user'") unless c_user
+        log.warn("The ApplicationController must has a attribute or method 'session'") unless verified_session
+        log.warn("The ApplicationController must has a attribute or method 'current_user'") unless verified_current_user
         false
       end
 
