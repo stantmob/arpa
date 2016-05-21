@@ -10,11 +10,17 @@ module Arpa
         @id          = attrs[:id]
         @name        = attrs[:name]
         @description = attrs[:description]
-        @role_ids    = attrs[:role_ids] || []
-        @roles       = attrs[:roles] || []
+        @role_ids    = default_value_to_nil_or_empty(attrs[:role_ids], [])
+        @roles       = default_value_to_nil_or_empty(attrs[:roles], [])
         @created_at  = attrs[:created_at]
         @updated_at  = attrs[:updated_at]
-        @removed     = attrs[:removed] || false
+        @removed     = default_value_to_nil_or_empty(attrs[:removed], false)
+      end
+
+      private
+      def default_value_to_nil_or_empty(attr_value, default_value)
+        return attr_value if attr_value.present?
+        default_value
       end
 
     end
