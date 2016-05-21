@@ -5,7 +5,7 @@ module Arpa
       attr_reader :permissions
 
       def initialize(actions)
-        @actions   = actions
+        @actions     = actions
         @permissions = Array.new
         build_permissions
       end
