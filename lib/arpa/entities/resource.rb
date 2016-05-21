@@ -12,7 +12,7 @@ module Arpa
         @name       = attrs[:name]
         @created_at = attrs[:created_at]
         @updated_at = attrs[:updated_at]
-        @actions    = attrs[:actions] || []
+        @actions    = attrs[:actions].present? ? attrs[:actions] : []
       end
 
       def build_correct_name
