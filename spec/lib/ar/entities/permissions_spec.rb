@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Arpa::Entities::Permissions, type: :presenter, fast: true do
+describe Arpa::Entities::Permissions, type: :entity, fast: true do
   let(:action_001) { double name: 'index', resource_name: 'users' }
   let(:action_002) { double name: 'show', resource_name: 'users' }
   let(:action_003) { double name: 'show', resource_name: 'users' }
@@ -34,26 +34,40 @@ describe Arpa::Entities::Permissions, type: :presenter, fast: true do
   end
 
   describe '#has_permission?' do
-    let(:resource_name) { 'users' }
     let(:result) { subject.has_permission?(resource_name, action_name) }
 
-    context 'when has' do
-      let(:action_name) { 'index' }
+    context 'when pass a resource name with permission' do
+      let(:resource_name) { 'users' }
 
-      it 'should return true' do
-        expect(result).to be_truthy
+      context 'when pass an action with permission' do
+        let(:action_name) { 'index' }
+
+        it 'should return true' do
+          expect(result).to be_truthy
+        end
       end
 
-    end
+      context 'when pass an action with no permission' do
+        let(:action_name) { 'index_old' }
 
-    context 'when has not' do
-      let(:action_name) { 'index_old' }
-
-      it 'should return false' do
-        expect(result).to be_falsey
+        it 'should return false' do
+          expect(result).to be_falsey
+        end
       end
-
     end
+
+    context 'when pass a resource name with no permission' do
+      let(:resource_name) { 'users_2' }
+
+      context 'when pass some action' do
+        let(:action_name) { 'index' }
+
+        it 'should return false' do
+          expect(result).to be_falsey
+        end
+      end
+    end
+
   end
 
 end
