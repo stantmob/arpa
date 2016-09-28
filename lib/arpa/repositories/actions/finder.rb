@@ -5,19 +5,18 @@ module Arpa
         include Arpa::Repositories::Base
 
         def by_name_and_resource(name, resource_id)
-          record = repository_class.where(name: name, repository_resource_id: resource_id).first
+          record = repository_class.find_by(name: name, repository_resource_id: resource_id)
           mapper_instance.map_to_entity(record) if record
         end
 
-        def permissions(profile_ids)
-         records = repository_class.joins(roles: :profiles)
-           .where(repository_profiles: {id: profile_ids})
-
-          actions = records.collect do |action|
-            mapper_instance.map_to_entity(action)
-          end
-
-          Arpa::Entities::Permissions.new(actions)
+        def permission(resource_name, action_name, profile_ids)
+          record = repository_class
+            .distinct(true)
+            .joins(:resource, roles: :profiles)
+            .find_by(repository_profiles: {id: profile_ids},
+                     repository_resources: {name: resource_name},
+                     name: action_name)
+          mapper_instance.map_to_entity(record) if record
         end
 
         def mapper_instance
