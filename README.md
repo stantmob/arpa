@@ -105,13 +105,8 @@ To verify if a user has access to some :controler and :action, use the following
 has_access?('users', 'index')
 ```
 
-To reset the session permissions created by Arpa, use the following helper:
 
-```ruby
-reset_permissions
-```
-
-**Obs.:** To that helper method works. You must have **:session** (In Rails app already has) and **:current_user** attribute or method.
+**Obs.:** To that helper method works. You must have **:current_user** attribute or method.
 
 ---
 If you want use that methods inside another object you should use the **Arpa::Services::Verifier** class;
@@ -119,9 +114,8 @@ If you want use that methods inside another object you should use the **Arpa::Se
 You just need pass as arguments the :session and :current_user:
 
 ```ruby
-verifier = Arpa::Services::Verifier.new(session, current_user)
+verifier = Arpa::Services::Verifier.new(current_user)
 verifier.has_access?('users', 'index')
-verifier.reset_permissions
 ```
 
 ### Controller Filter
