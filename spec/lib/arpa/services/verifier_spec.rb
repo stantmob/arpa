@@ -1,20 +1,9 @@
 require 'spec_helper'
 
 describe Arpa::Services::Verifier do
-  let(:session) { {} }
   let(:current_user) { double is_arpa_admin?: false, profile_ids: [1,2,3] }
 
-  subject(:verifier) { Arpa::Services::Verifier.new(session, current_user) }
-
-  describe 'cleaning session of permissions' do
-    let(:session) { {entity_permissions: [ {'resource': 'users', 'action': 'index'} ] } }
-
-    before { verifier.reset_permissions }
-
-    it 'session[:entity_permissions] should be set to nil' do
-      expect(session[:entity_permissions]).to be_nil
-    end
-  end
+  subject(:verifier) { Arpa::Services::Verifier.new(current_user) }
 
   describe '#has_access?' do
 
@@ -35,12 +24,11 @@ describe Arpa::Services::Verifier do
     context 'when pass a non free action' do
       let(:action_finder_class) { Arpa::Repositories::Actions::Finder }
       let(:action_finder)       { instance_double action_finder_class }
-      let(:entity_permissions)  { double }
+      let(:action)              { double }
 
       before do
         allow(action_finder_class).to receive(:new).and_return(action_finder)
-        allow(action_finder).to receive(:permissions).with([1,2,3]).and_return(entity_permissions)
-        allow(entity_permissions).to receive(:has_permission?).with('users', 'index')
+        allow(action_finder).to receive(:permission).and_return(action)
 
         subject.has_access?('users', 'index')
       end
@@ -50,11 +38,7 @@ describe Arpa::Services::Verifier do
       end
 
       it 'should be called :permissions from Arpa::Repositories::Actions::Finder' do
-        expect(action_finder).to have_received(:permissions).with([1,2,3]).once
-      end
-
-      it 'should be called :has_permission? from session[:entity_permissions]' do
-        expect(entity_permissions).to have_received(:has_permission?).with('users', 'index').once
+        expect(action_finder).to have_received(:permission).with('users', 'index', [1,2,3]).once
       end
 
     end

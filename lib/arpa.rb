@@ -12,7 +12,6 @@ require "arpa/entities/resource"
 require "arpa/entities/action"
 require "arpa/entities/role"
 require "arpa/entities/profile"
-require "arpa/entities/permissions"
 
 # Mappers
 require "arpa/data_mappers/base"
