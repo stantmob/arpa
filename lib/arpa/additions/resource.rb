@@ -12,7 +12,7 @@ module Arpa
       end
 
       def verifier
-        @verifier ||= Arpa::Services::Verifier.new(session, current_user)
+        @verifier ||= Arpa::Services::Verifier.new(current_user)
       end
 
       private
