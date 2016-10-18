@@ -36,20 +36,4 @@ describe Arpa::Additions::Resource, type: :addition, fast: true do
     end
   end
 
-   describe '#reset_permissions' do
-
-     let(:setup) do
-      allow(verifier).to receive(:reset_permissions)
-      resource_implementation.reset_permissions
-    end
-
-    it 'should call :new from Arpa::Services::Verifier' do
-      expect(Arpa::Services::Verifier).to have_received(:new).once
-    end
-
-    it 'verifier should call :reset_permissions once' do
-      expect(verifier).to have_received(:reset_permissions).once
-    end
-  end
-
 end
