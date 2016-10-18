@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'database_cleaner', '~> 0'
   spec.add_development_dependency 'pry', '~> 0'
 
-  spec.add_dependency 'activerecord', '~> 4.2', '>= 4.2.0'
-  spec.add_dependency 'railties', '>= 4.2.0', '< 5'
+  spec.add_dependency 'activerecord', '>= 4.2.0'
+  spec.add_dependency 'railties', '>= 4.2.0'
 
 end
