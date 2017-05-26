@@ -24,6 +24,16 @@
   </div>
 
   <div class="field">
+    <%= f.label :entity_id %><br>
+    <%= f.text_field :entity_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :entity_class %><br>
+    <%= f.text_field :entity_class %>
+  </div>
+
+  <div class="field">
 
     <% @roles.each do |role|  %>
     <div>

@@ -97,7 +97,7 @@ module Arpa
 
     def profile_params
       params.require(:profile).
-        permit(:id, :name, :description, role_ids: [])
+        permit(:id, :name, :description, :entity_id, :entity_class, role_ids: [])
     end
 
   end

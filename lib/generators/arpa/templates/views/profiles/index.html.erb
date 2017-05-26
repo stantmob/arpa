@@ -7,6 +7,8 @@
     <tr>
       <th>Name</th>
       <th>Description</th>
+      <th>Entity ID</th>
+      <th>Entity Class</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +18,8 @@
       <tr>
         <td><%= profile.name %></td>
         <td><%= profile.description %></td>
+        <td><%= profile.entity_id %></td>
+        <td><%= profile.entity_class %></td>
         <td><%= link_to 'Show', profile_path(profile.id) %></td>
         <td><%= link_to 'Edit', edit_profile_path(profile.id) %></td>
         <td><%= link_to 'Destroy', profile_path(profile.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
