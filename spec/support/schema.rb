@@ -55,4 +55,7 @@ ActiveRecord::Schema.define do
     t.index :user_id, name: 'user_profile_id'
   end
 
+  add_column :repository_profiles, :entity_id, :integer, default: nil
+  add_column :repository_profiles, :entity_class, :string, default: nil
+
 end

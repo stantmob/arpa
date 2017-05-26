@@ -15,6 +15,14 @@ module Arpa
           end
         end
 
+        def all_by_entity(entity_id, entity_class)
+          repository_class
+            .where("( (entity_id is null AND entity_class is null) OR (entity_id = '#{entity_id}' AND entity_class = '#{entity_class}') )" )
+            .collect do |record|
+              mapper_instance.map_to_entity(record)
+          end
+        end
+
         def mapper_instance
           Arpa::DataMappers::ProfileMapper.instance
         end

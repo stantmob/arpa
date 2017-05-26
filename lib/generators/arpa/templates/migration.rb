@@ -46,5 +46,8 @@ class CreateArpaTables < ActiveRecord::Migration
 
     add_column <%= ":#{@associate_table}" %>, :is_arpa_admin, :boolean, default: false
 
+    add_column :repository_profiles, :entity_id, :integer, default: nil
+    add_column :repository_profiles, :entity_class, :string, default: nil
+
   end
 end
