@@ -1,7 +1,7 @@
 module Arpa
   module Generators
     class InstallGenerator < Rails::Generators::Base
-      include Rails::Generators::Migration
+      include Rails::Generators::Migration[5.1]
 
       source_root File.expand_path("..", __FILE__)
 
