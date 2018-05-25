@@ -1,7 +1,7 @@
 require 'active_record'
 require 'arpa'
 require 'database_cleaner'
-require 'factory_girl'
+require 'factory_bot'
 require 'support/repositories/test_repository'
 require 'i18n'
 
@@ -16,8 +16,8 @@ I18n.reload!
 
 RSpec.configure do |config|
 
-  config.include FactoryGirl::Syntax::Methods
-  FactoryGirl.find_definitions
+  config.include FactoryBot::Syntax::Methods
+  FactoryBot.find_definitions
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
