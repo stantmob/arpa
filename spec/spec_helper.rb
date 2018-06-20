@@ -11,11 +11,10 @@ ActiveRecord::Base.establish_connection(adapter:  'sqlite3',
 load File.dirname(__FILE__) + '/support/schema.rb'
 
 I18n.config.enforce_available_locales = true
-I18n.load_path << File.expand_path('../../lib/config/locales/arpa.en.yml', __FILE__)
+I18n.load_path << File.expand_path('../lib/config/locales/arpa.en.yml', __dir__)
 I18n.reload!
 
 RSpec.configure do |config|
-
   config.include FactoryBot::Syntax::Methods
   FactoryBot.find_definitions
 
@@ -29,5 +28,4 @@ RSpec.configure do |config|
       example.run
     end
   end
-
 end

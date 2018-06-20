@@ -9,29 +9,27 @@ end
 class ManagerImplementationTest
   include Arpa::Services::Base
 
-  def create_raise callback
+  def create_raise(callback)
     manager_action callback do
-      raise Exceptions::RecordInvalid.new 'some error'
+      raise Exceptions::RecordInvalid, 'some error'
     end
   end
 
-  def create callback
+  def create(callback)
     manager_action callback do
       'success'
     end
   end
-
 end
 
 describe Arpa::Services::Base, type: :service, fast: true do
-
   let(:manager_implementation) { ManagerImplementationTest.new }
-  let(:callback) {
+  let(:callback) do
     {
-      success: -> (result) {},
-      fail: -> (exception){}
+      success: ->(result) {},
+      fail: ->(exception) {}
     }
-  }
+  end
 
   describe 'calling .transaction' do
     before do
@@ -47,7 +45,6 @@ describe Arpa::Services::Base, type: :service, fast: true do
       it 'transaction_class should call .transaction' do
         expect(transaction_class).to have_received(:transaction)
       end
-
     end
 
     context 'when use a custom transaction_class' do
@@ -57,7 +54,6 @@ describe Arpa::Services::Base, type: :service, fast: true do
       it 'transaction_class should call .transaction' do
         expect(transaction_class).to have_received(:transaction)
       end
-
     end
   end
 
@@ -83,12 +79,9 @@ describe Arpa::Services::Base, type: :service, fast: true do
         manager_implementation.create_raise callback
       end
 
-
       it 'should call the callback[:fail] with Exceptions::RecordInvalid' do
-        expect(callback[:fail]).to have_received(:call).with(kind_of StandardError)
+        expect(callback[:fail]).to have_received(:call).with(kind_of(StandardError))
       end
-
     end
   end
-
 end

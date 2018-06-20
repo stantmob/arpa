@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Arpa::Services::Resources::Create::ResourceCreator, type: :service, fast: true do
-
   let(:resource_entity_class) { Arpa::Entities::Resource }
   let(:resource)              { double full_name: 'UsersController' }
   let(:resourceable)          { double }
@@ -11,7 +10,7 @@ describe Arpa::Services::Resources::Create::ResourceCreator, type: :service, fas
   let(:validator_class)  { Arpa::Validators::ResourceValidator }
   let(:validator)        { instance_double validator_class }
 
-  let(:finder_repo_class) { Arpa::Repositories::Resources::Finder}
+  let(:finder_repo_class) { Arpa::Repositories::Resources::Finder }
   let(:finder_repo)       { instance_double finder_repo_class }
 
   before do
@@ -24,7 +23,6 @@ describe Arpa::Services::Resources::Create::ResourceCreator, type: :service, fas
   end
 
   describe 'creating a new resource' do
-
     context 'when resource is invalid' do
       let(:errors) { instance_double('ActiveModel::Errors') }
 
@@ -40,7 +38,6 @@ describe Arpa::Services::Resources::Create::ResourceCreator, type: :service, fas
           expect(error.errors).not_to be_nil
         }
       end
-
     end
 
     context 'when resouce already exists' do
@@ -71,7 +68,6 @@ describe Arpa::Services::Resources::Create::ResourceCreator, type: :service, fas
       end
 
       context 'when build the resource with resourceable' do
-
         it 'entity resource should call new method' do
           expect(resource_entity_class).to have_received(:new).once
         end
@@ -80,8 +76,6 @@ describe Arpa::Services::Resources::Create::ResourceCreator, type: :service, fas
           expect(resource).to have_received(:build_correct_name).once
         end
       end
-
     end
-
   end
 end

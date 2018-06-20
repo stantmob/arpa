@@ -5,9 +5,8 @@ module Arpa
       repository_class 'Arpa::Repositories::Actions::RepositoryAction'
 
       attrs_to_entity :id, :resource_id, :name, :created_at, :updated_at,
-        resource: {mapper: 'Arpa::DataMappers::ResourceMapper'}
+                      resource: { mapper: 'Arpa::DataMappers::ResourceMapper' }
       attrs_to_record :id, :resource_id, :name, :created_at, :updated_at
-
     end
   end
 end

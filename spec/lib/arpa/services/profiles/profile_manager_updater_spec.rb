@@ -1,11 +1,10 @@
 require 'spec_helper'
 
 describe Arpa::Services::Profiles::ProfileManagerUpdater, type: :service, fast: true do
-
   let(:profile_updater) { double }
-  let(:params)          { {profile: {name: 'profile_name', description: 'profile_description', role_ids: [1, 2]}} }
+  let(:params)          { { profile: { name: 'profile_name', description: 'profile_description', role_ids: [1, 2] } } }
   let(:success_proc)    { ->(r) {} }
-  let(:callback)        { {success: success_proc, fail: ->(e) {raise e} } }
+  let(:callback)        { { success: success_proc, fail: ->(e) { raise e } } }
 
   let(:setup_updaters) do
     allow(Arpa::Services::Profiles::Update::ProfileUpdater).to receive(:new).and_return(profile_updater)
@@ -27,5 +26,4 @@ describe Arpa::Services::Profiles::ProfileManagerUpdater, type: :service, fast: 
   it 'profile_updater should call :update with parameters' do
     expect(profile_updater).to have_received(:update).with(params[:profile]).once
   end
-
 end

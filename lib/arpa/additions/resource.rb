@@ -1,7 +1,6 @@
 module Arpa
   module Additions
     module Resource
-
       def self.included(base)
         base.helper_method :has_access?
       end
@@ -24,7 +23,6 @@ module Arpa
         log.warn("The ApplicationController must has a attribute or method 'current_user'") unless verified_current_user
         false
       end
-
     end
   end
 end

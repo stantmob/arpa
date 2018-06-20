@@ -1,11 +1,10 @@
 require 'spec_helper'
 
 describe Arpa::Services::Profiles::ProfileManagerRemover, type: :service, fast: true do
-
   let(:profile_remover) { double }
   let(:profile)         { double }
   let(:success_proc)    { ->(r) {} }
-  let(:callback)        { {success: success_proc, fail: ->(e) {raise e} } }
+  let(:callback)        { { success: success_proc, fail: ->(e) { raise e } } }
 
   let(:setup_updaters) do
     allow(Arpa::Services::Profiles::Remove::ProfileRemover).to receive(:new).and_return(profile_remover)
@@ -25,7 +24,7 @@ describe Arpa::Services::Profiles::ProfileManagerRemover, type: :service, fast: 
   end
 
   context 'when is to destroy' do
-    let(:params) { {profile: profile} }
+    let(:params) { { profile: profile } }
 
     it 'profile_remover should call :remove with profile as parameter' do
       expect(profile_remover).to have_received(:remove).with(profile, nil).once
@@ -33,12 +32,10 @@ describe Arpa::Services::Profiles::ProfileManagerRemover, type: :service, fast: 
   end
 
   context 'when is to disable' do
-    let(:params) { {profile: profile, disable: true} }
+    let(:params) { { profile: profile, disable: true } }
 
     it 'profile_remover should call :remove with profile and disable: true as parameter' do
       expect(profile_remover).to have_received(:remove).with(profile, true).once
     end
-
   end
-
 end

@@ -1,7 +1,6 @@
 module Arpa
   module Entities
     class Resource
-
       attr_reader :id, :full_name, :name, :created_at, :updated_at, :actions
 
       def initialize(attrs = {})
@@ -24,10 +23,10 @@ module Arpa
 
       def adjust_name(name)
         parts_of_name   = name.split '::'
-        refactored_name = String.new
+        refactored_name = ''
 
         parts_of_name.each_with_index do |part, index|
-          refactored_name << '/' if index > 0
+          refactored_name << '/' if index.positive?
           refactored_name << change_to_snake_case(part)
         end
 
@@ -42,17 +41,16 @@ module Arpa
 
       def change_to_snake_case(name)
         parts_of_name   = name.split(/(?=[A-Z])/) # Split at CamelCase
-        refactored_name = String.new
+        refactored_name = ''
 
         parts_of_name.each_with_index do |part, index|
           part.downcase!
-          refactored_name << '_' if index > 0
+          refactored_name << '_' if index.positive?
           refactored_name << part
         end
 
         refactored_name
       end
-
     end
   end
 end

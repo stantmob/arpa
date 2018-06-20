@@ -11,5 +11,4 @@ describe Arpa::Validators::ActionValidator, type: :validator, fast: true do
     it { expect(subject.errors).to be_added(:name, :blank) }
     it { expect(subject.errors).to be_added(:resource_id, :blank) }
   end
-
 end

@@ -1,14 +1,18 @@
 require 'spec_helper'
 
 class ResourceImplementation
-  def self.helper_method(args);end
+  def self.helper_method(args); end
   include Arpa::Additions::Resource
-  def session;'';end
-  def current_user;'';end
+  def session
+    ''
+  end
+
+  def current_user
+    ''
+  end
 end
 
 describe Arpa::Additions::Resource, type: :addition, fast: true do
-
   let(:resource_implementation) { ResourceImplementation.new }
 
   let(:verifier) { double }
@@ -21,7 +25,6 @@ describe Arpa::Additions::Resource, type: :addition, fast: true do
   end
 
   describe '#has_access?' do
-
     let(:setup) do
       allow(verifier).to receive(:has_access?)
       resource_implementation.has_access?(resource, action)
@@ -35,5 +38,4 @@ describe Arpa::Additions::Resource, type: :addition, fast: true do
       expect(verifier).to have_received(:has_access?).with(resource, action).once
     end
   end
-
 end

@@ -16,7 +16,6 @@ module Arpa
         def repository_class
           RepositoryRole
         end
-
       end
     end
   end

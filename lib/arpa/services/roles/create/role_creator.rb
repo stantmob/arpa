@@ -3,7 +3,6 @@ module Arpa
     module Roles
       module Create
         class RoleCreator
-
           def create(params)
             role = role_instance(params)
             validate_role(role)
@@ -24,10 +23,8 @@ module Arpa
           def creator_repo
             @creator_repo ||= Arpa::Repositories::Roles::Creator.new
           end
-
         end
       end
     end
   end
 end
-

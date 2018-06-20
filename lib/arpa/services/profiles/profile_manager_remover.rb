@@ -17,7 +17,6 @@ module Arpa
         def profile_remover
           @profile_remover ||= Arpa::Services::Profiles::Remove::ProfileRemover.new
         end
-
       end
     end
   end

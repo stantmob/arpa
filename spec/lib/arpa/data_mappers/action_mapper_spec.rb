@@ -4,7 +4,7 @@ describe Arpa::DataMappers::ActionMapper, type: :mapper, fast: true do
   let(:mapper) { Arpa::DataMappers::ActionMapper.instance }
 
   describe 'mapping to record instance' do
-    let(:entity)          { Arpa::Entities::Action.new(name: 'index', resource_id: 1)}
+    let(:entity)          { Arpa::Entities::Action.new(name: 'index', resource_id: 1) }
     let(:record_instance) { mapper.map_to_record(entity) }
 
     it 'record_instance should be an instance of ActiveRecord::Base' do
@@ -19,7 +19,6 @@ describe Arpa::DataMappers::ActionMapper, type: :mapper, fast: true do
       expect(record_instance.resource_id).to be == 1
       expect(record_instance.repository_resource_id).to be == 1
     end
-
   end
 
   describe 'mapping to entity instance' do
@@ -42,5 +41,4 @@ describe Arpa::DataMappers::ActionMapper, type: :mapper, fast: true do
       expect(entity_instance.resource).to be_an Arpa::Entities::Resource
     end
   end
-
 end

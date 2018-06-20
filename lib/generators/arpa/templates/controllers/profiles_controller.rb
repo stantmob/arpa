@@ -1,6 +1,6 @@
 module Arpa
   class ProfilesController < ApplicationController
-    before_action :set_profile, only: [:show, :edit, :update, :remove]
+    before_action :set_profile, only: %i[show edit update remove]
 
     # GET /profiles
     def index
@@ -8,8 +8,7 @@ module Arpa
     end
 
     # GET /profiles/1
-    def show
-    end
+    def show; end
 
     # GET /profiles/new
     def new
@@ -24,45 +23,41 @@ module Arpa
 
     # POST /profiles
     def create
-      profile_creator.create({profile: profile_params}, {
-        success: -> (profile) {
-          redirect_to profile_path(profile.id), notice: I18n.t('flash.actions.create_profile.notice')
-        },
-        fail: -> (error) {
-          @profile = Arpa::Entities::Profile.new(profile_params)
-          @error = error
-          all_roles
-          render :new
-        }
-      })
+      profile_creator.create({ profile: profile_params },
+                             success: lambda { |profile|
+                               redirect_to profile_path(profile.id), notice: I18n.t('flash.actions.create_profile.notice')
+                             },
+                             fail: lambda { |error|
+                                     @profile = Arpa::Entities::Profile.new(profile_params)
+                                     @error = error
+                                     all_roles
+                                     render :new
+                                   })
     end
 
     # PATCH/PUT /profiles/1
     def update
-      profile_updater.update({profile: profile_params}, {
-        success: -> (profile) {
-          redirect_to profile_path(profile.id), notice: I18n.t('flash.actions.update_profile.notice')
-        },
-        fail: -> (error) {
-          @profile = Arpa::Entities::Profile.new(profile_params)
-          @error = error
-          all_roles
-          render :edit
-        }
-      })
+      profile_updater.update({ profile: profile_params },
+                             success: lambda { |profile|
+                               redirect_to profile_path(profile.id), notice: I18n.t('flash.actions.update_profile.notice')
+                             },
+                             fail: lambda { |error|
+                                     @profile = Arpa::Entities::Profile.new(profile_params)
+                                     @error = error
+                                     all_roles
+                                     render :edit
+                                   })
     end
 
     # DELETE /profiles/1
     def remove
-      profile_remover.remove({profile: @profile}, {
-        success: -> (profile) {
-          redirect_to profiles_path, notice: I18n.t('flash.actions.remove_profile.notice')
-        },
-        fail: -> (error) {
-          redirect_to profiles_path, notice: I18n.t('flash.actions.remove_profile.alert')
-        }
-      })
-
+      profile_remover.remove({ profile: @profile },
+                             success: lambda { |_profile|
+                               redirect_to profiles_path, notice: I18n.t('flash.actions.remove_profile.notice')
+                             },
+                             fail: lambda { |_error|
+                                     redirect_to profiles_path, notice: I18n.t('flash.actions.remove_profile.alert')
+                                   })
     end
 
     private
@@ -96,9 +91,8 @@ module Arpa
     end
 
     def profile_params
-      params.require(:profile).
-        permit(:id, :name, :description, :entity_id, :entity_class, role_ids: [])
+      params.require(:profile)
+            .permit(:id, :name, :description, :entity_id, :entity_class, role_ids: [])
     end
-
   end
 end

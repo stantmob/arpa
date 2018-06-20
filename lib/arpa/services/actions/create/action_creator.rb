@@ -3,7 +3,6 @@ module Arpa
     module Actions
       module Create
         class ActionCreator
-
           def create_many(params)
             params[:actions_names].collect do |action_name|
               create(action_params(params, action_name))
@@ -23,7 +22,7 @@ module Arpa
           private
 
           def action_params(params, action_name)
-            {name: action_name, resource_id: params[:resource].id}
+            { name: action_name, resource_id: params[:resource].id }
           end
 
           def action_instance(params)
@@ -42,7 +41,6 @@ module Arpa
           def creator_repo
             @creator_repo ||= Arpa::Repositories::Actions::Creator.new
           end
-
         end
       end
     end

@@ -4,9 +4,7 @@ module Arpa
       include Base
 
       def create(entity)
-        save(entity) do |record|
-          record.save!
-        end
+        save(entity, &:save!)
       end
 
       def update(entity)
@@ -24,10 +22,10 @@ module Arpa
 
       private
 
-      def save(entity, &block)
-        record = mapper_instance.map_to_record( entity)
+      def save(entity)
+        record = mapper_instance.map_to_record(entity)
         begin
-          block.call(record)
+          yield(record)
         rescue ActiveRecord::RecordInvalid => invalid
           raise Arpa::Exceptions::RecordInvalid.new(message: invalid.message, errors: invalid.record.errors)
         end
@@ -35,10 +33,7 @@ module Arpa
         mapper_instance.map_to_entity(record)
       end
 
-      def post_update(entity, record)
-      end
-
+      def post_update(entity, record); end
     end
   end
 end
-

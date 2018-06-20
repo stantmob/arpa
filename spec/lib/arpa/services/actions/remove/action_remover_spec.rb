@@ -1,15 +1,14 @@
 require 'spec_helper'
 
 describe Arpa::Services::Actions::Remove::ActionRemover, type: :service, fast: true do
-
   let(:action_001) { double name: 'index' }
   let(:action_002) { double name: 'old_index' }
-  let(:actions)    { [action_001, action_002]}
+  let(:actions)    { [action_001, action_002] }
   let(:resource)   { double actions: actions }
 
-  let(:actions_names) { ['index', 'show'] }
+  let(:actions_names) { %w[index show] }
 
-  let(:params) { {resource: resource, actions_names: actions_names} }
+  let(:params) { { resource: resource, actions_names: actions_names } }
 
   describe 'removing nonexistent actions' do
     let(:remover_repo_class) { Arpa::Repositories::Actions::Remover }
@@ -30,7 +29,5 @@ describe Arpa::Services::Actions::Remove::ActionRemover, type: :service, fast: t
       expect(remover_repo).to have_received(:destroy).once
       expect(remover_repo).to have_received(:destroy).with(action_002).once
     end
-
   end
-
 end

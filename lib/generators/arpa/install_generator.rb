@@ -3,7 +3,7 @@ module Arpa
     class InstallGenerator < Rails::Generators::Base
       include Rails::Generators::Migration
 
-      source_root File.expand_path("..", __FILE__)
+      source_root File.expand_path(__dir__)
 
       desc <<-DESC.strip_heredoc
        The Name of table to create the associate table.
@@ -11,7 +11,7 @@ module Arpa
        E.g. users, admins.
 
        By default is 'users'
-       DESC
+      DESC
 
       argument :associate_table, required: false
 
@@ -25,11 +25,11 @@ module Arpa
       argument :associate_primary_key, required: false
 
       def self.next_migration_number(dirname)
-        return Time.new.utc.strftime("%Y%m%d%H%M%S") if ActiveRecord::Base.timestamped_migrations
-        "%.3d" % (current_migration_number(dirname) + 1)
+        return Time.new.utc.strftime('%Y%m%d%H%M%S') if ActiveRecord::Base.timestamped_migrations
+        format('%.3d', (current_migration_number(dirname) + 1))
       end
 
-      desc "Create a migrate file with all necessery tables including the associate table."
+      desc 'Create a migrate file with all necessery tables including the associate table.'
 
       def create_migrate_files
         @associate_table       ||= 'users'
@@ -40,7 +40,6 @@ module Arpa
       def copy_locales
         copy_file '../../config/locales/arpa.en.yml', 'config/locales/arpa.en.yml'
       end
-
     end
   end
 end
