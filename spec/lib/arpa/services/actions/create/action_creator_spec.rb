@@ -1,19 +1,18 @@
 require 'spec_helper'
 
 describe Arpa::Services::Actions::Create::ActionCreator, type: :service, fast: true do
-
   let(:action_entity_class) { Arpa::Entities::Action }
   let(:action)              { double }
   let(:resource)            { double id: 1 }
-  let(:actions_names)       { ['index', 'new'] }
-  let(:params)              { {resource: resource, actions_names: actions_names} }
+  let(:actions_names)       { %w[index new] }
+  let(:params)              { { resource: resource, actions_names: actions_names } }
   let(:action_found)        { nil }
 
   let(:actions_created) { subject.create_many(params) }
   let(:validator_class) { Arpa::Validators::ActionValidator }
   let(:validator)       { instance_double validator_class }
 
-  let(:finder_repo_class) { Arpa::Repositories::Actions::Finder}
+  let(:finder_repo_class) { Arpa::Repositories::Actions::Finder }
   let(:finder_repo)       { instance_double finder_repo_class }
 
   before do
@@ -25,7 +24,6 @@ describe Arpa::Services::Actions::Create::ActionCreator, type: :service, fast: t
   end
 
   describe 'creating a new action' do
-
     context 'when resource is invalid' do
       let(:errors) { instance_double('ActiveModel::Errors') }
 
@@ -41,7 +39,6 @@ describe Arpa::Services::Actions::Create::ActionCreator, type: :service, fast: t
           expect(error.errors).not_to be_nil
         }
       end
-
     end
 
     context 'when actino already exists' do
@@ -50,7 +47,6 @@ describe Arpa::Services::Actions::Create::ActionCreator, type: :service, fast: t
       it 'should return the action found' do
         expect(actions_created).to eq [action_found, action_found]
       end
-
     end
 
     context 'when resource is valid' do
@@ -73,16 +69,11 @@ describe Arpa::Services::Actions::Create::ActionCreator, type: :service, fast: t
       end
 
       context 'when build an instance of action' do
-
         it 'entity action should call new method' do
-          expect(action_entity_class).to have_received(:new).with({resource_id: resource.id, name: 'index'}).once
-          expect(action_entity_class).to have_received(:new).with({resource_id: resource.id, name: 'new'}).once
+          expect(action_entity_class).to have_received(:new).with(resource_id: resource.id, name: 'index').once
+          expect(action_entity_class).to have_received(:new).with(resource_id: resource.id, name: 'new').once
         end
-
       end
-
     end
-
   end
-
 end

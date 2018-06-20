@@ -15,7 +15,6 @@ module Arpa
         def role_updater
           @role_updater ||= Arpa::Services::Roles::Update::RoleUpdater.new
         end
-
       end
     end
   end

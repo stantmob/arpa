@@ -1,19 +1,16 @@
 module Arpa
   module Services
     module Base
-
       def self.included(base)
         base.extend ClassMethods
       end
 
-      def manager_action callback, &block
+      def manager_action(callback)
         begin_transaction do
-          begin
-            result = block.call
-            callback[:success].call result
-          rescue => e
-            callback[:fail].call e
-          end
+          result = yield
+          callback[:success].call result
+        rescue StandardError => e
+          callback[:fail].call e
         end
       end
 
@@ -26,7 +23,7 @@ module Arpa
       end
 
       module ClassMethods
-        def repository_transaction repository_transaction_class
+        def repository_transaction(repository_transaction_class)
           @repository_transaction = repository_transaction_class
         end
 
@@ -34,7 +31,6 @@ module Arpa
           @repository_transaction ||= 'ActiveRecord::Base'
           @repository_transaction.constantize
         end
-
       end
     end
   end

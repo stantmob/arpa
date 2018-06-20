@@ -12,5 +12,4 @@ describe Arpa::Validators::ProfileValidator, type: :validator, fast: true do
     it { expect(subject.errors).to be_added(:description, :blank) }
     it { expect(subject.errors).to be_added(:role_ids, :blank) }
   end
-
 end

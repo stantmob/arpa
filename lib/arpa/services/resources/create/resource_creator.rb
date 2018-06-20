@@ -3,7 +3,6 @@ module Arpa
     module Resources
       module Create
         class ResourceCreator
-
           def create(resourceable)
             resource = resource_instance(resourceable)
 
@@ -34,7 +33,6 @@ module Arpa
           def creator_repo
             @creator_repo ||= Arpa::Repositories::Resources::Creator.new
           end
-
         end
       end
     end

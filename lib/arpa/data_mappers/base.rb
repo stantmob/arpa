@@ -3,14 +3,14 @@ module Arpa
     class Base
       include Singleton
 
-      def map_to_record(entity, options={})
+      def map_to_record(entity, options = {})
         options[:map_association_to] ||= :map_to_record
         attrs_to_record = self.class._attrs_to_record
         attributes      = attributes_from(entity, attrs_to_record, options)
         self.class._repository_class.new(attributes)
       end
 
-      def map_to_entity(record, options={})
+      def map_to_entity(record, options = {})
         options[:map_association_to] ||= :map_to_entity
         attrs_to_entity = self.class._attrs_to_entity
         attributes      = attributes_from(record, attrs_to_entity, options)
@@ -19,37 +19,37 @@ module Arpa
 
       private
 
-      def attributes_from(object, attrs_to_map, options={})
+      def attributes_from(object, attrs_to_map, options = {})
         options[:map_association_to] = options.fetch(:map_association_to, :map_to_entity)
         options[:map_association]    = options.fetch(:map_association, true)
 
         attrs_to_map ||= self.class._attributes_to_map
 
         begin
-           build_hash_attributes(attrs_to_map, object, options)
-        rescue => e
+          build_hash_attributes(attrs_to_map, object, options)
+        rescue StandardError => e
           raise StandardError, "#{self.class} -> #{e.message}"
         end
       end
 
       def build_hash_attributes(attributes_to_map, object, options)
-        builder_attribute = build_hash_attribute.curry.(object, options)
+        builder_attribute = build_hash_attribute.curry.call(object, options)
 
-        attributes_to_map.collect { |attr_key|
-          builder_attribute.(attr_key)
-        }.reduce({}, :merge)
+        attributes_to_map.collect do |attr_key|
+          builder_attribute.call(attr_key)
+        end.reduce({}, :merge)
       end
 
       def build_hash_attribute
-        -> (object, options, attr_key) {
-          if attr_key.kind_of?(Hash)
+        lambda { |object, options, attr_key|
+          if attr_key.is_a?(Hash)
             key   = attr_key.keys.first
             value = association_value(object, attr_key, options)
           else
             key   = attr_key
             value = object.send(attr_key)
           end
-          {:"#{key}" => value}
+          { :"#{key}" => value }
         }
       end
 
@@ -63,10 +63,10 @@ module Arpa
 
         if object_value.try(:size)
           object_value.collect do |obj|
-            mapper.send(options[:map_association_to], obj, {map_association: false})
+            mapper.send(options[:map_association_to], obj, map_association: false)
           end
         else
-          mapper.send(options[:map_association_to], object_value, {map_association: false})
+          mapper.send(options[:map_association_to], object_value, map_association: false)
         end
       end
 
@@ -111,7 +111,6 @@ module Arpa
       def self._attrs_to_entity
         @attrs_to_entity
       end
-
     end
   end
 end

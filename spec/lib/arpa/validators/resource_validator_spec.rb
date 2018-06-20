@@ -11,5 +11,4 @@ describe Arpa::Validators::ResourceValidator, type: :validator, fast: true do
     it { expect(subject.errors).to be_added(:full_name, :blank) }
     it { expect(subject.errors).to be_added(:name, :blank) }
   end
-
 end

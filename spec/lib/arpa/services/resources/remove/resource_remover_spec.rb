@@ -1,17 +1,15 @@
 require 'spec_helper'
 
 describe Arpa::Services::Resources::Remove::ResourceRemover, type: :service, fast: true do
-
   let(:resource_001) { double full_name: 'UsersController' }
   let(:resource_002) { double full_name: 'OldContactsController' }
-  let(:resources)    { [resource_001, resource_002]}
+  let(:resources)    { [resource_001, resource_002] }
 
   let(:resourceable_001) { double to_s: 'UsersController' }
   let(:resourceable_002) { double to_s: 'ContactsController' }
-  let(:resourceables)    { [resourceable_001, resourceable_002]}
+  let(:resourceables)    { [resourceable_001, resourceable_002] }
 
   describe 'removing nonexistent resources' do
-
     let(:finder_repo_class) { Arpa::Repositories::Resources::Finder }
     let(:finder_repo)       { instance_double finder_repo_class }
 
@@ -44,7 +42,5 @@ describe Arpa::Services::Resources::Remove::ResourceRemover, type: :service, fas
       expect(remover_repo).to have_received(:destroy).once
       expect(remover_repo).to have_received(:destroy).with(resource_002).once
     end
-
   end
-
 end

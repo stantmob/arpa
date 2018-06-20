@@ -1,10 +1,9 @@
 require 'spec_helper'
 
 describe Arpa::Repositories::Actions::Finder, type: :repository, slow: true do
-
   let(:resource_record)   { create :repository_resource, :user }
   let(:action_record_001) { create :repository_action, :index, resource: resource_record }
-  let(:action_record_002) { create :repository_action, :show, resource: resource_record}
+  let(:action_record_002) { create :repository_action, :show, resource: resource_record }
 
   before do
     action_record_001
@@ -12,9 +11,7 @@ describe Arpa::Repositories::Actions::Finder, type: :repository, slow: true do
   end
 
   describe '#by_name_and_resource' do
-
     context 'when exist with the params' do
-
       let(:result) { subject.by_name_and_resource('index', resource_record) }
 
       it 'should return a resource with name "index"' do
@@ -27,14 +24,12 @@ describe Arpa::Repositories::Actions::Finder, type: :repository, slow: true do
     end
 
     context 'when nonexist with the params' do
-
       let(:result) { subject.by_name_and_resource('nonexist_action', resource_record) }
 
       it 'the result should return nil' do
         expect(result).to be_nil
       end
     end
-
   end
 
   describe 'getting permission from action_name, resource_name and profile_ids' do
@@ -71,11 +66,9 @@ describe Arpa::Repositories::Actions::Finder, type: :repository, slow: true do
     end
 
     context 'when action and resource not belogns to any profile' do
-
       it 'should not return any permission' do
         expect(result).to be_nil
       end
     end
   end
-
 end

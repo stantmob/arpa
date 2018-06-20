@@ -3,15 +3,13 @@ module Arpa
     module Resources
       module Remove
         class ResourceRemover
-
           def remove_nonexistent_resources(resourceables)
-            resourceables_names = resourceables.map { |r| r.to_s }
+            resourceables_names = resourceables.map(&:to_s)
 
             finder_repo.all.each do |resource|
               exist = resourceables_names.include?(resource.full_name)
               remover_repo.destroy(resource) unless exist
             end
-
           end
 
           private
@@ -23,7 +21,6 @@ module Arpa
           def remover_repo
             @remover_repo ||= Arpa::Repositories::Resources::Remover.new
           end
-
         end
       end
     end

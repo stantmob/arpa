@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Arpa::Repositories::Profiles::Finder, type: :repository, slow: true do
-
   let(:record_001) { create :repository_profile, name: 'profile_01' }
   let(:record_002) { create :repository_profile, name: 'profile_02' }
 
@@ -20,7 +19,6 @@ describe Arpa::Repositories::Profiles::Finder, type: :repository, slow: true do
     it 'the result should be an Arpa::Entities::Profile' do
       expect(result).to be_an Arpa::Entities::Profile
     end
-
   end
 
   describe '#all' do
@@ -37,11 +35,9 @@ describe Arpa::Repositories::Profiles::Finder, type: :repository, slow: true do
     it 'the result should be an Array of Arpa::Entities::Profile' do
       expect(result.first).to be_an Arpa::Entities::Profile
     end
-
   end
 
   describe '#all_by_entity' do
-
     context 'when have profiles with differents entities' do
       let(:entity_001) { create :entity }
       let(:record_003) { create :repository_profile, name: 'profile_03', entity_id: entity_001.id, entity_class: entity_001.class }
@@ -72,8 +68,6 @@ describe Arpa::Repositories::Profiles::Finder, type: :repository, slow: true do
         expect(third.entity_id).to be == entity_001.id
         expect(third.entity_class).to eql entity_001.class.to_s
       end
-
     end
   end
-
 end

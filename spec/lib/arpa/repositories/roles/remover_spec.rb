@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Arpa::Repositories::Roles::Remover, type: :repository, slow: true do
-
   let(:created_role) { create :repository_role }
 
   before { created_role }
@@ -12,7 +11,6 @@ describe Arpa::Repositories::Roles::Remover, type: :repository, slow: true do
     it 'should destroy the role' do
       expect { destroy_role }.to change(Arpa::Repositories::Roles::RepositoryRole, :count).by(-1)
     end
-
   end
 
   describe '#disable' do
@@ -25,7 +23,5 @@ describe Arpa::Repositories::Roles::Remover, type: :repository, slow: true do
     it 'role should be setted to removed: true' do
       expect(disable_role.removed).to be_truthy
     end
-
   end
-
 end

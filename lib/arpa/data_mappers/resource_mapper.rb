@@ -5,7 +5,7 @@ module Arpa
       repository_class 'Arpa::Repositories::Resources::RepositoryResource'
 
       attributes_to_map :id, :name, :full_name,
-        actions: {mapper: 'Arpa::DataMappers::ActionMapper'}
+                        actions: { mapper: 'Arpa::DataMappers::ActionMapper' }
     end
   end
 end

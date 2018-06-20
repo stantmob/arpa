@@ -15,9 +15,7 @@ module Arpa
         def role_creator
           @role_creator ||= Arpa::Services::Roles::Create::RoleCreator.new
         end
-
       end
     end
   end
 end
-

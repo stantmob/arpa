@@ -11,7 +11,6 @@ module Arpa
         @full_name = resource.full_name
         @name      = resource.name
       end
-
     end
   end
 end

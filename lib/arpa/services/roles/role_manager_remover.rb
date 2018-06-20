@@ -16,7 +16,6 @@ module Arpa
         def role_remover
           @role_remover ||= Arpa::Services::Roles::Remove::RoleRemover.new
         end
-
       end
     end
   end

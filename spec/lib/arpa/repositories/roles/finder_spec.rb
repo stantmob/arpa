@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Arpa::Repositories::Roles::Finder, type: :repository, slow: true do
-
   let(:record_001) { create :repository_role, name: 'role_01' }
   let(:record_002) { create :repository_role, name: 'role_02' }
 
@@ -20,7 +19,6 @@ describe Arpa::Repositories::Roles::Finder, type: :repository, slow: true do
     it 'the result should be an Arpa::Entities::Role' do
       expect(result).to be_an Arpa::Entities::Role
     end
-
   end
 
   describe '#all' do
@@ -37,7 +35,5 @@ describe Arpa::Repositories::Roles::Finder, type: :repository, slow: true do
     it 'the result should be an Array of Arpa::Entities::Role' do
       expect(result.first).to be_an Arpa::Entities::Role
     end
-
   end
-
 end

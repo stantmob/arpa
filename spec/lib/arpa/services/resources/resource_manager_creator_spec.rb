@@ -1,19 +1,18 @@
 require 'spec_helper'
 
 describe Arpa::Services::Resources::ResourceManagerCreator, type: :service, fast: true do
-
   let(:action_remover)   { double }
   let(:resource_remover) { double }
   let(:resource_creator) { double }
   let(:action_creator)   { double }
   let(:element)          { double }
   let(:resourceables)    { [resourceable_001, resourceable_002] }
-  let(:params)           { {resourceables: resourceables, except_action_methods: ['some_method']} }
+  let(:params)           { { resourceables: resourceables, except_action_methods: ['some_method'] } }
   let(:success_proc)     { ->(r) {} }
-  let(:callback)         { {success: success_proc, fail: ->(e) {raise e} } }
+  let(:callback)         { { success: success_proc, fail: ->(e) { raise e } } }
 
   let(:resourceable_001) { double action_methods: [] }
-  let(:resourceable_002) { double action_methods: []}
+  let(:resourceable_002) { double action_methods: [] }
   let(:resource_created) { double }
 
   let(:setup_creators) do
@@ -52,7 +51,7 @@ describe Arpa::Services::Resources::ResourceManagerCreator, type: :service, fast
   end
 
   it 'action_remover should call :remove_nonexistent_actions with :action_params as parameter' do
-    expect(action_remover).to have_received(:remove_nonexistent_actions).with({resource: resource_created, actions_names: []}).twice
+    expect(action_remover).to have_received(:remove_nonexistent_actions).with(resource: resource_created, actions_names: []).twice
   end
 
   it 'resource_creator should call :create with :resourceable as parameter' do
@@ -61,11 +60,10 @@ describe Arpa::Services::Resources::ResourceManagerCreator, type: :service, fast
   end
 
   it 'action_creator should call :create_many with :action_params as parameter' do
-    expect(action_creator).to have_received(:create_many).with({resource: resource_created, actions_names: []}).twice
+    expect(action_creator).to have_received(:create_many).with(resource: resource_created, actions_names: []).twice
   end
 
   it 'success callback should be called with Array of resources as parameter' do
     expect(success_proc).to have_received(:call).with([resource_created, resource_created])
   end
-
 end

@@ -15,7 +15,6 @@ module Arpa
         def profile_creator
           @profile_creator ||= Arpa::Services::Profiles::Create::ProfileCreator.new
         end
-
       end
     end
   end

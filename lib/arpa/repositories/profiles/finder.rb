@@ -17,9 +17,9 @@ module Arpa
 
         def all_by_entity(entity_id, entity_class)
           repository_class
-            .where("( (entity_id is null AND entity_class is null) OR (entity_id = '#{entity_id}' AND entity_class = '#{entity_class}') )" )
+            .where("( (entity_id is null AND entity_class is null) OR (entity_id = '#{entity_id}' AND entity_class = '#{entity_class}') )")
             .collect do |record|
-              mapper_instance.map_to_entity(record)
+            mapper_instance.map_to_entity(record)
           end
         end
 
@@ -30,7 +30,6 @@ module Arpa
         def repository_class
           RepositoryProfile
         end
-
       end
     end
   end
