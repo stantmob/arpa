@@ -47,7 +47,7 @@ module Arpa
             value = association_value(object, attr_key, options)
           else
             key   = attr_key
-            value = object.send(attr_key)
+            value = object.send(attr_key) if object.respond_to?(attr_key)
           end
           {:"#{key}" => value}
         }
