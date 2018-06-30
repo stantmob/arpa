@@ -1,4 +1,4 @@
-#Arpa
+# Arpa
 
 Arpa is an authorization library for Ruby or Ruby on Rails which restricts the accesses in controller and actions. Arpa  will help you to customize all permissions you need dynamically.
 
@@ -35,13 +35,13 @@ If you want a different Model to associate with Arpa::Profile you can pass some 
 
     $ rails generate arpa:install [ASSOCIATE_TABLE] [ASSOCIATE_PRIMARY_KEY]
 
-####Eg. 1:
+#### Eg. 1:
 
     $ rails generate arpa:install admins
     
 That command will create the association with **admins** table with **admin_id** as foreign key.
 
-####Eg. 2:
+#### Eg. 2:
 
     $ rails generate arpa:install admins admin_custom_id
     
@@ -152,7 +152,7 @@ Arpa will use on **description** method from Arpa::Entities::Action a specific L
 
 You should create a locale file to print correctly the descriptions of the actions.
 
-####Eg.:
+#### Eg.:
 
 ```ruby
 en:
