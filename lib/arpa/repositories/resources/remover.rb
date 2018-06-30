@@ -15,7 +15,6 @@ module Arpa
         def repository_class
           RepositoryResource
         end
-
       end
     end
   end

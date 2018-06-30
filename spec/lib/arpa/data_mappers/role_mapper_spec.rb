@@ -4,7 +4,7 @@ describe Arpa::DataMappers::RoleMapper, type: :mapper, fast: true do
   let(:mapper) { Arpa::DataMappers::RoleMapper.instance }
 
   describe 'mapping to record instance' do
-    let(:entity)          { Arpa::Entities::Role.new(name: 'some_role')}
+    let(:entity)          { Arpa::Entities::Role.new(name: 'some_role') }
     let(:record_instance) { mapper.map_to_record(entity) }
 
     it 'record_instance should be an instance of Arpa::Repositories::Roles::RepositoryRole' do
@@ -41,7 +41,5 @@ describe Arpa::DataMappers::RoleMapper, type: :mapper, fast: true do
     it 'entity_instance should fill the property :profiles from record property' do
       expect(entity_instance.profiles.first).to be_an Arpa::Entities::Profile
     end
-
   end
-
 end

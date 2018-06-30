@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Arpa::Services::Profiles::Remove::ProfileRemover, type: :service, fast: true do
-
   let(:profile) { double }
 
   describe 'removing profile' do
@@ -26,7 +25,6 @@ describe Arpa::Services::Profiles::Remove::ProfileRemover, type: :service, fast:
       it 'remover repository should call :new once' do
         expect(remover_repo_class).to have_received(:new).once
       end
-
     end
 
     context 'when pass true as disable param' do
@@ -37,9 +35,6 @@ describe Arpa::Services::Profiles::Remove::ProfileRemover, type: :service, fast:
       it 'remover repository should call :disable once' do
         expect(remover_repo).to have_received(:disable).once
       end
-
     end
-
   end
-
 end

@@ -11,11 +11,11 @@ module Arpa
 
         def permission(resource_name, action_name, profile_ids)
           record = repository_class
-            .distinct(true)
-            .joins(:resource, roles: :profiles)
-            .find_by(repository_profiles: {id: profile_ids},
-                     repository_resources: {name: resource_name},
-                     name: action_name)
+                   .distinct(true)
+                   .joins(:resource, roles: :profiles)
+                   .find_by(repository_profiles: { id: profile_ids },
+                            repository_resources: { name: resource_name },
+                            name: action_name)
           mapper_instance.map_to_entity(record) if record
         end
 
@@ -26,7 +26,6 @@ module Arpa
         def repository_class
           RepositoryAction
         end
-
       end
     end
   end

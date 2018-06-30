@@ -1,3 +1,7 @@
+### 0.3.0
+* changes
+  * Update project to use rails 5.2
+
 ### 0.2.0
 
 * additions

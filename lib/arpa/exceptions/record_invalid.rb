@@ -7,7 +7,6 @@ module Arpa
         super(args[:message])
         @errors = args[:errors]
       end
-
     end
   end
 end

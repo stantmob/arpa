@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Arpa::Services::Profiles::Create::ProfileCreator, type: :service, fast: true do
-
   let(:profile_entity_class) { Arpa::Entities::Profile }
   let(:profile)              { double }
   let(:params)               { double }
@@ -16,7 +15,6 @@ describe Arpa::Services::Profiles::Create::ProfileCreator, type: :service, fast:
   end
 
   describe 'creating a new profile' do
-
     context 'when profile is invalid' do
       let(:errors) { instance_double('ActiveModel::Errors') }
 
@@ -32,7 +30,6 @@ describe Arpa::Services::Profiles::Create::ProfileCreator, type: :service, fast:
           expect(error.errors).not_to be_nil
         }
       end
-
     end
 
     context 'when profile is valid' do
@@ -55,14 +52,10 @@ describe Arpa::Services::Profiles::Create::ProfileCreator, type: :service, fast:
       end
 
       context 'when build the profile' do
-
         it 'entity profile should call new method' do
           expect(profile_entity_class).to have_received(:new).once
         end
-
       end
-
     end
-
   end
 end

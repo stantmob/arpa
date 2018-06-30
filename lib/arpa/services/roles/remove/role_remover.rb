@@ -3,7 +3,6 @@ module Arpa
     module Roles
       module Remove
         class RoleRemover
-
           def remove(entity)
             if entity.has_profile?
               remover_repo.disable(entity)
@@ -17,7 +16,6 @@ module Arpa
           def remover_repo
             @remover_repo ||= Arpa::Repositories::Roles::Remover.new
           end
-
         end
       end
     end

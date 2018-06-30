@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Arpa::Services::Roles::Update::RoleUpdater, type: :service, fast: true do
-
   let(:role_entity_class) { Arpa::Entities::Role }
   let(:role)              { double }
   let(:params)            { double }
@@ -16,7 +15,6 @@ describe Arpa::Services::Roles::Update::RoleUpdater, type: :service, fast: true 
   end
 
   describe 'updating a role' do
-
     context 'when role is invalid' do
       let(:errors) { instance_double('ActiveModel::Errors') }
 
@@ -32,7 +30,6 @@ describe Arpa::Services::Roles::Update::RoleUpdater, type: :service, fast: true 
           expect(error.errors).not_to be_nil
         }
       end
-
     end
 
     context 'when role is valid' do
@@ -55,14 +52,10 @@ describe Arpa::Services::Roles::Update::RoleUpdater, type: :service, fast: true 
       end
 
       context 'when build the role' do
-
         it 'entity role should call new method' do
           expect(role_entity_class).to have_received(:new).once
         end
-
       end
-
     end
-
   end
 end

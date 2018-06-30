@@ -42,10 +42,9 @@ module Arpa
         end
 
         def action_params(resource, resourceable, except_action_methods)
-          actions_names = resourceable.action_methods.select{ |action| !except_action_methods.include?(action) }
+          actions_names = resourceable.action_methods.reject { |action| except_action_methods.include?(action) }
           { resource: resource, actions_names: actions_names }
         end
-
       end
     end
   end

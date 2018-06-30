@@ -11,7 +11,6 @@ module Arpa
         @name        = action.name
         @resource_id = action.resource_id
       end
-
     end
   end
 end

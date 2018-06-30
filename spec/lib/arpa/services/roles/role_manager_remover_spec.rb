@@ -1,12 +1,11 @@
 require 'spec_helper'
 
 describe Arpa::Services::Roles::RoleManagerRemover, type: :service, fast: true do
-
   let(:role_remover) { double }
   let(:role)         { double }
-  let(:params)       { {role: role} }
+  let(:params)       { { role: role } }
   let(:success_proc) { ->(r) {} }
-  let(:callback)     { {success: success_proc, fail: ->(e) {raise e} } }
+  let(:callback)     { { success: success_proc, fail: ->(e) { raise e } } }
 
   let(:setup_updaters) do
     allow(Arpa::Services::Roles::Remove::RoleRemover).to receive(:new).and_return(role_remover)
@@ -28,5 +27,4 @@ describe Arpa::Services::Roles::RoleManagerRemover, type: :service, fast: true d
   it 'role_remover should call :remove with role as parameter' do
     expect(role_remover).to have_received(:remove).with(role).once
   end
-
 end

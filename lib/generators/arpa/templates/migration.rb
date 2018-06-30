@@ -1,4 +1,4 @@
-class CreateArpaTables < ActiveRecord::Migration
+class CreateArpaTables < ActiveRecord::Migration[5.2]
   def change
 
     create_table :repository_resources, :force => true do |t|

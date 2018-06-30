@@ -3,7 +3,6 @@ module Arpa
     module Roles
       module Update
         class RoleUpdater
-
           def update(params)
             role = role_instance(params)
             validate_role(role)
@@ -24,7 +23,6 @@ module Arpa
           def updater_repo
             @updater_repo ||= Arpa::Repositories::Roles::Updater.new
           end
-
         end
       end
     end

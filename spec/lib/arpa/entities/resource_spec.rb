@@ -1,13 +1,9 @@
 require 'spec_helper'
 
 describe Arpa::Entities::Resource, type: :entity, fast: true do
-
   describe 'initializing' do
-
     describe 'setting default values' do
-
       context 'when pass :actions as nil' do
-
         it 'attribute :actions should be an empty Array' do
           expect(subject.actions).to eq []
         end
@@ -15,18 +11,16 @@ describe Arpa::Entities::Resource, type: :entity, fast: true do
     end
 
     context 'when pass :actions as empty' do
-      let(:attrs) { {actions: ''} }
+      let(:attrs) { { actions: '' } }
       subject { Arpa::Entities::Resource.new attrs }
 
       it 'attribute :actions should be an empty Array' do
         expect(subject.actions).to eq []
       end
     end
-
   end
 
   describe '#build_correct_name' do
-
     before { subject.build_correct_name }
 
     context 'when pass :full_name as "UsersController"' do
@@ -52,7 +46,5 @@ describe Arpa::Entities::Resource, type: :entity, fast: true do
         expect(subject.name).to eql 'authentication/someone/users'
       end
     end
-
   end
-
 end

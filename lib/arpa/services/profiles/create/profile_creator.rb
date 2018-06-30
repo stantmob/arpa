@@ -3,7 +3,6 @@ module Arpa
     module Profiles
       module Create
         class ProfileCreator
-
           def create(params)
             profile = profile_instance(params)
             validate_profile(profile)
@@ -24,7 +23,6 @@ module Arpa
           def creator_repo
             @creator_repo ||= Arpa::Repositories::Profiles::Creator.new
           end
-
         end
       end
     end

@@ -15,7 +15,6 @@ module Arpa
         def profile_updater
           @profile_updater ||= Arpa::Services::Profiles::Update::ProfileUpdater.new
         end
-
       end
     end
   end

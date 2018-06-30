@@ -1,12 +1,10 @@
 require 'spec_helper'
 
 describe Arpa::Repositories::Resources::Remover, type: :repository, slow: true do
-
   let(:resource_001)     { create :repository_resource, :user }
   let(:destroy_resource) { subject.destroy(resource_001) }
 
   describe '#destroy' do
-
     context 'when resource has no actions associate' do
       let(:actions) { [] }
 
@@ -31,8 +29,6 @@ describe Arpa::Repositories::Resources::Remover, type: :repository, slow: true d
       it 'should destroy all actions associate with resource' do
         expect { destroy_resource }.to change(Arpa::Repositories::Actions::RepositoryAction, :count).by(-2)
       end
-
     end
-
   end
 end

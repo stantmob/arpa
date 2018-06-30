@@ -13,7 +13,6 @@ module Arpa
         @description = profile.description
         @role_ids    = profile.role_ids
       end
-
     end
   end
 end

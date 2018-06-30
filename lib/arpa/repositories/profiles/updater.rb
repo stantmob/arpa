@@ -16,7 +16,6 @@ module Arpa
         def repository_class
           RepositoryProfile
         end
-
       end
     end
   end

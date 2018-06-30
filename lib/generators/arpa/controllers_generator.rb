@@ -1,7 +1,7 @@
 module Arpa
   module Generators
     class ControllersGenerator < Rails::Generators::Base
-      source_root File.expand_path("../templates", __FILE__)
+      source_root File.expand_path('templates', __dir__)
 
       def copy_resources_views_files
         copy_file 'views/resources/index.html.erb', 'app/views/arpa/resources/index.html.erb'
@@ -31,29 +31,28 @@ module Arpa
       end
 
       def add_routes
-        route <<-RUBY
-scope module: :arpa do
-    resources :resources do
-      collection do
-        get 'generate_resources_and_actions'
-      end
-    end
+        route <<~RUBY
+          scope module: :arpa do
+              resources :resources do
+                collection do
+                  get 'generate_resources_and_actions'
+                end
+              end
 
-    resources :roles do
-      collection do
-        delete ':id', to: 'roles#remove'
-      end
-    end
+              resources :roles do
+                collection do
+                  delete ':id', to: 'roles#remove'
+                end
+              end
 
-    resources :profiles do
-      collection do
-        delete ':id', to: 'profiles#remove'
-      end
-    end
-  end
+              resources :profiles do
+                collection do
+                  delete ':id', to: 'profiles#remove'
+                end
+              end
+            end
         RUBY
       end
-
     end
   end
 end

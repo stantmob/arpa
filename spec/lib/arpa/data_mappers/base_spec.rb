@@ -10,7 +10,6 @@ describe Arpa::DataMappers::Base, type: :mapper, fast: true do
   let(:mapper) { TestMapper.instance }
 
   context 'when initialize more than one Mapper' do
-
     let(:mapper_002) { TestMapper.instance }
 
     it 'the instances should use singleton pattern' do
@@ -43,5 +42,4 @@ describe Arpa::DataMappers::Base, type: :mapper, fast: true do
       expect(entity_instance.id).to be == record.id
     end
   end
-
 end
